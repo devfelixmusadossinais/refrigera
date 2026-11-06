@@ -242,7 +242,12 @@
     if (!inf || !wrap) return;
     var v = inf.a.video, pl = wrap.querySelector(".player");
     if (v.tipo !== "youtube") { pl.innerHTML = embed(v, true); return; }
-    pl.innerHTML = '<div id="ytp-' + aid + '"></div>';
+    if (window.PLAYER_FOCO) {
+      pl.classList.add("foco");
+      pl.innerHTML = '<div class="yfr"><div id="ytp-' + aid + '"></div></div><div class="pov" data-pov="' + aid + '"></div><div class="pbig" aria-hidden="true">▶</div>';
+    } else {
+      pl.innerHTML = '<div id="ytp-' + aid + '"></div>';
+    }
     var ctl = wrap.querySelector(".pctl"); ctl.hidden = false;
     carregaYT(function () {
       var st = { aid: aid, p: null, t: null, drag: false, vel: 1 };
@@ -258,6 +263,7 @@
           },
           onStateChange: function (e) {
             var b = wrap.querySelector('[data-c="play"]'); if (b) b.textContent = e.data === 1 ? "❚❚" : "▶";
+            if (pl) pl.classList.toggle("pausado", e.data !== 1);
             if (e.data === 0) { var pg = store(K_PROG) || {}; if (!pg[aid]) alternarConcluida(aid); }
           }
         }
@@ -299,8 +305,9 @@
   });
 
   app.addEventListener("click", function (e) {
-    var t = e.target.closest && e.target.closest("[data-toggle],[data-feita],[data-play],[data-c]");
+    var t = e.target.closest && e.target.closest("[data-toggle],[data-feita],[data-play],[data-c],[data-pov]");
     if (!t) return;
+    if (t.hasAttribute("data-pov")) { var pb = app.querySelector('.aulawrap[data-a="' + t.getAttribute("data-pov") + '"] [data-c="play"]'); if (pb) pb.click(); return; }
     if (t.hasAttribute("data-play")) { iniciaPlayer(t.getAttribute("data-play")); return; }
     if (t.hasAttribute("data-c")) { comando(t.closest(".pctl").getAttribute("data-ctl"), t.getAttribute("data-c"), t); return; }
     if (t.hasAttribute("data-feita")) { alternarConcluida(t.getAttribute("data-feita")); return; }
