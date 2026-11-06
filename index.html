@@ -784,7 +784,7 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
           <li class="gift"><svg class="ic"><use href="#i-gift"/></svg>+ 5 bônus de consulta</li>
         </ul>
         <div class="price-box"><span class="de">De <s>R$197</s> por apenas</span><span class="val"><small>R$</small>37</span><span class="un">pagamento único</span></div>
-        <a href="#checkout-premium" class="btn block pulse" data-checkout="premium">Quero o Premium agora <span class="ar">→</span></a>
+        <a href="https://pay.cakto.com.br/349reev" class="btn block pulse" data-checkout="premium">Quero o Premium agora <span class="ar">→</span></a>
         <div class="pay"><span>Compra segura</span>·<span>Garantia de 7 dias</span></div>
       </div>
       <div class="kit basic rv">
@@ -801,7 +801,7 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
           <li class="no"><svg class="ic" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>NÃO inclui os 10 bônus</li>
         </ul>
         <div class="price-box"><span class="de">De <s>R$97</s> por</span><span class="val"><small>R$</small>16<small class="c">,90</small></span><span class="un">pagamento único</span></div>
-        <a href="#checkout-basico" class="btn block ghost" data-checkout="basico">Quero o Básico</a>
+        <a href="https://pay.cakto.com.br/359euuh" class="btn block ghost" data-checkout="basico">Quero o Básico</a>
       </div>
       <p class="diff rv">Por só <b>+R$20,10</b> você leva o certificado e os 10 bônus.</p>
     </div>
@@ -875,7 +875,7 @@ UTMIFY: ID = [ID_DA_UTMIFY]  (colar o script de UTMs + pixel que a Utmify gera)
 -->
 <script>
 /* CHECKOUTS: colar os links aqui. Vazio = o botão só rola pro #checkout-xxx (placeholder) */
-var CHECKOUT={premium:"",basico:"",promo:""};
+var CHECKOUT={premium:"https://pay.cakto.com.br/349reev",basico:"https://pay.cakto.com.br/359euuh",promo:""};
 function go(dest){var q=location.search;if(q){dest+=(dest.indexOf("?")>-1?"&":"?")+q.substring(1)}location.href=dest}
 document.addEventListener("click",function(e){
   var b=e.target.closest&&e.target.closest("[data-open-up]");
