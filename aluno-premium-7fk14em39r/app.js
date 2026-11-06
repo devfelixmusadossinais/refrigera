@@ -281,7 +281,7 @@
   function embed(v) {
     if (!v) return "";
     if (v.url) return '<iframe src="' + esc(v.url) + '" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
-    if (v.tipo === "youtube") return '<iframe src="https://www.youtube-nocookie.com/embed/' + esc(v.id) + '?rel=0" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+    if (v.tipo === "youtube") return '<iframe src="https://www.youtube-nocookie.com/embed/' + esc(v.id) + '?rel=0&modestbranding=1&iv_load_policy=3&playsinline=1&color=white&cc_load_policy=0" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
     if (v.tipo === "vimeo") return '<iframe src="https://player.vimeo.com/video/' + esc(v.id) + '" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
     if (v.tipo === "mp4") return '<video controls playsinline preload="metadata" src="' + esc(v.id) + '"></video>';
     return "";
