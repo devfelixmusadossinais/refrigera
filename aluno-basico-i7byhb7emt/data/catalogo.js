@@ -6,8 +6,8 @@ window.CATALOGO = {
   },
   "acessos": [],
   "upgrade": {
-    "texto": "Libere o certificado e os 10 bônus por apenas R$ 10",
-    "descricao": "Quem já é aluno Básico completa o acesso por R$ 10: certificado de conclusão e os 10 bônus em PDF.",
+    "texto": "Libere a apostila, o certificado e os 10 bônus por apenas R$ 10",
+    "descricao": "Quem já é aluno Básico completa o acesso por R$ 10: apostila completa, certificado de conclusão e os 10 bônus em PDF.",
     "botao": "Quero liberar por R$ 10",
     "url": "https://pay.cakto.com.br/r944trv"
   },
@@ -26,7 +26,6 @@ window.CATALOGO = {
           "premium"
         ],
         "apostilas": [
-          "basico",
           "premium"
         ],
         "bonus": [
@@ -641,7 +640,7 @@ window.CATALOGO = {
           "titulo": "Apostila completa do curso",
           "descricao": "Refrigeração, conserto e manutenção de ar-condicionado, módulo a módulo",
           "capa": "assets/apostila-completa.webp",
-          "arquivo": "conteudo/apostilas/apostila-completa.pdf"
+          "arquivo": ""
         }
       ],
       "bonus": [

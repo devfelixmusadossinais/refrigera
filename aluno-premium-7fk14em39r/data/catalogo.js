@@ -20,7 +20,6 @@ window.CATALOGO = {
           "premium"
         ],
         "apostilas": [
-          "basico",
           "premium"
         ],
         "bonus": [

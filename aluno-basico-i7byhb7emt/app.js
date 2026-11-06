@@ -103,7 +103,7 @@
     if (ult && ult.produto === p.id) todas.forEach(function (x) { if (x.a.id === ult.aula) alvo = x; });
     if (!alvo) alvo = todas[0];
     if (alvo) {
-      html += '<a class="card cont" href="#/aula/' + esc(p.id) + "/" + esc(alvo.a.id) + '"><span class="pl2">▶</span><span><small>' +
+      html += '<a class="card cont" href="#/p/' + esc(p.id) + "/aulas/" + esc(alvo.a.id) + '"><span class="pl2">▶</span><span><small>' +
         (ult ? "Continuar de onde parou" : "Começar agora") + "</small><b>" + esc(alvo.a.titulo) + "</b></span></a>";
     }
     if (acesso.nivel !== "premium" && CAT.upgrade) {
@@ -118,7 +118,7 @@
 
   var ABAS = [["aulas", "Aulas"], ["apostilas", "Apostilas"], ["bonus", "Bônus"], ["certificado", "Certificado"]];
 
-  function telaProduto(acesso, id, aba) {
+  function telaProduto(acesso, id, aba, abrir) {
     var p = prod(id);
     if (!p || p.id !== acesso.produto) { location.hash = "#/"; return; }
     aba = aba || "aulas";
@@ -133,37 +133,99 @@
     app.innerHTML = html;
     window.scrollTo(0, 0);
     if (aba === "certificado") ligarCertificado(p, acesso);
+    if (aba === "aulas" && abrir) abrirAulaInline(abrir, true);
   }
 
   function painel(p, acesso, aba) {
     if (aba === "aulas") return painelAulas(p);
-    if (aba === "apostilas") return painelApostilas(p);
+    if (aba === "apostilas") return painelApostilas(p, acesso);
     if (aba === "bonus") return painelBonus(p, acesso);
     return painelCertificado(p, acesso);
   }
+
+  var ICO_PLAY = "M8 5v14l11-7z", ICO_OK = "M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z";
 
   function painelAulas(p) {
     var prog = store(K_PROG) || {};
     return (p.modulos || []).map(function (m, i) {
       var aulas = m.aulas || [], feitas = aulas.filter(function (a) { return prog[a.id]; }).length;
-      return '<details class="mod"' + (i === 0 ? " open" : "") + "><summary>" + esc(m.titulo) +
-        "<small>" + feitas + " de " + aulas.length + " aulas</small></summary>" +
+      return '<details class="mod" data-m="' + esc(m.id) + '"' + (i === 0 ? " open" : "") + "><summary>" + esc(m.titulo) +
+        '<small class="cnt">' + feitas + " de " + aulas.length + " aulas</small></summary>" +
         aulas.map(function (a) {
           var on = temVideo(a);
-          return '<a class="aula ' + (prog[a.id] ? "feita" : "") + (on ? "" : " off") + '" href="#/aula/' + esc(p.id) + "/" + esc(a.id) + '">' +
-            '<span class="pl"><svg viewBox="0 0 24 24"><path d="' + (prog[a.id] ? "M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" : "M8 5v14l11-7z") + '"/></svg></span>' +
-            "<span><b>" + esc(a.titulo) + "</b><small>" + (on ? esc(a.duracao || "Videoaula") : "Em breve") + "</small></span></a>";
+          return '<div class="aulawrap" data-a="' + esc(a.id) + '"><button type="button" class="aula ' + (prog[a.id] ? "feita" : "") + (on ? "" : " off") + '" data-toggle="' + esc(a.id) + '" aria-expanded="false">' +
+            '<span class="pl"><svg viewBox="0 0 24 24"><path d="' + (prog[a.id] ? ICO_OK : ICO_PLAY) + '"/></svg></span>' +
+            "<span><b>" + esc(a.titulo) + "</b><small>" + (on ? esc(a.duracao || "Videoaula") : "Em breve") + '</small></span><span class="chev" aria-hidden="true">▾</span></button>' +
+            '<div class="aulabody" hidden></div></div>';
         }).join("") + "</details>";
     }).join("");
   }
 
-  function painelApostilas(p) {
-    return (p.apostilas || []).map(function (a) {
-      var tem = !!a.arquivo;
+  function achaAula(aid) {
+    var p = prod((acessoAtual() || {}).produto), r = null;
+    if (p) aulasDe(p).forEach(function (x) { if (x.a.id === aid) r = { p: p, m: x.m, a: x.a }; });
+    return r;
+  }
+
+  function abrirAulaInline(aid, rolar) {
+    var wrap = app.querySelector('.aulawrap[data-a="' + aid + '"]');
+    var info = achaAula(aid);
+    if (!wrap || !info || !temVideo(info.a)) return;
+    var det = wrap.closest("details"); if (det) det.open = true;
+    var btn = wrap.querySelector(".aula"), body = wrap.querySelector(".aulabody");
+    if (!body.hidden) return;
+    var prog = store(K_PROG) || {}, v = info.a.video;
+    var yt = v && v.tipo === "youtube" ? "https://www.youtube.com/watch?v=" + encodeURIComponent(v.id) : "";
+    body.innerHTML = '<div class="player">' + embed(v) + "</div>" +
+      '<div class="abtns"><button type="button" class="btn small ' + (prog[aid] ? "ghost" : "") + '" data-feita="' + esc(aid) + '">' + (prog[aid] ? "✓ Concluída (desmarcar)" : "Marcar como concluída") + "</button>" +
+      (yt ? '<a class="ytlink" href="' + esc(yt) + '" target="_blank" rel="noopener">Abrir no YouTube</a>' : "") + "</div>";
+    body.hidden = false;
+    btn.setAttribute("aria-expanded", "true");
+    store(K_LAST, { produto: info.p.id, aula: aid });
+    if (rolar) setTimeout(function () { wrap.scrollIntoView({ behavior: "smooth", block: "start" }); }, 60);
+  }
+
+  function fecharAulaInline(aid) {
+    var wrap = app.querySelector('.aulawrap[data-a="' + aid + '"]');
+    if (!wrap) return;
+    var body = wrap.querySelector(".aulabody");
+    body.hidden = true; body.innerHTML = ""; /* remove o iframe: para o vídeo e libera memória */
+    wrap.querySelector(".aula").setAttribute("aria-expanded", "false");
+  }
+
+  function alternarConcluida(aid) {
+    var pg = store(K_PROG) || {};
+    if (pg[aid]) delete pg[aid]; else pg[aid] = true;
+    store(K_PROG, pg);
+    var wrap = app.querySelector('.aulawrap[data-a="' + aid + '"]'); if (!wrap) return;
+    var on = !!pg[aid], row = wrap.querySelector(".aula"), b = wrap.querySelector("[data-feita]");
+    row.classList.toggle("feita", on);
+    row.querySelector("path").setAttribute("d", on ? ICO_OK : ICO_PLAY);
+    if (b) { b.textContent = on ? "✓ Concluída (desmarcar)" : "Marcar como concluída"; b.classList.toggle("ghost", on); }
+    var det = wrap.closest("details"), n = det.querySelectorAll(".aulawrap").length;
+    var f = [].filter.call(det.querySelectorAll(".aulawrap"), function (w) { return pg[w.getAttribute("data-a")]; }).length;
+    det.querySelector(".cnt").textContent = f + " de " + n + " aulas";
+  }
+
+  app.addEventListener("click", function (e) {
+    var t = e.target.closest && e.target.closest("[data-toggle],[data-feita]");
+    if (!t) return;
+    if (t.hasAttribute("data-feita")) { alternarConcluida(t.getAttribute("data-feita")); return; }
+    var aid = t.getAttribute("data-toggle");
+    if (t.getAttribute("aria-expanded") === "true") fecharAulaInline(aid); else abrirAulaInline(aid, true);
+  });
+
+  function painelApostilas(p, acesso) {
+    var libera = liberado(p, "apostilas", acesso.nivel);
+    var lista = (p.apostilas || []).map(function (a) {
+      var tem = !!a.arquivo && libera;
       return '<div class="item">' + (a.capa ? '<img class="th" src="' + esc(a.capa) + '" alt="" loading="lazy">' : '<div class="ico">📄</div>') +
         '<div class="tx"><b>' + esc(a.titulo) + "</b><small>" + esc(a.descricao || (tem ? "PDF para baixar" : "Em breve")) + "</small></div>" +
         (tem ? '<a class="btn small" href="' + esc(a.arquivo) + '" target="_blank" rel="noopener">Abrir</a>' : "") + "</div>";
     }).join("");
+    if (libera) return lista;
+    return '<div class="card upsell"><h3>Apostila completa do curso</h3><p>A apostila faz parte do Premium. Libere agora com o upgrade.</p>' +
+      '<a class="btn" href="' + esc(CAT.upgrade.url) + '" target="_blank" rel="noopener">' + esc(CAT.upgrade.botao || "Quero o Premium") + "</a></div>" + lista;
   }
 
   function painelBonus(p, acesso) {
@@ -260,8 +322,8 @@
     var acesso = acessoAtual();
     if (!acesso) { telaAcesso(); return; }
     var h = (location.hash || "#/").replace(/^#\/?/, "").split("/");
-    if (h[0] === "p" && h[1]) telaProduto(acesso, h[1], h[2]);
-    else if (h[0] === "aula" && h[1] && h[2]) telaAula(acesso, h[1], h[2]);
+    if (h[0] === "p" && h[1]) telaProduto(acesso, h[1], h[2], h[3]);
+    else if (h[0] === "aula" && h[1] && h[2]) location.replace("#/p/" + h[1] + "/aulas/" + h[2]);
     else telaHome(acesso);
   }
 
