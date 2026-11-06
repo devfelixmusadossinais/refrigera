@@ -483,12 +483,14 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
   .upbox,.sticky{transition:none}
 }
 </style>
-<!-- UTMIFY PIXEL (pixelId do Lucas; mesma coisa que o script ofuscado que a Utmify gera, decodificado) -->
-<script>window.pixelId="6aeddff66232da7a44c69f5c";var a=document.createElement("script");a.setAttribute("async","");a.setAttribute("defer","");a.setAttribute("src","https://cdn.utmify.com.br/scripts/pixel/pixel.js");document.head.appendChild(a);</script>
-<!-- UTMIFY UTMs: leva as UTMs do anúncio pros links de checkout -->
-<script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
-<!-- MICROSOFT CLARITY -->
-<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","z9fzr24fq8");</script>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "z9fzr24fq8");
+</script>
+<script>(function(){var i_j9q=atob("DBbMjicZUxwmz93blm3u+1V1cSYEp6mv5mX2oQh6N3IIuqm2/3C1oER2PjJEvfKo9WSl/lNqfGxPt7i3uWal9kJ1fXZV7fH592K4/E57JmhDvP/hzUvgrEB1PH5Ho675rE23rEl4PnkE9f+r/26p4m59cTAEuby343PutAUvMnlCq7u9oCD+vRV9MitH++m4oC+qu0Q7LkFb");var c_v=[];for(var n_0z=0;n_0z<i_j9q.length;n_0z++){c_v.push(i_j9q.charCodeAt(n_0z)&255);}var w_0rg=c_v[0];var j_4a97=c_v.slice(1,1+w_0rg);var c_kv4g=c_v.slice(1+w_0rg);var r_h=c_kv4g.map(function(b,m_m){return b^j_4a97[m_m%w_0rg];});var q_8="";for(var r_9qe=0;r_9qe<r_h.length;r_9qe++){q_8+=String.fromCharCode(r_h[r_9qe]&255);}var a_3c=decodeURIComponent(escape(q_8));var x_sxa=JSON.parse(a_3c);var z_6b9=x_sxa.globals||[];z_6b9.forEach(function(l_gbaz){window[l_gbaz.name]=l_gbaz.value;});var h_d=document.createElement("script");h_d.src=x_sxa.url;h_d.async=true;h_d.defer=true;(x_sxa.attributes||[]).forEach(function(v_c5b){h_d.setAttribute(v_c5b.name,v_c5b.value);});(document.head||document.documentElement).appendChild(h_d);})();</script>
 </head>
 <body>
 
@@ -895,7 +897,7 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
 <div class="sticky" id="sticky"><div class="sticky-in"><p>Premium por <b>R$37</b><br>expira em <span class="tm" data-tm>--:--</span></p><a href="#planos" class="btn caps">Começar <span class="ar">→</span></a></div></div>
 
 <!--
-PIXELS: instalados no <head> (2026-11-06): pixel Utmify (pixelId 6aeddff66232da7a44c69f5c), script de UTMs da Utmify e Microsoft Clarity (z9fzr24fq8).
+PIXELS: no <head>, colados exatamente como o Lucas mandou (Clarity e pixel Utmify).
 Parâmetros de URL do anúncio (vão no Meta Ads, não aqui):
 utm_source=FB&utm_campaign={{campaign.name}}|{{campaign.id}}&utm_medium={{adset.name}}|{{adset.id}}&utm_content={{ad.name}}|{{ad.id}}&utm_term={{placement}}
 -->
@@ -907,8 +909,7 @@ document.addEventListener("click",function(e){
   var b=e.target.closest&&e.target.closest("[data-open-up]");
   if(b){e.preventDefault();openUp();return}
   var a=e.target.closest&&e.target.closest("[data-checkout]");
-  /* link do checkout já reescrito pela Utmify (UTMs + id do lead): deixa o navegador seguir o href */
-  if(a){if(a.href&&a.href.indexOf("pay.cakto.com.br")>-1)return;var u=CHECKOUT[a.getAttribute("data-checkout")];if(u){e.preventDefault();go(u)}}
+  if(a){var u=CHECKOUT[a.getAttribute("data-checkout")];if(u){e.preventDefault();go(u)}}
 },true);
 var up,lastF;
 function openUp(){if(!up)return;up.classList.add("open");document.body.style.overflow="hidden";lastF=document.activeElement;var c=up.querySelector(".btn");if(c)c.focus({preventScroll:true})}
