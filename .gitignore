@@ -5,3 +5,6 @@ prompts-imagens.md
 assets/capas-lucas/
 .DS_Store
 Thumbs.db
+
+# conteúdo pago (PDFs): só sobe quando o repositório for privado
+app/conteudo/
