@@ -907,7 +907,8 @@ document.addEventListener("click",function(e){
   var b=e.target.closest&&e.target.closest("[data-open-up]");
   if(b){e.preventDefault();openUp();return}
   var a=e.target.closest&&e.target.closest("[data-checkout]");
-  if(a){var u=CHECKOUT[a.getAttribute("data-checkout")];if(u){e.preventDefault();go(u)}}
+  /* link do checkout já reescrito pela Utmify (UTMs + id do lead): deixa o navegador seguir o href */
+  if(a){if(a.href&&a.href.indexOf("pay.cakto.com.br")>-1)return;var u=CHECKOUT[a.getAttribute("data-checkout")];if(u){e.preventDefault();go(u)}}
 },true);
 var up,lastF;
 function openUp(){if(!up)return;up.classList.add("open");document.body.style.overflow="hidden";lastF=document.activeElement;var c=up.querySelector(".btn");if(c)c.focus({preventScroll:true})}
