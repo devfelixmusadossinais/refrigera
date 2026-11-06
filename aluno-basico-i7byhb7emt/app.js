@@ -176,7 +176,7 @@
     if (!body.hidden) return;
     var prog = store(K_PROG) || {}, v = info.a.video;
     var yt = v && v.tipo === "youtube" ? "https://www.youtube.com/watch?v=" + encodeURIComponent(v.id) : "";
-    body.innerHTML = '<div class="player"><button type="button" class="facade" data-play="' + esc(aid) + '" aria-label="Assistir: ' + esc(info.a.titulo) + '"><span class="fplay">▶</span><span class="ftit">' + esc(info.a.titulo) + "</span></button></div>" +
+    body.innerHTML = '<div class="player"><button type="button" class="facade" data-play="' + esc(aid) + '" aria-label="Assistir: ' + esc(info.a.titulo) + '"><span class="fplay">▶</span><span class="ftit">' + esc(info.a.titulo) + "</span></button></div>" + PCTL(aid) +
       '<div class="abtns"><button type="button" class="btn small ' + (prog[aid] ? "ghost" : "") + '" data-feita="' + esc(aid) + '">' + (prog[aid] ? "✓ Concluída (desmarcar)" : "Marcar como concluída") + "</button>" +
       "</div>";
     body.hidden = false;
@@ -189,7 +189,7 @@
     var wrap = app.querySelector('.aulawrap[data-a="' + aid + '"]');
     if (!wrap) return;
     var body = wrap.querySelector(".aulabody");
-    body.hidden = true; body.innerHTML = ""; /* remove o iframe: para o vídeo e libera memória */
+    paraPlayer(aid); body.hidden = true; body.innerHTML = ""; /* remove o iframe: para o vídeo e libera memória */
     wrap.querySelector(".aula").setAttribute("aria-expanded", "false");
   }
 
@@ -207,14 +207,102 @@
     det.querySelector(".cnt").textContent = f + " de " + n + " aulas";
   }
 
+
+  /* ---------- player do YouTube com controles próprios (abaixo do vídeo, sem cobrir nada do player) ---------- */
+  var YTP = {};
+  function carregaYT(cb) {
+    if (window.YT && window.YT.Player) { cb(); return; }
+    (window._ytq = window._ytq || []).push(cb);
+    if (window._ytLoading) return;
+    window._ytLoading = true;
+    var prev = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = function () {
+      if (prev) prev();
+      var q = window._ytq || []; window._ytq = [];
+      q.forEach(function (f) { f(); });
+    };
+    var s = document.createElement("script"); s.src = "https://www.youtube.com/iframe_api"; document.head.appendChild(s);
+  }
+  function fmt(s) { s = Math.max(0, Math.floor(s || 0)); var m = Math.floor(s / 60), x = s % 60; return m + ":" + (x < 10 ? "0" : "") + x; }
+  function PCTL(aid) {
+    return '<div class="pctl" data-ctl="' + esc(aid) + '" hidden>' +
+      '<input type="range" class="seek" min="0" max="1000" value="0" aria-label="Progresso do vídeo">' +
+      '<div class="prow">' +
+      '<button type="button" data-c="back" aria-label="Voltar 10 segundos">⟲ 10</button>' +
+      '<button type="button" data-c="play" class="big" aria-label="Pausar ou continuar">❚❚</button>' +
+      '<button type="button" data-c="fwd" aria-label="Avançar 10 segundos">10 ⟳</button>' +
+      '<span class="tm2"><b data-cur>0:00</b> / <span data-dur>0:00</span></span>' +
+      '<button type="button" data-c="mute" aria-label="Som">🔊</button>' +
+      '<button type="button" data-c="speed" aria-label="Velocidade">1x</button>' +
+      '<button type="button" data-c="full" aria-label="Tela cheia">⛶</button>' +
+      "</div></div>";
+  }
+  function iniciaPlayer(aid) {
+    var inf = achaAula(aid), wrap = app.querySelector('.aulawrap[data-a="' + aid + '"]');
+    if (!inf || !wrap) return;
+    var v = inf.a.video, pl = wrap.querySelector(".player");
+    if (v.tipo !== "youtube") { pl.innerHTML = embed(v, true); return; }
+    pl.innerHTML = '<div id="ytp-' + aid + '"></div>';
+    var ctl = wrap.querySelector(".pctl"); ctl.hidden = false;
+    carregaYT(function () {
+      var st = { aid: aid, p: null, t: null, drag: false, vel: 1 };
+      YTP[aid] = st;
+      var vars = { controls: 0, rel: 0, modestbranding: 1, iv_load_policy: 3, playsinline: 1, disablekb: 1, fs: 0, cc_load_policy: 0, autoplay: 1, color: "white" };
+      if (location.protocol.indexOf("http") === 0) vars.origin = location.origin;
+      st.p = new window.YT.Player("ytp-" + aid, {
+        videoId: v.id, width: "100%", height: "100%", playerVars: vars,
+        events: {
+          onReady: function (e) {
+            try { e.target.playVideo(); } catch (x) {}
+            st.t = setInterval(function () { atualizaCtl(wrap, st); }, 500);
+          },
+          onStateChange: function (e) {
+            var b = wrap.querySelector('[data-c="play"]'); if (b) b.textContent = e.data === 1 ? "❚❚" : "▶";
+            if (e.data === 0) { var pg = store(K_PROG) || {}; if (!pg[aid]) alternarConcluida(aid); }
+          }
+        }
+      });
+    });
+  }
+  function atualizaCtl(wrap, st) {
+    var p = st.p; if (!p || !p.getDuration) return;
+    var cur = p.getCurrentTime() || 0, dur = p.getDuration() || 0;
+    var cc = wrap.querySelector("[data-cur]"), dd = wrap.querySelector("[data-dur]"), sk = wrap.querySelector(".seek");
+    if (cc) cc.textContent = fmt(cur); if (dd) dd.textContent = fmt(dur);
+    if (sk && !st.drag) sk.value = dur ? Math.round(1000 * cur / dur) : 0;
+  }
+  function paraPlayer(aid) {
+    var st = YTP[aid];
+    if (!st) return;
+    clearInterval(st.t);
+    try { st.p.destroy(); } catch (e) {}
+    delete YTP[aid];
+  }
+  function comando(aid, c, btn) {
+    var st = YTP[aid]; if (!st || !st.p || !st.p.getPlayerState) return;
+    var p = st.p, wrap = btn.closest(".aulawrap");
+    if (c === "play") { if (p.getPlayerState() === 1) p.pauseVideo(); else p.playVideo(); }
+    else if (c === "back") p.seekTo(Math.max(0, p.getCurrentTime() - 10), true);
+    else if (c === "fwd") p.seekTo(p.getCurrentTime() + 10, true);
+    else if (c === "mute") { if (p.isMuted()) { p.unMute(); btn.textContent = "🔊"; } else { p.mute(); btn.textContent = "🔇"; } }
+    else if (c === "speed") { var vs = [1, 1.25, 1.5, 2, 0.75], i = (vs.indexOf(st.vel) + 1) % vs.length; st.vel = vs[i]; p.setPlaybackRate(st.vel); btn.textContent = st.vel + "x"; }
+    else if (c === "full") { var box = wrap.querySelector(".player"); if (box.requestFullscreen) box.requestFullscreen(); else if (box.webkitRequestFullscreen) box.webkitRequestFullscreen(); }
+  }
+  app.addEventListener("input", function (e) {
+    var sk = e.target.closest && e.target.closest(".seek"); if (!sk) return;
+    var st = YTP[sk.closest(".pctl").getAttribute("data-ctl")]; if (st) st.drag = true;
+  });
+  app.addEventListener("change", function (e) {
+    var sk = e.target.closest && e.target.closest(".seek"); if (!sk) return;
+    var st = YTP[sk.closest(".pctl").getAttribute("data-ctl")]; if (!st || !st.p) return;
+    var dur = st.p.getDuration() || 0; st.p.seekTo(dur * sk.value / 1000, true); st.drag = false;
+  });
+
   app.addEventListener("click", function (e) {
-    var t = e.target.closest && e.target.closest("[data-toggle],[data-feita],[data-play]");
+    var t = e.target.closest && e.target.closest("[data-toggle],[data-feita],[data-play],[data-c]");
     if (!t) return;
-    if (t.hasAttribute("data-play")) {
-      var inf = achaAula(t.getAttribute("data-play"));
-      if (inf) t.parentNode.innerHTML = embed(inf.a.video, true);
-      return;
-    }
+    if (t.hasAttribute("data-play")) { iniciaPlayer(t.getAttribute("data-play")); return; }
+    if (t.hasAttribute("data-c")) { comando(t.closest(".pctl").getAttribute("data-ctl"), t.getAttribute("data-c"), t); return; }
     if (t.hasAttribute("data-feita")) { alternarConcluida(t.getAttribute("data-feita")); return; }
     var aid = t.getAttribute("data-toggle");
     if (t.getAttribute("aria-expanded") === "true") fecharAulaInline(aid); else abrirAulaInline(aid, true);
