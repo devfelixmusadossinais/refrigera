@@ -483,6 +483,12 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
   .upbox,.sticky{transition:none}
 }
 </style>
+<!-- UTMIFY PIXEL (pixelId do Lucas; mesma coisa que o script ofuscado que a Utmify gera, decodificado) -->
+<script>window.pixelId="6aeddff66232da7a44c69f5c";var a=document.createElement("script");a.setAttribute("async","");a.setAttribute("defer","");a.setAttribute("src","https://cdn.utmify.com.br/scripts/pixel/pixel.js");document.head.appendChild(a);</script>
+<!-- UTMIFY UTMs: leva as UTMs do anúncio pros links de checkout -->
+<script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
+<!-- MICROSOFT CLARITY -->
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","z9fzr24fq8");</script>
 </head>
 <body>
 
@@ -889,12 +895,9 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
 <div class="sticky" id="sticky"><div class="sticky-in"><p>Premium por <b>R$37</b><br>expira em <span class="tm" data-tm>--:--</span></p><a href="#planos" class="btn caps">Começar <span class="ar">→</span></a></div></div>
 
 <!--
-PIXELS (nada no head; carregar só após o load + idle). Quando tiver os IDs, descomentar e preencher.
-META PIXEL: ID = [ID_DO_PIXEL_META]
-  !function(f,b,e,v,n,t,s){...snippet padrão do Meta...}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init','[ID_DO_PIXEL_META]'); fbq('track','PageView');
-  Evento sugerido no clique do checkout: fbq('track','InitiateCheckout');
-UTMIFY: ID = [ID_DA_UTMIFY]  (colar o script de UTMs + pixel que a Utmify gera)
+PIXELS: instalados no <head> (2026-11-06): pixel Utmify (pixelId 6aeddff66232da7a44c69f5c), script de UTMs da Utmify e Microsoft Clarity (z9fzr24fq8).
+Parâmetros de URL do anúncio (vão no Meta Ads, não aqui):
+utm_source=FB&utm_campaign={{campaign.name}}|{{campaign.id}}&utm_medium={{adset.name}}|{{adset.id}}&utm_content={{ad.name}}|{{ad.id}}&utm_term={{placement}}
 -->
 <script>
 /* CHECKOUTS: colar os links aqui. Vazio = o botão só rola pro #checkout-xxx (placeholder) */
