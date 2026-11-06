@@ -178,7 +178,7 @@
     var yt = v && v.tipo === "youtube" ? "https://www.youtube.com/watch?v=" + encodeURIComponent(v.id) : "";
     body.innerHTML = '<div class="player">' + embed(v) + "</div>" +
       '<div class="abtns"><button type="button" class="btn small ' + (prog[aid] ? "ghost" : "") + '" data-feita="' + esc(aid) + '">' + (prog[aid] ? "✓ Concluída (desmarcar)" : "Marcar como concluída") + "</button>" +
-      (yt ? '<a class="ytlink" href="' + esc(yt) + '" target="_blank" rel="noopener">Abrir no YouTube</a>' : "") + "</div>";
+      "</div>";
     body.hidden = false;
     btn.setAttribute("aria-expanded", "true");
     store(K_LAST, { produto: info.p.id, aula: aid });
