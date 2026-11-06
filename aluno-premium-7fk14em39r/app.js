@@ -226,12 +226,12 @@
   function fmt(s) { s = Math.max(0, Math.floor(s || 0)); var m = Math.floor(s / 60), x = s % 60; return m + ":" + (x < 10 ? "0" : "") + x; }
   function PCTL(aid) {
     return '<div class="pctl" data-ctl="' + esc(aid) + '" hidden>' +
-      '<input type="range" class="seek" min="0" max="1000" value="0" aria-label="Progresso do vídeo">' +
       '<div class="prow">' +
-      '<button type="button" data-c="back" aria-label="Voltar 10 segundos">⟲ 10</button>' +
+      '<button type="button" data-c="back" aria-label="Voltar 10 segundos">⟲10</button>' +
       '<button type="button" data-c="play" class="big" aria-label="Pausar ou continuar">❚❚</button>' +
-      '<button type="button" data-c="fwd" aria-label="Avançar 10 segundos">10 ⟳</button>' +
-      '<span class="tm2"><b data-cur>0:00</b> / <span data-dur>0:00</span></span>' +
+      '<button type="button" data-c="fwd" aria-label="Avançar 10 segundos">10⟳</button>' +
+      '<input type="range" class="seek" min="0" max="1000" value="0" aria-label="Progresso do vídeo">' +
+      '<span class="tm2"><b data-cur>0:00</b>/<span data-dur>0:00</span></span>' +
       '<button type="button" data-c="mute" aria-label="Som">🔊</button>' +
       '<button type="button" data-c="speed" aria-label="Velocidade">1x</button>' +
       '<button type="button" data-c="full" aria-label="Tela cheia">⛶</button>' +
@@ -244,7 +244,7 @@
     if (v.tipo !== "youtube") { pl.innerHTML = embed(v, true); return; }
     if (window.PLAYER_FOCO) {
       pl.classList.add("foco");
-      pl.innerHTML = '<div class="yfr"><div id="ytp-' + aid + '"></div></div><div class="pov" data-pov="' + aid + '"></div><div class="pbig" aria-hidden="true">▶</div>';
+      pl.innerHTML = '<div class="yfr"><div id="ytp-' + aid + '"></div></div><div class="pov" data-pov="' + aid + '"></div><div class="pbig" aria-hidden="true">▶</div><div class="pfim"><b>Aula concluída ✓</b><button type="button" data-next="' + aid + '">Próxima aula →</button></div>';
     } else {
       pl.innerHTML = '<div id="ytp-' + aid + '"></div>';
     }
@@ -263,7 +263,7 @@
           },
           onStateChange: function (e) {
             var b = wrap.querySelector('[data-c="play"]'); if (b) b.textContent = e.data === 1 ? "❚❚" : "▶";
-            if (pl) pl.classList.toggle("pausado", e.data !== 1);
+            if (pl) { pl.classList.toggle("pausado", e.data !== 1); pl.classList.toggle("fim", e.data === 0); }
             if (e.data === 0) { var pg = store(K_PROG) || {}; if (!pg[aid]) alternarConcluida(aid); }
           }
         }
@@ -305,8 +305,15 @@
   });
 
   app.addEventListener("click", function (e) {
-    var t = e.target.closest && e.target.closest("[data-toggle],[data-feita],[data-play],[data-c],[data-pov]");
+    var t = e.target.closest && e.target.closest("[data-toggle],[data-feita],[data-play],[data-c],[data-pov],[data-next]");
     if (!t) return;
+    if (t.hasAttribute("data-next")) {
+      var cur = t.getAttribute("data-next"), pr = prod((acessoAtual() || {}).produto), prox = null;
+      if (pr) { var ls = aulasDe(pr); for (var i = 0; i < ls.length; i++) { if (ls[i].a.id === cur && ls[i + 1]) prox = ls[i + 1].a.id; } }
+      fecharAulaInline(cur);
+      if (prox) abrirAulaInline(prox, true);
+      return;
+    }
     if (t.hasAttribute("data-pov")) { var pb = app.querySelector('.aulawrap[data-a="' + t.getAttribute("data-pov") + '"] [data-c="play"]'); if (pb) pb.click(); return; }
     if (t.hasAttribute("data-play")) { iniciaPlayer(t.getAttribute("data-play")); return; }
     if (t.hasAttribute("data-c")) { comando(t.closest(".pctl").getAttribute("data-ctl"), t.getAttribute("data-c"), t); return; }

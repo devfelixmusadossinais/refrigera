@@ -190,3 +190,13 @@ button.aula:hover{background:rgba(255,197,49,.12)}
 .prow .tm2{margin-left:auto;margin-right:4px;font-size:12px;opacity:.9;white-space:nowrap}
 .player:fullscreen{max-width:none;border-radius:0}
 
+
+
+/* barra de controles compacta: tudo em UMA linha */
+.pctl{margin-top:6px;padding:6px 8px;border-radius:10px}
+.pctl .seek{flex:1 1 80px;width:auto;min-width:60px;height:14px;margin:0}
+.prow{display:flex;align-items:center;flex-wrap:nowrap;gap:4px;margin:0}
+.prow button{min-width:32px;height:30px;padding:0 7px;font-size:12px;border-radius:8px}
+.prow .big{min-width:40px}
+.prow .tm2{margin:0 2px;font-size:11px;white-space:nowrap;opacity:.9}
+@media(max-width:430px){.prow{flex-wrap:wrap}.pctl .seek{order:9;flex-basis:100%}.prow .tm2{margin-left:auto}}
