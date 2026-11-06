@@ -4,7 +4,7 @@ PWA sem backend: HTML + CSS + JS puros, guiado por `data/catalogo.js` (começa c
 
 ## Como testar local
 ```
-cd app
+cd aluno-lqb87mmy56
 python -m http.server 8791   (ou abra o index.html direto, também funciona)
 ```
 Abra http://127.0.0.1:8791/?k=TROCAR-PREMIUM (ou `TROCAR-BASICO`).

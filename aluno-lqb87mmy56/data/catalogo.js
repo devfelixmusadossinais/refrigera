@@ -6,12 +6,7 @@ window.CATALOGO = {
   },
   "acessos": [
     {
-      "codigo": "TROCAR-BASICO",
-      "produto": "formacao-ar",
-      "nivel": "basico"
-    },
-    {
-      "codigo": "TROCAR-PREMIUM",
+      "codigo": "0oGGxKQDhgOW",
       "produto": "formacao-ar",
       "nivel": "premium"
     }
@@ -726,5 +721,9 @@ window.CATALOGO = {
         }
       ]
     }
-  ]
+  ],
+  "padrao": {
+    "produto": "formacao-ar",
+    "nivel": "basico"
+  }
 };

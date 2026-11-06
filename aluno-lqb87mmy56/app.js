@@ -41,9 +41,10 @@
     return a ? { codigo: a.codigo, produto: a.produto, nivel: a.nivel } : null;
   }
   function acessoAtual() {
-    var s = store(K_ACESSO);
-    if (!s) return null;
-    return acessoPorCodigo(s.codigo); /* revalida contra o catálogo atual */
+    var s = store(K_ACESSO), a = s ? acessoPorCodigo(s.codigo) : null; /* revalida contra o catálogo atual */
+    if (a) return a;
+    var d = CAT.padrao; /* sem código: abre direto no nível padrão (sem tela de login) */
+    return d ? { codigo: "", produto: d.produto, nivel: d.nivel } : null;
   }
   function lerChaveDaURL() {
     var m = /[?&]k=([^&#]+)/.exec(location.search);
@@ -78,7 +79,7 @@
     return '<header class="top"><div class="wrap">' +
       '<div class="row"><div class="brand">' + esc(CAT.marca.nome) + "<small>" + esc(CAT.marca.assinatura) + "</small></div>" +
       '<div><span class="chip ' + (acesso.nivel === "premium" ? "sol" : "") + '">' + (acesso.nivel === "premium" ? "★ Premium" : "Básico") + "</span> " +
-      '<button class="linkbtn" id="sair">Sair</button></div></div>' +
+      "</div></div>" +
       (titulo ? "<h1>" + titulo + "</h1>" : "") + (sub ? "<p>" + sub + "</p>" : "") +
       "</div></header>";
   }
