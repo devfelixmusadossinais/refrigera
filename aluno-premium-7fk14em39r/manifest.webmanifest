@@ -1,0 +1,14 @@
+{
+  "name": "Área do Aluno",
+  "short_name": "Aluno",
+  "description": "Suas aulas, apostilas e bônus num só lugar.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#2B0F1C",
+  "theme_color": "#2B0F1C",
+  "icons": [
+    { "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

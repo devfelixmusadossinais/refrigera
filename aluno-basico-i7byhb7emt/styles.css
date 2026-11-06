@@ -29,7 +29,7 @@ h1,h2,h3{font-family:var(--head);letter-spacing:-.02em;line-height:1.15}
 .stack{display:grid;gap:14px;margin:-12px 0 28px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
 .pcard{display:block;text-decoration:none}
-.pcard .cap{aspect-ratio:16/10;background:#e9dcc8;overflow:hidden}
+.pcard .cap{aspect-ratio:16/7;background:#e9dcc8;overflow:hidden}
 .pcard .cap img{width:100%;height:100%;object-fit:cover}
 .pcard .bd{padding:16px}
 .pcard h2{font-size:19px}
@@ -51,7 +51,7 @@ h1,h2,h3{font-family:var(--head);letter-spacing:-.02em;line-height:1.15}
 
 /* produto */
 .hero{position:relative}
-.hero .cap{aspect-ratio:16/10;overflow:hidden;background:#2b0f1c}
+.hero .cap{aspect-ratio:16/6;max-height:170px;overflow:hidden;background:#2b0f1c}
 .hero .cap img{width:100%;height:100%;object-fit:cover}
 .back{position:absolute;left:14px;top:calc(12px + env(safe-area-inset-top));z-index:2;background:rgba(43,15,28,.78);color:#fff;border:0;border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700;text-decoration:none;backdrop-filter:blur(8px)}
 .ptitle{padding:18px 18px 4px}
@@ -98,7 +98,7 @@ details.mod summary small{display:block;font-weight:500;color:var(--ink2);font-s
 .lockbox{margin-top:18px}
 
 /* aula (player) */
-.player{background:#000;aspect-ratio:16/9;position:relative}
+.player{background:#000;aspect-ratio:16/9;position:relative;width:100%;max-width:480px;margin:0 auto}
 .player iframe,.player video{position:absolute;inset:0;width:100%;height:100%;border:0}
 .player .soon{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#fff;padding:20px;background:linear-gradient(135deg,var(--vinho),var(--vinho2))}
 .lesson{padding:18px 18px 90px}
@@ -155,3 +155,9 @@ details.mod summary small{display:block;font-weight:500;color:var(--ink2);font-s
 .card.cont .pl2{flex:none;width:44px;height:44px;border-radius:50%;background:var(--cta);color:#fff;display:grid;place-items:center;font-size:16px;padding-left:3px}
 .card.cont small{display:block;color:var(--ink2);font-weight:700;font-size:12px}
 .card.cont b{font-size:15px;line-height:1.3}
+
+/* coluna central: no computador o app não ocupa a tela toda */
+body{background:#E3D3BA}
+#app{max-width:640px;margin:0 auto;background:var(--bg);min-height:100vh;box-shadow:0 0 60px rgba(43,15,28,.18)}
+.player{border-radius:0 0 14px 14px;overflow:hidden}
+@media(min-width:700px){.player{border-radius:14px;margin-top:56px}.back{position:absolute}}

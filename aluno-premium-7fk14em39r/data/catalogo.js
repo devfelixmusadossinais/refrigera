@@ -2,19 +2,9 @@ window.CATALOGO = {
   "marca": {
     "nome": "Área do Aluno",
     "assinatura": "Formação Ar-Condicionado e Refrigeração",
-    "suporte": "lk.lucaskaue@gmail.com"
+    "suporte": ""
   },
-  "acessos": [
-    {
-      "codigo": "0oGGxKQDhgOW",
-      "produto": "formacao-ar",
-      "nivel": "premium"
-    }
-  ],
-  "upgrade": {
-    "texto": "Libere o certificado e os 10 bônus",
-    "url": "https://pay.cakto.com.br/349reev"
-  },
+  "acessos": [],
   "produtos": [
     {
       "id": "formacao-ar",
@@ -724,6 +714,6 @@ window.CATALOGO = {
   ],
   "padrao": {
     "produto": "formacao-ar",
-    "nivel": "basico"
+    "nivel": "premium"
   }
 };

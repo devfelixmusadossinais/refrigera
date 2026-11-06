@@ -63,7 +63,7 @@
       (erro ? '<div class="err">' + esc(erro) + "</div>" : "") +
       '<input class="field" name="cod" placeholder="Seu código de acesso" autocapitalize="characters" required>' +
       '<button class="btn block" type="submit">Entrar</button>' +
-      '<div class="help">Não achou o e-mail? Olhe a caixa de spam ou fale com ' + esc(CAT.marca.suporte) + ".</div>" +
+      (CAT.marca.suporte ? '<div class="help">Não achou o e-mail? Olhe a caixa de spam ou fale com ' + esc(CAT.marca.suporte) + ".</div>" : "") +
       "</form></div>";
     document.getElementById("fAcesso").addEventListener("submit", function (e) {
       e.preventDefault();
@@ -108,10 +108,10 @@
     }
     if (acesso.nivel !== "premium" && CAT.upgrade) {
       html += '<div class="card upsell"><h3>' + esc(CAT.upgrade.texto) + "</h3>" +
-        "<p>Faça o upgrade para o Premium e destrave o certificado e os 10 bônus.</p>" +
-        '<a class="btn" href="' + esc(CAT.upgrade.url) + '" target="_blank" rel="noopener">Quero o Premium</a></div>';
+        "<p>" + esc(CAT.upgrade.descricao || "Faça o upgrade para o Premium e destrave o certificado e os 10 bônus.") + "</p>" +
+        '<a class="btn" href="' + esc(CAT.upgrade.url) + '" target="_blank" rel="noopener">' + esc(CAT.upgrade.botao || "Quero o Premium") + "</a></div>";
     }
-    html += '</div></main><div class="foot">Suporte: ' + esc(CAT.marca.suporte) + "</div>";
+    html += "</div></main>" + (CAT.marca.suporte ? '<div class="foot">Suporte: ' + esc(CAT.marca.suporte) + "</div>" : "");
     app.innerHTML = html;
     ligarSair();
   }
@@ -177,14 +177,14 @@
         (ok && !b.arquivo ? '<small style="color:var(--ink2)">Em breve</small>' : "") + "</div>";
     }).join("") + "</div>";
     if (ok) return grid;
-    return '<div class="card upsell"><h3>Bônus exclusivos do Premium</h3><p>Os 10 bônus fazem parte do plano Premium. Faça o upgrade para liberar.</p>' +
-      '<a class="btn" href="' + esc(CAT.upgrade.url) + '" target="_blank" rel="noopener">Quero o Premium</a></div><div class="lockbox">' + grid + "</div>";
+    return '<div class="card upsell"><h3>Bônus exclusivos do Premium</h3><p>Os 10 bônus fazem parte do Premium. Libere agora com o upgrade.</p>' +
+      '<a class="btn" href="' + esc(CAT.upgrade.url) + '" target="_blank" rel="noopener">' + esc(CAT.upgrade.botao || "Quero o Premium") + '</a></div><div class="lockbox">' + grid + "</div>";
   }
 
   function painelCertificado(p, acesso) {
     if (!liberado(p, "certificado", acesso.nivel)) {
       return '<div class="card upsell"><h3>Certificado de conclusão</h3><p>O certificado faz parte do plano Premium.</p>' +
-        '<a class="btn" href="' + esc(CAT.upgrade.url) + '" target="_blank" rel="noopener">Quero o Premium</a></div>';
+        '<a class="btn" href="' + esc(CAT.upgrade.url) + '" target="_blank" rel="noopener">' + esc(CAT.upgrade.botao || "Quero o Premium") + '</a></div>';
     }
     var pr = progresso(p), pronto = pr.total > 0 && pr.pct === 100;
     return '<div class="certbox"><h3>Seu certificado</h3>' +
@@ -218,9 +218,9 @@
 
   function embed(v) {
     if (!v) return "";
-    if (v.url) return '<iframe src="' + esc(v.url) + '" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
-    if (v.tipo === "youtube") return '<iframe src="https://www.youtube-nocookie.com/embed/' + esc(v.id) + '?rel=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
-    if (v.tipo === "vimeo") return '<iframe src="https://player.vimeo.com/video/' + esc(v.id) + '" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+    if (v.url) return '<iframe src="' + esc(v.url) + '" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+    if (v.tipo === "youtube") return '<iframe src="https://www.youtube-nocookie.com/embed/' + esc(v.id) + '?rel=0" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+    if (v.tipo === "vimeo") return '<iframe src="https://player.vimeo.com/video/' + esc(v.id) + '" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
     if (v.tipo === "mp4") return '<video controls playsinline preload="metadata" src="' + esc(v.id) + '"></video>';
     return "";
   }
