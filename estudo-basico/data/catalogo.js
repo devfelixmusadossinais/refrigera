@@ -6,9 +6,9 @@ window.CATALOGO = {
   },
   "acessos": [],
   "upgrade": {
-    "texto": "Libere a apostila, o certificado e os 10 bônus por apenas R$ 10",
-    "descricao": "Quem já é aluno Básico completa o acesso por R$ 10: apostila completa, certificado de conclusão e os 10 bônus em PDF.",
-    "botao": "Quero liberar por R$ 10",
+    "texto": "Libere a apostila, o certificado e os 10 bônus por apenas R$ 17",
+    "descricao": "Quem já é aluno Básico completa o acesso por R$ 17: apostila completa, certificado de conclusão e os 10 bônus em PDF.",
+    "botao": "Quero liberar por R$ 17",
     "url": "https://pay.cakto.com.br/r944trv"
   },
   "produtos": [
