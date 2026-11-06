@@ -176,7 +176,7 @@
     if (!body.hidden) return;
     var prog = store(K_PROG) || {}, v = info.a.video;
     var yt = v && v.tipo === "youtube" ? "https://www.youtube.com/watch?v=" + encodeURIComponent(v.id) : "";
-    body.innerHTML = '<div class="player">' + embed(v) + "</div>" +
+    body.innerHTML = '<div class="player"><button type="button" class="facade" data-play="' + esc(aid) + '" aria-label="Assistir: ' + esc(info.a.titulo) + '"><span class="fplay">▶</span><span class="ftit">' + esc(info.a.titulo) + "</span></button></div>" +
       '<div class="abtns"><button type="button" class="btn small ' + (prog[aid] ? "ghost" : "") + '" data-feita="' + esc(aid) + '">' + (prog[aid] ? "✓ Concluída (desmarcar)" : "Marcar como concluída") + "</button>" +
       "</div>";
     body.hidden = false;
@@ -208,8 +208,13 @@
   }
 
   app.addEventListener("click", function (e) {
-    var t = e.target.closest && e.target.closest("[data-toggle],[data-feita]");
+    var t = e.target.closest && e.target.closest("[data-toggle],[data-feita],[data-play]");
     if (!t) return;
+    if (t.hasAttribute("data-play")) {
+      var inf = achaAula(t.getAttribute("data-play"));
+      if (inf) t.parentNode.innerHTML = embed(inf.a.video, true);
+      return;
+    }
     if (t.hasAttribute("data-feita")) { alternarConcluida(t.getAttribute("data-feita")); return; }
     var aid = t.getAttribute("data-toggle");
     if (t.getAttribute("aria-expanded") === "true") fecharAulaInline(aid); else abrirAulaInline(aid, true);
@@ -278,10 +283,10 @@
     });
   }
 
-  function embed(v) {
+  function embed(v, auto) {
     if (!v) return "";
     if (v.url) return '<iframe src="' + esc(v.url) + '" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
-    if (v.tipo === "youtube") return '<iframe src="https://www.youtube-nocookie.com/embed/' + esc(v.id) + '?rel=0&modestbranding=1&iv_load_policy=3&playsinline=1&color=white&cc_load_policy=0" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+    if (v.tipo === "youtube") return '<iframe src="https://www.youtube-nocookie.com/embed/' + esc(v.id) + '?rel=0&modestbranding=1&iv_load_policy=3&playsinline=1&color=white&cc_load_policy=0' + (auto ? '&autoplay=1' : '') + '" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
     if (v.tipo === "vimeo") return '<iframe src="https://player.vimeo.com/video/' + esc(v.id) + '" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
     if (v.tipo === "mp4") return '<video controls playsinline preload="metadata" src="' + esc(v.id) + '"></video>';
     return "";
