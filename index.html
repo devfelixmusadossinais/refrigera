@@ -114,6 +114,12 @@ h3{font-size:19px;letter-spacing:-.02em}
 .eyebrow .ic{width:16px;height:16px;animation:spin 14s linear infinite}
 .hero .eyebrow{border-radius:16px;line-height:1.35;text-align:left}
 .hero .eyebrow .ic{flex:none}
+.prova-foto{margin:26px auto 6px;max-width:900px}
+.prova-foto img{display:block;width:100%;height:auto;border-radius:22px;box-shadow:0 18px 50px rgba(0,0,0,.45)}
+.aulas .mq{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;cursor:grab;touch-action:pan-x pan-y}
+.aulas .mq::-webkit-scrollbar{display:none}
+.aulas .mq-track{animation:none;pointer-events:auto}
+.aulas .mq img{-webkit-user-drag:none;user-select:none}
 .alerta-calor{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:600;line-height:1.35;color:#fff;background:rgba(198,40,24,.22);border:1.5px solid rgba(255,120,90,.5);border-left:4px solid #ff5a3c;border-radius:10px;padding:8px 12px;text-align:left;max-width:560px}
 .alerta-calor .ic{width:16px;height:16px;flex:none;color:#ffd36b}
 .alerta-calor b{color:#ffd36b;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-right:6px}
@@ -541,7 +547,7 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
     <div class="hero-tx">
       <div class="eyebrow"><svg class="ic"><use href="#i-sun"/></svg>Para quem já trabalha com serviços gerais ou deseja faturar com ar&#8209;condicionado</div>
       <h1>Já faz serviços gerais? <span class="hl hn">+50 videoaulas</span> pra você ganhar mais com ar-condicionado neste verão, <span class="mut">mesmo sem nunca ter mexido</span></h1>
-      <p class="sub">Você já tem o cliente e a ferramenta. Aprenda <b>passo a passo</b> a instalar, limpar e consertar ar-condicionado e refrigeração, e some esse serviço ao que você já faz, com a previsão de El Niño forte no verão. <b>Fature mais com a mesma visita que você já faz.</b></p>
+      <p class="sub">Você já tem o cliente e a ferramenta. Aprenda <b>passo a passo</b> a instalar, limpar e consertar ar-condicionado e refrigeração, e some esse serviço ao que você já faz. <b>Fature mais com a mesma visita que você já faz.</b></p>
       <div class="alerta-calor" role="note"><svg class="ic"><use href="#i-sun"/></svg><span><b>Alerta</b> Previsão forte de altas temperaturas vinda do El Niño</span></div>
     </div>
 
@@ -650,7 +656,7 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
       <div class="dcard rv" style="--c1:var(--ceu);--c2:var(--ceu-t)"><svg class="ic"><use href="#i-thermo"/></svg><h3>O ar liga e não gela</h3><p>Filtro sujo, instalação mal feita: o aparelho sofre, a conta sobe e o cliente liga pra quem resolve.</p></div>
     </div>
     <p class="ponte rv">A verdade: quem já faz serviços gerais está <em>a poucas aulas</em> de cobrar por ar-condicionado também. No verão a procura explode. Quem aprende agora, atende primeiro e fica com o dinheiro que hoje vai pra outro.</p>
-    <div class="elnino rv"><svg class="ic"><use href="#i-sun"/></svg><div><b>Por que este verão pesa mais</b><p>NOAA, Inmet e Cemaden apontam a <b style="display:inline;color:#fff">previsão</b> de El Niño forte e calor acima da média no verão 2026/27. Mais calor, mais ar ligado, mais gente chamando técnico.</p></div></div>
+    <div class="elnino rv"><svg class="ic"><use href="#i-sun"/></svg><div><b>Por que este verão pesa mais</b><p>Organizações responsáveis pela previsão do tempo, como a <b style="display:inline;color:#fff">NOAA</b> e o <b style="display:inline;color:#fff">Inmet</b>, apontam previsão de <b style="display:inline;color:#fff">El Niño muito forte</b> e temperaturas acima da média no Brasil. Mais calor, mais ar ligado, mais gente chamando técnico.</p></div></div>
     <div class="cta-row rv"><a href="#planos" class="btn pulse caps">Quero somar ar-condicionado ao que já faço <span class="ar">→</span></a></div>
   </div>
 </section>
@@ -736,6 +742,7 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
       <h2><span class="hl" style="color:var(--sol)" data-alunos></span> alunos já estão <span class="hl" style="color:var(--sol)">aprendendo</span></h2>
       <p class="lead">Gente que começou do zero, sem nunca ter mexido em ar-condicionado.</p>
     </div>
+    <figure class="prova-foto rv"><img src="assets/prova-alunos.webp" alt="Alunos mostrando o certificado de conclusão do curso" width="1400" height="717" loading="lazy" decoding="async"></figure>
     <div class="deps"><div class="mq"><div class="mq-track" id="depTrack" style="--dur:80s">
       <!-- EXEMPLO: trocar por depoimentos reais antes de publicar (nome, cidade e situação reais, com autorização) -->
       <div class="dep"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p>“Nunca tinha mexido em ar-condicionado. Fui assistindo as aulas de limpeza e já fiz o aparelho da minha irmã. Agora os vizinhos estão pedindo.”</p><div class="who"><span class="av" aria-hidden="true">M</span><span>Marcos A., Montes Claros (MG)<small>Ajudante de eletricista</small></span></div></div>
@@ -940,6 +947,21 @@ document.addEventListener("DOMContentLoaded",function(){
   tick();setInterval(tick,1000);
   /* marquees: duplica o conteúdo pra rodar sem buraco (-50%) */
   [["ribbonTrack",2],["aulaTrack",1]].forEach(function(p){var t=document.getElementById(p[0]);if(!t)return;var o=t.innerHTML,s="";for(var i=0;i<p[1];i++)s+=o;t.innerHTML=s+s});
+  /* videoaulas: rola sozinho, mas dá pra arrastar/deslizar pro lado (pausa enquanto a pessoa mexe) */
+  (function(){var mq=document.querySelector(".aulas .mq");if(!mq)return;
+    var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches,pause=0,drag=false,sx=0,sl=0,pos=0;
+    function half(){return mq.scrollWidth/2}
+    function hold(ms){pause=Date.now()+(ms||3500)}
+    var last=0;
+    function step(ts){var dt=last?Math.min(ts-last,64):16;last=ts;if(!reduce&&!drag&&Date.now()>pause){pos+=45*dt/1000;var h=half();if(h>0&&pos>=h)pos-=h;mq.scrollLeft=pos}else{pos=mq.scrollLeft}requestAnimationFrame(step)}
+    mq.addEventListener("scroll",function(){var h=half();if(h<=0)return;if(mq.scrollLeft>=h)mq.scrollLeft-=h;else if(mq.scrollLeft<=0)mq.scrollLeft+=h},{passive:true});
+    ["touchstart","touchmove","wheel"].forEach(function(ev){mq.addEventListener(ev,function(){hold(4000)},{passive:true})});
+    mq.addEventListener("pointerdown",function(e){if(e.pointerType==="mouse"){drag=true;sx=e.clientX;sl=mq.scrollLeft;mq.style.cursor="grabbing";try{mq.setPointerCapture(e.pointerId)}catch(x){}}hold(4000)});
+    mq.addEventListener("pointermove",function(e){if(drag)mq.scrollLeft=sl-(e.clientX-sx)});
+    function end(){drag=false;mq.style.cursor="";hold(3000)}
+    mq.addEventListener("pointerup",end);mq.addEventListener("pointercancel",end);
+    mq.scrollLeft=half()/4;pos=mq.scrollLeft;requestAnimationFrame(step);
+  })();
   /* barra fixa: aparece depois do hero, some na área de planos e no fechamento (IntersectionObserver, sem reflow) */
   var st=document.getElementById("sticky"),past=false,hide={};
   function upd(){st.classList.toggle("show",past&&!hide.p&&!hide.f)}
