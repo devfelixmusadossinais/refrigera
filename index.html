@@ -953,7 +953,7 @@ document.addEventListener("DOMContentLoaded",function(){
     function half(){return mq.scrollWidth/2}
     function hold(ms){pause=Date.now()+(ms||3500)}
     var last=0;
-    function step(ts){var dt=last?Math.min(ts-last,64):16;last=ts;if(!reduce&&!drag&&Date.now()>pause){pos+=45*dt/1000;var h=half();if(h>0&&pos>=h)pos-=h;mq.scrollLeft=pos}else{pos=mq.scrollLeft}requestAnimationFrame(step)}
+    function step(ts){var dt=last?Math.min(ts-last,64):16;last=ts;if(!drag&&Date.now()>pause){pos+=(reduce?35:45)*dt/1000;var h=half();if(h>0&&pos>=h)pos-=h;mq.scrollLeft=pos}else{pos=mq.scrollLeft}requestAnimationFrame(step)}
     mq.addEventListener("scroll",function(){var h=half();if(h<=0)return;if(mq.scrollLeft>=h)mq.scrollLeft-=h;else if(mq.scrollLeft<=0)mq.scrollLeft+=h},{passive:true});
     ["touchstart","touchmove","wheel"].forEach(function(ev){mq.addEventListener(ev,function(){hold(4000)},{passive:true})});
     mq.addEventListener("pointerdown",function(e){if(e.pointerType==="mouse"){drag=true;sx=e.clientX;sl=mq.scrollLeft;mq.style.cursor="grabbing";try{mq.setPointerCapture(e.pointerId)}catch(x){}}hold(4000)});
