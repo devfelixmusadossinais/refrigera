@@ -200,3 +200,9 @@ button.aula:hover{background:rgba(255,197,49,.12)}
 .prow .big{min-width:40px}
 .prow .tm2{margin:0 2px;font-size:11px;white-space:nowrap;opacity:.9}
 @media(max-width:430px){.prow{flex-wrap:wrap}.pctl .seek{order:9;flex-basis:100%}.prow .tm2{margin-left:auto}}
+
+/* visualizador de PDF dentro do app */
+.pdf-screen{height:100vh;height:100dvh;display:flex;flex-direction:column;overflow:hidden}
+.pdf-top{flex:none;display:flex;align-items:center;flex-wrap:wrap;gap:10px;padding:calc(12px + env(safe-area-inset-top)) 14px 12px;background:var(--bg);border-bottom:1px solid var(--line)}
+.pdf-top h1{flex:1 1 180px;font-size:17px;overflow-wrap:anywhere}
+.pdf-frame{display:block;flex:1;width:100%;min-height:0;border:0;background:#E3D3BA}

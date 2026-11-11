@@ -1,7 +1,7 @@
 /* Service worker simples: guarda o "esqueleto" do app para abrir rápido e funcionar com internet ruim.
    O catálogo (data/catalogo.json) é sempre buscado na rede primeiro. */
-var V = "aluno-v2";
-var SHELL = ["./", "index.html", "styles.css", "app.js", "data/catalogo.js", "manifest.webmanifest", "assets/icon.svg"];
+var V = "aluno-v3";
+var SHELL = ["./", "index.html", "styles.css", "app.js", "visualizador.html", "data/catalogo.js", "manifest.webmanifest", "assets/icon.svg"];
 
 self.addEventListener("install", function (e) {
   e.waitUntil(caches.open(V).then(function (c) { return c.addAll(SHELL); }).then(function () { return self.skipWaiting(); }));

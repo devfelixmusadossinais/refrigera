@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>PDF</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#E3D3BA;color:#10193A;font-family:system-ui,sans-serif}
+body{display:flex;flex-direction:column}#zoom{display:flex;justify-content:center;align-items:center;gap:16px;padding:8px;background:#FFF6E8;flex:none}
+button{min-width:44px;min-height:40px;border:1px solid #d5c6b1;border-radius:12px;background:#fff;color:#10193A;font:700 20px system-ui;cursor:pointer}
+#pages{flex:1;min-height:0;overflow:auto;touch-action:pan-x pan-y;overscroll-behavior:contain;padding:12px}
+.page{position:relative;margin:0 auto 12px;background:#fff;box-shadow:0 2px 10px #0002;overflow:hidden;flex:none}
+canvas{display:block;width:100%;height:100%}#native{width:100%;height:100%;border:0;flex:1;min-height:0}[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div id="zoom" hidden><button id="minus" type="button" aria-label="−">−</button><output id="level">100%</output><button id="plus" type="button" aria-label="+">+</button></div>
+<div id="pages"></div>
+<iframe id="native" title="PDF" hidden></iframe>
+<script>
+(function () {
+  "use strict";
+  var file = new URLSearchParams(location.search).get("f") || "";
+  if (!/^conteudo\//.test(file) || /\.\.|[\\?#%]/.test(file)) return;
+  var url = new URL(file, new URL("./", location.href)).href;
+  var CDN = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/";
+  var pages = document.getElementById("pages"), toolbar = document.getElementById("zoom");
+  var pdf, task, workerBlob, observer, rows = [], queue = [], busy = false, failed = false;
+  var zoom = 1, generation = 0, pinch = null, resizeTimer;
+
+  function fallback() {
+    if (failed) return;
+    failed = true; generation++;
+    clearTimeout(loadTimer);
+    if (observer) observer.disconnect();
+    if (task) task.destroy().catch(function () {});
+    if (workerBlob) URL.revokeObjectURL(workerBlob);
+    pages.replaceChildren(); pages.hidden = true; toolbar.hidden = true;
+    var native = document.getElementById("native");
+    native.src = url; native.hidden = false;
+  }
+
+  function release(row) {
+    if (row.render) row.render.cancel();
+    if (row.canvas) {
+      row.canvas.width = 0; row.canvas.height = 0; row.canvas.remove(); row.canvas = null;
+    }
+    row.done = false;
+  }
+
+  // Uma renderização de cada vez; canvases fora da vizinhança são descartados.
+  async function drain() {
+    if (busy || failed) return;
+    busy = true;
+    try {
+      while (queue.length && !failed) {
+        var row = queue.shift(); row.queued = false;
+        if (!row.near || row.done) continue;
+        var version = generation, page = null, canvas = null;
+        try {
+          page = await pdf.getPage(row.number);
+          if (version !== generation || !row.near || failed) continue;
+          var viewport = page.getViewport({ scale: row.width / row.baseWidth });
+          // Limita a resolução por página, inclusive em telas com DPR alto.
+          var ratio = Math.min(window.devicePixelRatio || 1, 2, Math.sqrt(3000000 / (viewport.width * viewport.height)));
+          canvas = document.createElement("canvas"); row.canvas = canvas;
+          canvas.width = Math.max(1, Math.floor(viewport.width * ratio));
+          canvas.height = Math.max(1, Math.floor(viewport.height * ratio));
+          row.element.appendChild(canvas);
+          row.render = page.render({ canvasContext: canvas.getContext("2d"), viewport: viewport, transform: [ratio, 0, 0, ratio, 0, 0] });
+          await row.render.promise;
+          if (version === generation && row.near) row.done = true;
+        } catch (error) {
+          if (error.name !== "RenderingCancelledException" && version === generation && !failed) fallback();
+        } finally {
+          row.render = null;
+          if (page) page.cleanup();
+          if (!row.done && canvas) { canvas.width = 0; canvas.height = 0; canvas.remove(); if (row.canvas === canvas) row.canvas = null; }
+        }
+      }
+    } finally { busy = false; }
+  }
+
+  function schedule(row) {
+    if (!row.queued && !row.done) { row.queued = true; queue.push(row); }
+    drain();
+  }
+
+  function layout() {
+    generation++;
+    var width = Math.max(1, pages.clientWidth - 24);
+    rows.forEach(function (row) {
+      release(row);
+      row.width = width * zoom;
+      row.element.style.width = row.width + "px";
+      row.element.style.height = (row.width * row.aspect) + "px";
+    });
+    if (observer) observer.disconnect();
+    observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var row = rows[Number(entry.target.dataset.page) - 1];
+        row.near = entry.isIntersecting;
+        if (row.near) schedule(row); else release(row);
+      });
+    }, { root: pages, rootMargin: "600px 0px" });
+    rows.forEach(function (row) { observer.observe(row.element); });
+    document.getElementById("level").textContent = Math.round(zoom * 100) + "%";
+  }
+
+  function setZoom(value) {
+    var next = Math.max(0.5, Math.min(3, value));
+    if (next === zoom || !rows.length || failed) return;
+    var factor = next / zoom, top = pages.scrollTop, left = pages.scrollLeft;
+    zoom = next; layout();
+    pages.scrollTop = top * factor; pages.scrollLeft = left * factor;
+  }
+  document.getElementById("minus").onclick = function () { setZoom(zoom - 0.25); };
+  document.getElementById("plus").onclick = function () { setZoom(zoom + 0.25); };
+  function distance(touches) { return Math.hypot(touches[0].clientX - touches[1].clientX, touches[0].clientY - touches[1].clientY); }
+  pages.addEventListener("touchstart", function (event) {
+    if (event.touches.length === 2) { event.preventDefault(); pinch = { distance: distance(event.touches), zoom: zoom, target: zoom }; }
+  }, { passive: false });
+  pages.addEventListener("touchmove", function (event) {
+    if (pinch && event.touches.length === 2) {
+      event.preventDefault();
+      pinch.target = Math.max(0.5, Math.min(3, pinch.zoom * distance(event.touches) / Math.max(1, pinch.distance)));
+      // Prévia leve durante a pinça; só renderiza de novo ao soltar.
+      rows.forEach(function (row) { row.element.style.transformOrigin = "top left"; row.element.style.transform = "scale(" + (pinch.target / zoom) + ")"; });
+    }
+  }, { passive: false });
+  function endPinch(event) {
+    if (!pinch || event.touches.length >= 2) return;
+    var target = pinch.target; pinch = null;
+    rows.forEach(function (row) { row.element.style.transform = ""; });
+    setZoom(target);
+  }
+  pages.addEventListener("touchend", endPinch);
+  pages.addEventListener("touchcancel", endPinch);
+  window.addEventListener("resize", function () { clearTimeout(resizeTimer); resizeTimer = setTimeout(function () { if (pdf && !failed) layout(); }, 150); });
+
+  async function start() {
+    clearTimeout(loadTimer);
+    try {
+      pdfjsLib.GlobalWorkerOptions.workerSrc = CDN + "pdf.worker.min.js";
+      try {
+        task = pdfjsLib.getDocument({ url: url }); pdf = await task.promise;
+      } catch (error) {
+        await task.destroy();
+        // Alternativa same-origin com exatamente a mesma versão do worker.
+        var response = await fetch(CDN + "pdf.worker.min.js");
+        if (!response.ok) throw error;
+        workerBlob = URL.createObjectURL(new Blob([await response.text()], { type: "application/javascript" }));
+        pdfjsLib.GlobalWorkerOptions.workerSrc = workerBlob;
+        task = pdfjsLib.getDocument({ url: url }); pdf = await task.promise;
+      }
+      if (failed) return;
+      toolbar.hidden = false;
+      // Metadados em fila; nenhuma página é desenhada até se aproximar da tela.
+      for (var number = 1; number <= pdf.numPages; number++) {
+        var page = await pdf.getPage(number), view = page.getViewport({ scale: 1 });
+        var element = document.createElement("div"); element.className = "page"; element.dataset.page = number;
+        rows.push({ number: number, element: element, baseWidth: view.width, aspect: view.height / view.width });
+        pages.appendChild(element); page.cleanup();
+      }
+      layout();
+    } catch (error) { fallback(); }
+  }
+  var script = document.createElement("script");
+  var loadTimer = setTimeout(fallback, 20000);
+  script.src = CDN + "pdf.min.js";
+  script.onload = function () { if (!failed) { if (window.pdfjsLib) start(); else fallback(); } };
+  script.onerror = fallback;
+  document.head.appendChild(script);
+})();
+</script>
+</body>
+</html>

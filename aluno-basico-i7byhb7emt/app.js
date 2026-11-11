@@ -324,11 +324,11 @@
 
   function painelApostilas(p, acesso) {
     var libera = liberado(p, "apostilas", acesso.nivel);
-    var lista = (p.apostilas || []).map(function (a) {
+    var lista = (p.apostilas || []).map(function (a, i) {
       var tem = !!a.arquivo && libera;
       return '<div class="item">' + (a.capa ? '<img class="th" src="' + esc(a.capa) + '" alt="" loading="lazy">' : '<div class="ico">📄</div>') +
         '<div class="tx"><b>' + esc(a.titulo) + "</b><small>" + esc(a.descricao || (tem ? "PDF para baixar" : "Em breve")) + "</small></div>" +
-        (tem ? '<a class="btn small" href="' + esc(a.arquivo) + '" target="_blank" rel="noopener">Abrir</a>' : "") + "</div>";
+        (tem ? '<a class="btn small" href="#/pdf/' + esc(p.id) + '/apostilas/' + i + '">Abrir</a>' : "") + "</div>";
     }).join("");
     if (libera) return lista;
     return '<div class="card upsell"><h3>Apostila completa do curso</h3><p>A apostila faz parte do Premium. Libere agora com o upgrade.</p>' +
@@ -342,7 +342,7 @@
       return '<div class="bk ' + (ok ? "" : "locked") + '"><div class="cv"><span class="nb">BÔNUS ' + num + "</span>" +
         (b.capa ? '<img src="' + esc(b.capa) + '" alt="' + esc(b.titulo) + '" loading="lazy">' : '<div class="nc"><b>' + esc(b.titulo) + "</b></div>") + "</div>" +
         "<p><b>" + esc(b.titulo) + "</b><br>" + esc(b.descricao) + "</p>" +
-        (ok && b.arquivo ? '<a class="btn small block" href="' + esc(b.arquivo) + '" target="_blank" rel="noopener">Abrir</a>' : "") +
+        (ok && b.arquivo ? '<a class="btn small block" href="#/pdf/' + esc(p.id) + '/bonus/' + esc(b.n) + '">Abrir</a>' : "") +
         (ok && !b.arquivo ? '<small style="color:var(--ink2)">Em breve</small>' : "") + "</div>";
     }).join("") + "</div>";
     if (ok) return grid;
@@ -424,11 +424,34 @@
     });
   }
 
+  function telaPDF(acesso, id, aba, itemId) {
+    var p = prod(id), item = null;
+    var voltar = "#/p/" + id + "/" + aba;
+    if (p && acesso && p.id === acesso.produto && (aba === "apostilas" || aba === "bonus") && liberado(p, aba, acesso.nivel)) {
+      if (aba === "apostilas" && /^(0|[1-9][0-9]*)$/.test(itemId || "")) item = (p.apostilas || [])[Number(itemId)];
+      if (aba === "bonus") item = (p.bonus || []).filter(function (b) { return String(b.n) === itemId; })[0];
+    }
+    if (!item || !item.arquivo || !/^conteudo\//.test(item.arquivo) || /\.\.|[\\?#%]/.test(item.arquivo)) {
+      location.replace(voltar); return;
+    }
+    var base = new URL("./", location.href);
+    var arquivo = new URL(item.arquivo, base).href;
+    var viewer = new URL("visualizador.html", base);
+    viewer.searchParams.set("f", item.arquivo);
+    app.innerHTML = '<main class="pdf-screen"><header class="pdf-top">' +
+      '<a class="btn small ghost" href="' + esc(voltar) + '">← Voltar</a>' +
+      '<h1>' + esc(item.titulo) + '</h1>' +
+      '<a class="btn small ghost" href="' + esc(arquivo) + '" download>Baixar PDF</a></header>' +
+      '<iframe class="pdf-frame" src="' + esc(viewer.href) + '" title="' + esc(item.titulo) + '"></iframe></main>';
+    window.scrollTo(0, 0);
+  }
+
   /* ---------- rota ---------- */
   function rota() {
     var acesso = acessoAtual();
-    if (!acesso) { telaAcesso(); return; }
     var h = (location.hash || "#/").replace(/^#\/?/, "").split("/");
+    if (h[0] === "pdf") { telaPDF(acesso, h[1], h[2], h[3]); return; }
+    if (!acesso) { telaAcesso(); return; }
     if (h[0] === "p" && h[1]) telaProduto(acesso, h[1], h[2], h[3]);
     else if (h[0] === "aula" && h[1] && h[2]) location.replace("#/p/" + h[1] + "/aulas/" + h[2]);
     else telaHome(acesso);
