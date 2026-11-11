@@ -68,6 +68,7 @@ h1,h2,h3{font-family:var(--head);font-weight:800;line-height:1.1;letter-spacing:
 .up-price{margin:14px 0 0;font-size:17px;color:rgba(255,255,255,.9)}
 .up-price b{font-family:var(--head);font-size:26px;color:var(--sol);letter-spacing:-.03em}
 @media(min-width:700px){.hero.up{padding:40px 0 48px}.up-list{max-width:340px}}
+html,body{background:#2B0F1C}
 </style>
 </head>
 <body>
@@ -85,21 +86,67 @@ h1,h2,h3{font-family:var(--head);font-weight:800;line-height:1.1;letter-spacing:
     <p class="micro">Bons estudos!</p>
   </div>
 </header>
-<section class="hero up">
-  <div class="wrap hero-grid">
-    <figure class="hero-fig">
-      <img class="ov" src="../assets/obrigado-produto-premium.webp" width="720" height="706" alt="Produto Premium: apostila completa, certificado e 10 b&ocirc;nus" loading="lazy" decoding="async">
-    </figure>
-    <h2 class="up-h">Quer o curso completo? Por apenas <span class="hl hn">R$10</span> voc&ecirc; leva o Premium</h2>
-    <ul class="up-list">
-      <li><svg class="ic"><use href="#i-check"/></svg>Apostila completa</li>
-      <li><svg class="ic"><use href="#i-check"/></svg>Certificado de conclus&atilde;o</li>
-      <li><svg class="ic"><use href="#i-check"/></svg>10 b&ocirc;nus em PDF</li>
-      <li><svg class="ic"><use href="#i-check"/></svg>Tudo com acesso vital&iacute;cio</li>
-    </ul>
-    <p class="up-price">Por apenas <b>R$10</b></p>
-    <a class="btn pulse block caps" href="https://pay.cakto.com.br/3bwojhv">ATUALIZAR PARA O PREMIUM <span class="ar" aria-hidden="true">&rarr;</span></a>
+<style>
+.up-overlay[hidden]{display:none}
+.up-overlay{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;padding:16px}
+.up-dialog.hero.up{width:100%;max-width:560px;max-height:calc(100dvh - 32px);overflow-y:auto;overscroll-behavior:contain;border-radius:22px;padding:54px 0 28px;box-shadow:0 24px 80px rgba(0,0,0,.5)}
+.up-dialog .hero-grid{gap:14px}
+.up-dialog .hero-fig{width:min(180px,48vw)}
+.up-dialog .hl{color:var(--sol);background:linear-gradient(transparent 72%,rgba(238,75,14,.45) 72%)}
+.up-close{position:absolute;top:8px;right:8px;z-index:1;width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:30px;cursor:pointer}
+.up-close:focus-visible,.up-skip:focus-visible{outline:3px solid var(--sol);outline-offset:3px}
+.up-dialog .up-list{margin:0 auto}
+.price{display:flex;align-items:flex-end;justify-content:center;gap:14px;margin-bottom:14px}
+.de{color:rgba(255,255,255,.7);font-weight:600;font-size:15px}
+.de s{text-decoration-thickness:1.5px;text-decoration-color:var(--cta)}
+.price .de{color:rgba(255,255,255,.7);text-align:right;line-height:1.25;padding-bottom:6px}
+.price .de s{text-decoration-color:var(--cta)}
+.up-dialog .price{flex-direction:column;align-items:center;gap:4px;margin:0}
+.up-dialog .price .de{text-align:center;padding-bottom:0}
+.up-dialog .up-price b{font-size:clamp(28px,8vw,38px);line-height:1.15}
+.up-skip{display:block;padding:12px 4px;color:rgba(255,255,255,.85);font-size:14px;text-decoration:underline}
+</style>
+<div class="up-overlay" id="upOverlay" hidden>
+  <div class="hero up up-dialog" role="dialog" aria-modal="true" aria-labelledby="upT" tabindex="-1">
+    <button class="up-close" type="button" aria-label="Fechar">&times;</button>
+    <div class="wrap hero-grid">
+      <figure class="hero-fig">
+        <img src="../assets/obrigado-produto-premium.webp" width="720" height="706" alt="Produto Premium: apostila completa, certificado e 10 b&ocirc;nus" loading="lazy" decoding="async">
+      </figure>
+      <h2 class="up-h" id="upT">Quer o curso completo? Por apenas <span class="hl">R$10</span> voc&ecirc; leva o Premium</h2>
+      <ul class="up-list">
+        <li><svg class="ic"><use href="#i-check"/></svg>Apostila completa</li>
+        <li><svg class="ic"><use href="#i-check"/></svg>Certificado de conclus&atilde;o</li>
+        <li><svg class="ic"><use href="#i-check"/></svg>10 b&ocirc;nus em PDF</li>
+        <li><svg class="ic"><use href="#i-check"/></svg>Tudo com acesso vital&iacute;cio</li>
+      </ul>
+      <div class="price up-price">
+        <p class="de">De <s>R$197</s></p>
+        <p class="de">por <s>R$37</s></p>
+        <b>agora s&oacute; R$10</b>
+      </div>
+      <a class="btn pulse block caps" href="https://pay.cakto.com.br/mg67xie">ATUALIZAR PARA O PREMIUM</a>
+      <a class="up-skip" href="https://guiarefrigeracao.netlify.app/estudo-basico/">N&atilde;o, quero acessar meu curso B&aacute;sico</a>
+    </div>
   </div>
-</section>
+</div>
+<script>
+(function(){
+  var trigger=document.querySelector('header .btn'),overlay=document.getElementById('upOverlay'),dialog=overlay.querySelector('[role="dialog"]'),closeButton=overlay.querySelector('button'),previousOverflow;
+  function close(){overlay.hidden=true;document.body.style.overflow=previousOverflow;trigger.focus();}
+  trigger.addEventListener('click',function(e){e.preventDefault();previousOverflow=document.body.style.overflow;overlay.hidden=false;document.body.style.overflow='hidden';dialog.querySelector('.btn').focus();});
+  closeButton.addEventListener('click',close);
+  overlay.addEventListener('click',function(e){if(e.target===overlay)close();});
+  document.addEventListener('keydown',function(e){
+    if(overlay.hidden)return;
+    if(e.key==='Escape'){e.preventDefault();close();return;}
+    if(e.key==='Tab'){
+      var items=dialog.querySelectorAll('button,a[href]'),first=items[0],last=items[items.length-1];
+      if(e.shiftKey&&(document.activeElement===first||!dialog.contains(document.activeElement))){e.preventDefault();last.focus();}
+      else if(!e.shiftKey&&(document.activeElement===last||!dialog.contains(document.activeElement))){e.preventDefault();first.focus();}
+    }
+  });
+})();
+</script>
 </body>
 </html>
