@@ -27,6 +27,8 @@ HEADLINES CANDIDATAS (fórmula da escala: [número] + [benefício] + [qualificad
 PREÇOS: Premium R$37 (âncora R$247 = videoaulas R$67 + vitalício c/ atualizações R$27 + certificado R$17 + 6 bônus R$136) · Básico R$10 (âncora R$87 = videoaulas R$67 + vitalício R$20) · popup downsell Premium R$27 (de R$37) = R$17 a mais que o Básico · upgrade no app R$17.
 EDITAR: nº de alunos na constante ALUNOS (script no <head>). Timer: 15 min a partir do acesso (sessionStorage), reinicia ao zerar.
 
+PRINTS WHATSAPP (MODELO): 8 conversas inventadas na prova social; trocar por prints reais autorizados antes de subir anúncio.
+
 PLACEHOLDERS PRA PREENCHER (buscar colchetes):
 links CHECKOUT no fim do arquivo · IDs dos pixels
 EXEMPLO: trocar por depoimentos reais antes de publicar (3 cards na seção de prova social)
@@ -496,6 +498,38 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
   .fk{opacity:.9}
   .upbox,.sticky{transition:none}
 }
+
+/* PRINTS WHATSAPP (MODELO) — estilos isolados do conteúdo existente */
+.wa-proof{margin:36px 0 12px;min-width:0}
+.wa-proof h2{font-size:clamp(23px,5.8vw,32px)}
+.wa-rail{position:relative;max-width:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;cursor:grab;touch-action:pan-x pan-y;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;-webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
+.wa-rail::-webkit-scrollbar{display:none}
+.wa-rail:focus-visible{outline:2px solid var(--sol);outline-offset:3px}
+.wa-rail.wa-drag{cursor:grabbing}
+.wa-track{display:flex;gap:18px;align-items:flex-start;padding:22px 8px 30px}
+.wa-shot{flex:0 0 min(270px,74%);min-width:0;aspect-ratio:390/700;container-type:inline-size;background:#ECE5DD;border-radius:26px;overflow:hidden;box-shadow:0 14px 28px -10px rgba(0,0,0,.55);color:#111;text-align:left;font-family:-apple-system,"SF Pro",Roboto,Helvetica,Arial,sans-serif;user-select:none}
+.wa-shot>img{width:100%;height:auto;display:block;-webkit-user-drag:none}
+.wa-screen{display:flex;flex-direction:column;height:179.487cqw;font-size:3.9cqw;line-height:1.3;background:#ECE5DD}
+.wa-status{display:flex;justify-content:space-between;align-items:center;padding:4.6cqw 6cqw 2.4cqw;background:#f6f6f6;font-weight:700;font-size:3.6cqw}
+.wa-signal{display:flex;align-items:center;gap:1.5cqw;font-size:3cqw}
+.wa-bars{width:4cqw;height:3cqw;background:linear-gradient(to right,#111 0 18%,transparent 18% 27%,#111 27% 45%,transparent 45% 54%,#111 54% 72%,transparent 72% 81%,#111 81%);clip-path:polygon(0 65%,18% 65%,18% 45%,45% 45%,45% 25%,72% 25%,72% 0,100% 0,100% 100%,0 100%)}
+.wa-battery{position:relative;display:inline-flex;align-items:center;justify-content:center;min-width:8.5cqw;height:4.4cqw;border:1px solid #777;border-radius:1.2cqw;background:linear-gradient(90deg,var(--battery) var(--level),#ddd var(--level));font-size:2.8cqw;color:#111}
+.wa-battery:after{content:"";position:absolute;left:calc(100% + 1px);width:.6cqw;height:2cqw;border-radius:0 1px 1px 0;background:#777}
+.wa-header{display:flex;gap:2cqw;align-items:center;background:#f6f6f6;border-bottom:1px solid #d5d1cd;padding:2.8cqw 3cqw;color:#007aff}
+.wa-back{display:flex;align-items:center;gap:.4cqw;font-size:4cqw}.wa-back b{font-size:10cqw;line-height:.7;font-weight:400}
+.wa-av{display:block;width:10cqw;height:10cqw;border-radius:50%;overflow:hidden;flex:none}.wa-av svg,.wa-av img{width:100%;height:100%;object-fit:cover}
+.wa-name{flex:1;min-width:0;color:#111;font-size:4cqw;font-weight:600;white-space:nowrap}
+.wa-icon{width:6cqw;height:6cqw;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.wa-header .wa-icon{width:5.8cqw;margin-left:1cqw}
+.wa-chat{display:flex;flex:1;min-height:0;flex-direction:column;align-items:flex-start;gap:2.4cqw;padding:4cqw 3.6cqw;background-image:radial-gradient(#bcb1a52b .7px,transparent .9px),radial-gradient(#bcb1a520 .7px,transparent .9px);background-size:6cqw 8cqw;background-position:0 0,3cqw 4cqw}
+.wa-date{align-self:center;background:#f8f7f0e8;border-radius:2cqw;padding:1.2cqw 3cqw;font-size:3cqw;color:#5f6263;box-shadow:0 1px 1px #0001;margin-bottom:2cqw}
+.wa-msg{position:relative;max-width:86%;padding:2.2cqw 2.5cqw 1.2cqw;border-radius:2.2cqw;background:#fff;box-shadow:0 1px 1px #0002;font-size:4cqw;overflow-wrap:anywhere}
+.wa-msg:before{content:"";position:absolute;top:0;left:-1.5cqw;border-top:2.5cqw solid #fff;border-left:2cqw solid transparent}
+.wa-msg.wa-out{align-self:flex-end;background:#D9FDD3}.wa-out:before{left:auto;right:-1.5cqw;border-left:0;border-right:2cqw solid transparent;border-top-color:#D9FDD3}
+.wa-meta{display:flex;align-items:center;justify-content:flex-end;gap:1cqw;margin-top:1cqw;font-size:2.6cqw;line-height:1;color:#808782;white-space:nowrap}.wa-meta b{color:#38b5e5;font-size:3.4cqw;letter-spacing:-.9cqw;padding-right:.9cqw;font-weight:500}
+.wa-audio{display:flex;align-items:center;gap:3cqw;width:65cqw;padding:2cqw 0;color:#89928f}.wa-play{font-size:7cqw;color:#8b9698}.wa-wave{flex:1;height:7cqw;background:repeating-linear-gradient(90deg,#aab3b1 0 2px,transparent 2px 4px);clip-path:polygon(0 40%,10% 25%,20% 45%,30% 0,40% 30%,50% 10%,60% 40%,70% 20%,80% 35%,90% 15%,100% 40%,100% 60%,90% 85%,80% 65%,70% 80%,60% 60%,50% 90%,40% 70%,30% 100%,20% 55%,10% 75%,0 60%)}
+.wa-photo{display:grid;place-items:center;width:65cqw;height:42cqw;border-radius:1.5cqw;background:linear-gradient(140deg,#d4d8d5,#aeb6b3);color:#f8faf9;margin-bottom:2cqw}.wa-photo .wa-icon{width:13cqw;height:13cqw}
+.wa-input{display:flex;align-items:center;gap:3cqw;padding:2.8cqw 3.8cqw 6cqw;background:#f6f6f6;color:#007aff;position:relative}.wa-plus{font-size:8cqw;font-weight:300;line-height:1}.wa-field{display:flex;align-items:center;justify-content:flex-end;flex:1;height:8.5cqw;padding:1cqw 2cqw;background:#fff;border:1px solid #ddd;border-radius:5cqw;color:#8d969d}.wa-field .wa-icon{width:5cqw;height:5cqw}.wa-input:after{content:"";position:absolute;width:34%;height:1.2cqw;border-radius:2cqw;background:#111;bottom:1.8cqw;left:33%}
 </style>
   
 <script type="text/javascript">
@@ -758,6 +792,76 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
       <p class="lead">Gente que começou do zero, sem nunca ter mexido em ar-condicionado.</p>
     </div>
     <figure class="prova-foto rv"><img src="assets/prova-alunos.webp" alt="Alunos mostrando o certificado de conclusão do curso" width="1400" height="717" loading="lazy" decoding="async"></figure>
+    <!-- PRINTS WHATSAPP (MODELO)
+    Substituição: cada <figure class="wa-shot"> pode ser trocado por
+    <figure class="wa-shot"><img src="assets/print-real.webp" alt="Conversa autorizada de aluno" width="390" height="700" loading="lazy" decoding="async"></figure>.
+    Manter a classe wa-shot e substituir antes de subir anúncio.
+    -->
+    <!-- MODELO (EXEMPLO): trocar por print real de aluno antes de subir anúncio. Nome, mensagens, hora e bateria são inventados. -->
+    <div class="wa-proof">
+      <h2>Mensagens que chegam pra gente</h2>
+      <p class="lead">Arrasta pro lado e vê</p>
+      <div class="wa-rail" tabindex="0" role="region" aria-label="Mensagens de WhatsApp" aria-roledescription="carrossel">
+        <div class="wa-track">
+      <!-- MODELO (EXEMPLO): trocar por print real de aluno antes de subir anúncio. Nome, mensagens, hora e bateria são inventados. -->
+      <figure class="wa-shot" aria-label="Conversa com Jorge Pedreiro"><div class="wa-screen">
+        <div class="wa-status"><span>06:42</span><span class="wa-signal"><i class="wa-bars" aria-hidden="true"></i>4G <span class="wa-battery" style="--battery:#e8504f;--level:12%">12%</span></span></div>
+        <div class="wa-header"><span class="wa-back"><b>‹</b>1</span><!-- Trocar o SVG por <img src="assets/avatares/jorge.jpg" alt=""> quando houver foto real. --><span class="wa-av"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="#b8c9c6"/><path d="M7 64q1-21 25-21t25 21" fill="#3f5d71"/><path d="M26 39h12v12H26" fill="#b57d55"/><ellipse cx="32" cy="29" rx="16" ry="19" fill="#b57d55"/><path d="M13 25a19 19 0 0 1 38 0v3H11v-4h9V10h6v14h12V10h6v14h9v4H11" fill="#e7b63b"/><path d="M26 36q6 4 12 0" fill="none" stroke="#704b3c" stroke-width="1.5"/><circle cx="26" cy="28" r="1"/><circle cx="38" cy="28" r="1"/></svg></span><span class="wa-name">Jorge Pedreiro</span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="13" height="12" rx="3"/><path d="m15 10 7-4v12l-7-4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3 2 6c0 8 8 16 16 16l3-3-5-4-3 2a17 17 0 0 1-6-6l2-3Z"/></svg></div>
+        <div class="wa-chat"><span class="wa-date">qui., 28 de nov.</span><div class="wa-msg">fiz minha primeira limpeza sozinho<span class="wa-meta">06:35</span></div><div class="wa-msg">valeu<span class="wa-meta">06:36</span></div><div class="wa-msg wa-out">show 👏<span class="wa-meta">06:42<b aria-label="Lida">✓✓</b></span></div></div>
+        <div class="wa-input" aria-hidden="true"><span class="wa-plus">+</span><span class="wa-field"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14V4H4v16h10Zm0 0h-6v6"/></svg></span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 2-3h4l2 3h5v15H3V5Z"/><circle cx="12" cy="12" r="4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></svg></div>
+      </div></figure>
+      <!-- MODELO (EXEMPLO): trocar por print real de aluno antes de subir anúncio. Nome, mensagens, hora e bateria são inventados. -->
+      <figure class="wa-shot" aria-label="Conversa com Dani Eletricista"><div class="wa-screen">
+        <div class="wa-status"><span>10:08</span><span class="wa-signal"><i class="wa-bars" aria-hidden="true"></i>4G <span class="wa-battery" style="--battery:#efc644;--level:34%">34%</span></span></div>
+        <div class="wa-header"><span class="wa-back"><b>‹</b>2</span><!-- Trocar o SVG por <img src="assets/avatares/dani.jpg" alt=""> quando houver foto real. --><span class="wa-av"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="#e9c9b7"/><path d="M7 64q1-21 25-21t25 21" fill="#595042"/><path d="M26 39h12v12H26" fill="#d49b72"/><ellipse cx="32" cy="29" rx="16" ry="19" fill="#d49b72"/><path d="M12 49V28Q12 7 32 8q20 0 20 20v24l-10-5V29H22v22Z" fill="#41312c"/><path d="M26 36q6 4 12 0" fill="none" stroke="#704b3c" stroke-width="1.5"/><circle cx="26" cy="28" r="1"/><circle cx="38" cy="28" r="1"/></svg></span><span class="wa-name">Dani Eletricista</span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="13" height="12" rx="3"/><path d="m15 10 7-4v12l-7-4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3 2 6c0 8 8 16 16 16l3-3-5-4-3 2a17 17 0 0 1-6-6l2-3Z"/></svg></div>
+        <div class="wa-chat"><span class="wa-date">seg., 25 de nov.</span><div class="wa-msg">o cliente da obra pediu e eu já sabia<span class="wa-meta">09:51</span></div><div class="wa-msg">kkk<span class="wa-meta">09:52</span></div><div class="wa-msg wa-out">show<span class="wa-meta">10:00<b aria-label="Lida">✓✓</b></span></div><div class="wa-msg">valeu 🙏<span class="wa-meta">10:08</span></div></div>
+        <div class="wa-input" aria-hidden="true"><span class="wa-plus">+</span><span class="wa-field"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14V4H4v16h10Zm0 0h-6v6"/></svg></span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 2-3h4l2 3h5v15H3V5Z"/><circle cx="12" cy="12" r="4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></svg></div>
+      </div></figure>
+      <!-- MODELO (EXEMPLO): trocar por print real de aluno antes de subir anúncio. Nome, mensagens, hora e bateria são inventados. -->
+      <figure class="wa-shot" aria-label="Conversa com Marcão"><div class="wa-screen">
+        <div class="wa-status"><span>13:27</span><span class="wa-signal"><i class="wa-bars" aria-hidden="true"></i>4G <span class="wa-battery" style="--battery:#5cc66a;--level:58%">58%</span></span></div>
+        <div class="wa-header"><span class="wa-back"><b>‹</b>3</span><!-- Trocar o SVG por <img src="assets/avatares/marcao.jpg" alt=""> quando houver foto real. --><span class="wa-av"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="#b9c8df"/><path d="M7 64q1-21 25-21t25 21" fill="#54685a"/><path d="M26 39h12v12H26" fill="#8c573c"/><ellipse cx="32" cy="29" rx="16" ry="19" fill="#8c573c"/><path d="M13 26Q15 5 35 10q15 1 16 17H13m25-2h20v5H38" fill="#302824"/><path d="M26 36q6 4 12 0" fill="none" stroke="#704b3c" stroke-width="1.5"/><circle cx="26" cy="28" r="1"/><circle cx="38" cy="28" r="1"/></svg></span><span class="wa-name">Marcão</span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="13" height="12" rx="3"/><path d="m15 10 7-4v12l-7-4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3 2 6c0 8 8 16 16 16l3-3-5-4-3 2a17 17 0 0 1-6-6l2-3Z"/></svg></div>
+        <div class="wa-chat"><span class="wa-date">ter., 26 de nov.</span><div class="wa-msg">a aula do manifold me salvou<span class="wa-meta">13:20</span></div><div class="wa-msg">mano<span class="wa-meta">13:21</span></div><div class="wa-msg">valeu<span class="wa-meta">13:22</span></div><div class="wa-msg wa-out">show 👏<span class="wa-meta">13:27<b aria-label="Lida">✓✓</b></span></div></div>
+        <div class="wa-input" aria-hidden="true"><span class="wa-plus">+</span><span class="wa-field"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14V4H4v16h10Zm0 0h-6v6"/></svg></span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 2-3h4l2 3h5v15H3V5Z"/><circle cx="12" cy="12" r="4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></svg></div>
+      </div></figure>
+      <!-- MODELO (EXEMPLO): trocar por print real de aluno antes de subir anúncio. Nome, mensagens, hora e bateria são inventados. -->
+      <figure class="wa-shot" aria-label="Conversa com Cleiton S."><div class="wa-screen">
+        <div class="wa-status"><span>19:55</span><span class="wa-signal"><i class="wa-bars" aria-hidden="true"></i>4G <span class="wa-battery" style="--battery:#5cc66a;--level:73%">73%</span></span></div>
+        <div class="wa-header"><span class="wa-back"><b>‹</b>4</span><!-- Trocar o SVG por <img src="assets/avatares/cleiton.jpg" alt=""> quando houver foto real. --><span class="wa-av"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="#cfceb1"/><path d="M7 64q1-21 25-21t25 21" fill="#87594e"/><path d="M26 39h12v12H26" fill="#9f6d4a"/><ellipse cx="32" cy="29" rx="16" ry="19" fill="#9f6d4a"/><path d="M16 26Q14 8 33 9q17 0 17 18L38 20l-22 6" fill="#242524"/><path d="M26 36q6 4 12 0" fill="none" stroke="#704b3c" stroke-width="1.5"/><circle cx="26" cy="28" r="1"/><circle cx="38" cy="28" r="1"/></svg></span><span class="wa-name">Cleiton S.</span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="13" height="12" rx="3"/><path d="m15 10 7-4v12l-7-4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3 2 6c0 8 8 16 16 16l3-3-5-4-3 2a17 17 0 0 1-6-6l2-3Z"/></svg></div>
+        <div class="wa-chat"><span class="wa-date">qua., 27 de nov.</span><div class="wa-msg">peguei 3 serviços no prédio do meu cliente<span class="wa-meta">19:40</span></div><div class="wa-msg">paguei o curso com o primeiro serviço<span class="wa-meta">19:42</span></div><div class="wa-msg wa-out">show<span class="wa-meta">19:55<b aria-label="Lida">✓✓</b></span></div></div>
+        <div class="wa-input" aria-hidden="true"><span class="wa-plus">+</span><span class="wa-field"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14V4H4v16h10Zm0 0h-6v6"/></svg></span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 2-3h4l2 3h5v15H3V5Z"/><circle cx="12" cy="12" r="4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></svg></div>
+      </div></figure>
+      <!-- MODELO (EXEMPLO): trocar por print real de aluno antes de subir anúncio. Nome, mensagens, hora e bateria são inventados. -->
+      <figure class="wa-shot" aria-label="Conversa com Beto Pintor"><div class="wa-screen">
+        <div class="wa-status"><span>22:14</span><span class="wa-signal"><i class="wa-bars" aria-hidden="true"></i>4G <span class="wa-battery" style="--battery:#5cc66a;--level:91%">91%</span></span></div>
+        <div class="wa-header"><span class="wa-back"><b>‹</b>5</span><!-- Trocar o SVG por <img src="assets/avatares/beto.jpg" alt=""> quando houver foto real. --><span class="wa-av"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="#d2bdd8"/><path d="M7 64q1-21 25-21t25 21" fill="#4d566d"/><path d="M26 39h12v12H26" fill="#e3b18a"/><ellipse cx="32" cy="29" rx="16" ry="19" fill="#e3b18a"/><path d="M13 26Q15 5 35 10q15 1 16 17H13m25-2h20v5H38" fill="#635044"/><path d="M26 36q6 4 12 0" fill="none" stroke="#704b3c" stroke-width="1.5"/><circle cx="26" cy="28" r="1"/><circle cx="38" cy="28" r="1"/></svg></span><span class="wa-name">Beto Pintor</span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="13" height="12" rx="3"/><path d="m15 10 7-4v12l-7-4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3 2 6c0 8 8 16 16 16l3-3-5-4-3 2a17 17 0 0 1-6-6l2-3Z"/></svg></div>
+        <div class="wa-chat"><span class="wa-date">ontem</span><div class="wa-msg">mostrei pro meu patrão<span class="wa-meta">22:01</span></div><div class="wa-msg"><div class="wa-audio" aria-label="Mensagem de áudio de 0:18"><span class="wa-play" aria-hidden="true">▶</span><span class="wa-wave" aria-hidden="true"></span><span>0:18</span></div><span class="wa-meta">22:03</span></div><div class="wa-msg wa-out">valeu<span class="wa-meta">22:14<b aria-label="Lida">✓✓</b></span></div></div>
+        <div class="wa-input" aria-hidden="true"><span class="wa-plus">+</span><span class="wa-field"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14V4H4v16h10Zm0 0h-6v6"/></svg></span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 2-3h4l2 3h5v15H3V5Z"/><circle cx="12" cy="12" r="4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></svg></div>
+      </div></figure>
+      <!-- MODELO (EXEMPLO): trocar por print real de aluno antes de subir anúncio. Nome, mensagens, hora e bateria são inventados. -->
+      <figure class="wa-shot" aria-label="Conversa com Rafa Eletrônica"><div class="wa-screen">
+        <div class="wa-status"><span>08:36</span><span class="wa-signal"><i class="wa-bars" aria-hidden="true"></i>4G <span class="wa-battery" style="--battery:#5cc66a;--level:100%">100%⚡</span></span></div>
+        <div class="wa-header"><span class="wa-back"><b>‹</b>6</span><!-- Trocar o SVG por <img src="assets/avatares/rafa.jpg" alt=""> quando houver foto real. --><span class="wa-av"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="#c1d4b7"/><path d="M7 64q1-21 25-21t25 21" fill="#476e74"/><path d="M26 39h12v12H26" fill="#b7825d"/><ellipse cx="32" cy="29" rx="16" ry="19" fill="#b7825d"/><path d="M16 26Q14 8 33 9q17 0 17 18L38 20l-22 6" fill="#3b2a23"/><path d="M26 36q6 4 12 0" fill="none" stroke="#704b3c" stroke-width="1.5"/><circle cx="26" cy="28" r="1"/><circle cx="38" cy="28" r="1"/></svg></span><span class="wa-name">Rafa Eletrônica</span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="13" height="12" rx="3"/><path d="m15 10 7-4v12l-7-4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3 2 6c0 8 8 16 16 16l3-3-5-4-3 2a17 17 0 0 1-6-6l2-3Z"/></svg></div>
+        <div class="wa-chat"><span class="wa-date">hoje</span><div class="wa-msg">minha esposa não acreditou<span class="wa-meta">08:25</span></div><div class="wa-msg"><div class="wa-audio" aria-label="Mensagem de áudio de 0:32"><span class="wa-play" aria-hidden="true">▶</span><span class="wa-wave" aria-hidden="true"></span><span>0:32</span></div><span class="wa-meta">08:28</span></div><div class="wa-msg">kkk<span class="wa-meta">08:30</span></div><div class="wa-msg wa-out">show<span class="wa-meta">08:36<b aria-label="Lida">✓✓</b></span></div></div>
+        <div class="wa-input" aria-hidden="true"><span class="wa-plus">+</span><span class="wa-field"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14V4H4v16h10Zm0 0h-6v6"/></svg></span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 2-3h4l2 3h5v15H3V5Z"/><circle cx="12" cy="12" r="4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></svg></div>
+      </div></figure>
+      <!-- MODELO (EXEMPLO): trocar por print real de aluno antes de subir anúncio. Nome, mensagens, hora e bateria são inventados. -->
+      <figure class="wa-shot" aria-label="Conversa com Nando Faz-tudo"><div class="wa-screen">
+        <div class="wa-status"><span>16:49</span><span class="wa-signal"><i class="wa-bars" aria-hidden="true"></i>4G <span class="wa-battery" style="--battery:#efc644;--level:23%">23%</span></span></div>
+        <div class="wa-header"><span class="wa-back"><b>‹</b>7</span><!-- Trocar o SVG por <img src="assets/avatares/nando.jpg" alt=""> quando houver foto real. --><span class="wa-av"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="#decbb0"/><path d="M7 64q1-21 25-21t25 21" fill="#6d6651"/><path d="M26 39h12v12H26" fill="#794c35"/><ellipse cx="32" cy="29" rx="16" ry="19" fill="#794c35"/><path d="M13 25a19 19 0 0 1 38 0v3H11v-4h9V10h6v14h12V10h6v14h9v4H11" fill="#e7b63b"/><path d="M26 36q6 4 12 0" fill="none" stroke="#704b3c" stroke-width="1.5"/><circle cx="26" cy="28" r="1"/><circle cx="38" cy="28" r="1"/></svg></span><span class="wa-name">Nando Faz-tudo</span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="13" height="12" rx="3"/><path d="m15 10 7-4v12l-7-4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3 2 6c0 8 8 16 16 16l3-3-5-4-3 2a17 17 0 0 1-6-6l2-3Z"/></svg></div>
+        <div class="wa-chat"><span class="wa-date">sex., 22 de nov.</span><div class="wa-msg"><div class="wa-photo" role="img" aria-label="Foto do serviço feito"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="18" rx="2"/><circle cx="8" cy="9" r="2"/><path d="m3 18 6-5 4 3 4-5 5 7"/></svg></div><span class="wa-meta">16:30</span></div><div class="wa-msg">fiz minha primeira limpeza sozinho<span class="wa-meta">16:31</span></div><div class="wa-msg wa-out">valeu 🙏<span class="wa-meta">16:49<b aria-label="Lida">✓✓</b></span></div></div>
+        <div class="wa-input" aria-hidden="true"><span class="wa-plus">+</span><span class="wa-field"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14V4H4v16h10Zm0 0h-6v6"/></svg></span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 2-3h4l2 3h5v15H3V5Z"/><circle cx="12" cy="12" r="4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></svg></div>
+      </div></figure>
+      <!-- MODELO (EXEMPLO): trocar por print real de aluno antes de subir anúncio. Nome, mensagens, hora e bateria são inventados. -->
+      <figure class="wa-shot" aria-label="Conversa com Tiago Ajudante"><div class="wa-screen">
+        <div class="wa-status"><span>11:17</span><span class="wa-signal"><i class="wa-bars" aria-hidden="true"></i>4G <span class="wa-battery" style="--battery:#5cc66a;--level:46%">46%</span></span></div>
+        <div class="wa-header"><span class="wa-back"><b>‹</b>8</span><!-- Trocar o SVG por <img src="assets/avatares/tiago.jpg" alt=""> quando houver foto real. --><span class="wa-av"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="#b9d5da"/><path d="M7 64q1-21 25-21t25 21" fill="#635578"/><path d="M26 39h12v12H26" fill="#c38b60"/><ellipse cx="32" cy="29" rx="16" ry="19" fill="#c38b60"/><path d="M15 28q-9-10 2-13 0-10 10-7 9-8 15 1 13-2 12 10 6 10-5 11l-5-10-22 2Z" fill="#4d3529"/><path d="M26 36q6 4 12 0" fill="none" stroke="#704b3c" stroke-width="1.5"/><circle cx="26" cy="28" r="1"/><circle cx="38" cy="28" r="1"/></svg></span><span class="wa-name">Tiago Ajudante</span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="13" height="12" rx="3"/><path d="m15 10 7-4v12l-7-4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3 2 6c0 8 8 16 16 16l3-3-5-4-3 2a17 17 0 0 1-6-6l2-3Z"/></svg></div>
+        <div class="wa-chat"><span class="wa-date">sáb., 23 de nov.</span><div class="wa-msg"><div class="wa-photo" role="img" aria-label="Foto do serviço feito"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="18" rx="2"/><circle cx="8" cy="9" r="2"/><path d="m3 18 6-5 4 3 4-5 5 7"/></svg></div><span class="wa-meta">11:02</span></div><div class="wa-msg">chegou o calor e o telefone não para<span class="wa-meta">11:05</span></div><div class="wa-msg wa-out">show<span class="wa-meta">11:17<b aria-label="Lida">✓✓</b></span></div></div>
+        <div class="wa-input" aria-hidden="true"><span class="wa-plus">+</span><span class="wa-field"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14V4H4v16h10Zm0 0h-6v6"/></svg></span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 2-3h4l2 3h5v15H3V5Z"/><circle cx="12" cy="12" r="4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></svg></div>
+      </div></figure>
+        </div>
+      </div>
+    </div>
     <div class="deps"><div class="mq"><div class="mq-track" id="depTrack" style="--dur:80s">
       <!-- EXEMPLO: trocar por depoimentos reais antes de publicar (nome, cidade e situação reais, com autorização) -->
       <div class="dep"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p>“Nunca tinha mexido em ar-condicionado. Fui assistindo as aulas de limpeza e já fiz o aparelho da minha irmã. Agora os vizinhos estão pedindo.”</p><div class="who"><span class="av" aria-hidden="true">M</span><span>Marcos A., Montes Claros (MG)<small>Ajudante de eletricista</small></span></div></div>
@@ -983,6 +1087,49 @@ document.addEventListener("DOMContentLoaded",function(){
     [].forEach.call(document.querySelectorAll(".rv"),function(el){io.observe(el)});
   }else{[].forEach.call(document.querySelectorAll(".rv"),function(el){el.classList.add("in")});st.classList.add("show")}
 });
+</script>
+
+<script>
+/* PRINTS WHATSAPP (MODELO): loop, arraste e movimento reduzido independentes. */
+(function(){
+  var rail=document.querySelector('.wa-rail'),track=document.querySelector('.wa-track');
+  if(!rail||!track)return;
+  var originals=Array.prototype.slice.call(track.children);
+  originals.forEach(function(item){var copy=item.cloneNode(true);copy.setAttribute('aria-hidden','true');copy.setAttribute('inert','');track.appendChild(copy)});
+  var media=window.matchMedia('(prefers-reduced-motion: reduce)'),frame=0,last=0,pos=0,pause=0,down=false,mouse=false,startX=0,startScroll=0,visible=false;
+  function span(){return track.children[originals.length].offsetLeft-track.children[0].offsetLeft}
+  function wrap(){var w=span();if(!w)return;var x=rail.scrollLeft;if(x>=w)rail.scrollLeft=x%w;else if(x<=0)rail.scrollLeft=x+w;pos=rail.scrollLeft}
+  function hold(){pause=performance.now()+3500;pos=rail.scrollLeft}
+  function stop(){if(frame)cancelAnimationFrame(frame);frame=0;last=0}
+  function tick(now){
+    frame=0;
+    if(media.matches||document.hidden||!visible)return;
+    var dt=last?Math.min(now-last,64):0;last=now;
+    if(!down&&now>pause&&!rail.matches(':focus-visible')){
+      var w=span();if(w){pos+=45*dt/1000;if(pos>=w)pos%=w;rail.scrollLeft=pos}
+    }else pos=rail.scrollLeft;
+    frame=requestAnimationFrame(tick);
+  }
+  function run(){stop();if(!media.matches&&!document.hidden&&visible)frame=requestAnimationFrame(tick)}
+  rail.addEventListener('pointerdown',function(e){
+    if(e.pointerType==='mouse'&&e.button!==0)return;
+    down=true;mouse=e.pointerType==='mouse';startX=e.clientX;startScroll=rail.scrollLeft;hold();
+    if(mouse){rail.classList.add('wa-drag');rail.setPointerCapture(e.pointerId)}
+  });
+  rail.addEventListener('pointermove',function(e){if(down&&mouse){rail.scrollLeft=startScroll-(e.clientX-startX);pos=rail.scrollLeft}});
+  function release(){if(!down)return;down=false;mouse=false;rail.classList.remove('wa-drag');wrap();hold()}
+  rail.addEventListener('pointerup',release);rail.addEventListener('pointercancel',release);rail.addEventListener('lostpointercapture',release);
+  rail.addEventListener('wheel',hold,{passive:true});
+  rail.addEventListener('touchmove',hold,{passive:true});
+  rail.addEventListener('scroll',function(){if(!down){var w=span();if(w&&rail.scrollLeft>=w){rail.scrollLeft-=w;pos=rail.scrollLeft}}},{passive:true});
+  rail.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();rail.scrollLeft+=e.key==='ArrowRight'?240:-240;wrap();hold()}});
+  rail.addEventListener('focus',hold);rail.addEventListener('blur',hold);
+  document.addEventListener('visibilitychange',run);
+  if(media.addEventListener)media.addEventListener('change',run);else media.addListener(run);
+  if('ResizeObserver' in window)new ResizeObserver(function(){wrap();hold()}).observe(rail);
+  if('IntersectionObserver' in window)new IntersectionObserver(function(entries){visible=entries[0].isIntersecting;run()}).observe(rail);
+  else{visible=true;run()}
+})();
 </script>
 </body>
 </html>
