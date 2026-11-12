@@ -19,12 +19,12 @@ HEADLINES CANDIDATAS (fórmula da escala: [número] + [benefício] + [qualificad
 2. Sem Renda Extra e Vendo Todo Mundo Chamar Outro Técnico? +50 Videoaulas pra Viver de Limpeza de Ar-Condicionado no Verão, do Zero
 3. +50 Videoaulas pra Ser o Técnico de Ar-Condicionado Que Todo Mundo Chama no Verão do El Niño, Mesmo Começando do Zero
 4. Pare de Ver o Dinheiro do Verão Passar: +50 Videoaulas pra Cobrar por Limpeza de Ar-Condicionado, Sem Curso Presencial
-5. +50 Videoaulas + 6 Bônus pra Faturar Limpando Ar-Condicionado Enquanto o Calor Aperta e Todo Mundo Procura Técnico
+5. +50 Videoaulas + 10 Bônus pra Faturar Limpando Ar-Condicionado Enquanto o Calor Aperta e Todo Mundo Procura Técnico
 6. Todo Mundo Vai Ligar o Ar no Verão: +50 Videoaulas pra Você Ser Quem Cobra pra Limpar, do Zero e Sem Sair de Casa
 7. +50 Videoaulas pra Transformar o Calor do Verão em Renda Extra Limpando Ar-Condicionado, Mesmo Sem Nunca Ter Mexido em Um
 8. Cansou de Pagar Caro e de Ficar Sem Renda? +50 Videoaulas de Ar-Condicionado pra Fazer Você Mesmo e Cobrar dos Outros
 
-PREÇOS: Premium R$37 (âncora R$247 = videoaulas R$67 + vitalício c/ atualizações R$27 + certificado R$17 + 6 bônus R$136) · Básico R$10 (âncora R$87 = videoaulas R$67 + vitalício R$20) · popup downsell Premium R$27 (de R$37) = R$17 a mais que o Básico · upgrade no app R$17.
+PREÇOS: Premium R$37 (âncora R$197) · Básico R$10 (âncora R$67) · popup downsell Premium R$27 (de R$37) = R$17 a mais que o Básico · upgrade no app R$17.
 EDITAR: nº de alunos na constante ALUNOS (script no <head>). Timer: 15 min a partir do acesso (sessionStorage), reinicia ao zerar.
 
 PRINTS WHATSAPP (MODELO): 8 conversas inventadas na prova social; trocar por prints reais autorizados antes de subir anúncio.
@@ -38,9 +38,9 @@ TEMA v4: verão/calor. Paleta: creme #FFF6E8, areia #FFEBD2, ink marinho #10193A
 SLOTS DE IMAGEM (o <img> por cima some sozinho se o arquivo não existir e aparece o fallback desenhado). Exportar WebP q75:
 - hero.webp 880x806 (opcional, cobre a ilustração SVG do hero)
 - mockup-produto.webp 1200x900 (4:3), celular + notebook com a área de aulas
-- vitrine-material.webp 1200x900 (4:3), as capas dos 6 bônus do Premium
+- vitrine-material.webp 1200x900 (4:3), apostilas + material
 - certificado.webp 1200x900 (4:3)
-- bonus-02.webp ... bonus-07.webp 900x1200 (3:4), capa dos 6 bônus do Premium (bonus-01, 08, 09 e 10 ficam guardados, fora da página)
+- bonus-01.webp ... bonus-10.webp 900x1200 (3:4), capa de cada apostila
 - aula-01.webp ... aula-08.webp 1280x720 (16:9), thumbnail de cada aula
 - plano-basico.webp 1200x900 (4:3), foto do produto do plano Básico
 - plano-premium.webp 1200x900 (4:3), foto do produto do plano Premium
@@ -427,9 +427,6 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
 .bk p{font-size:12px;color:var(--ink2);line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 /* foto do produto por plano (slot; fallback neutro) */
 .kit li.no{color:#8A2A1B;font-weight:700}
-.kit li .pv{margin-left:auto;padding-left:10px;white-space:nowrap;color:var(--ink2);font-weight:600;font-size:14px}
-.kit li.soma{border-top:1.5px dashed var(--line);padding-top:10px;margin-top:2px;font-weight:800}
-.kit li.soma .pv{color:var(--ink);font-weight:800;font-size:15.5px}
 .kit li.no svg{stroke:#C62818;stroke-width:2.6;fill:none;stroke-linecap:round}
 .pimg{border-radius:16px;border:1.5px dashed rgba(58,24,12,.18);background:transparent;margin:0 0 16px}
 .kit.top .pimg{border-color:rgba(238,75,14,.35)}
@@ -694,12 +691,12 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
         <g transform="translate(362 372) rotate(-32)"><rect x="-6" y="0" width="12" height="62" rx="6" fill="#fff"/><rect x="-9" y="-10" width="18" height="14" rx="3" fill="#DDC3AA"/><path d="M-9-10 9-10 12-30-12-30z" fill="#FFC83D"/><path d="M-6-30v14M0-30v14M6-30v14" stroke="#E0A71A" stroke-width="1.500"/></g>
       </svg>
       <!-- SLOT hero.webp 880x806 (opcional): cobre a ilustração -->
-      <img class="ov" src="assets/hero.webp" alt="Técnico com o curso de ar-condicionado: videoaulas e acesso pelo celular" width="1000" height="1000" fetchpriority="high" onerror="slotErr(this)">
+      <img class="ov" src="assets/hero.webp" alt="Técnico com o curso de ar-condicionado: apostila, videoaulas e acesso pelo celular" width="1000" height="1000" fetchpriority="high" onerror="slotErr(this)">
     <div class="sticker s1" aria-hidden="true" style="right:auto;top:auto;left:-3%;bottom:-4%;width:19cqw;height:19cqw;transform:rotate(-8deg)"><b>Passo</b>a passo</div>
     </figure>
 
     <div class="hero-buy">
-      <div class="price"><span class="de">De <s>R$87</s><br>por apenas</span><span class="val"><small>R$</small>10</span><span class="un">acesso<br>vitalício</span></div>
+      <div class="price"><span class="de">De <s>R$67</s><br>por apenas</span><span class="val"><small>R$</small>10</span><span class="un">acesso<br>vitalício</span></div>
       <a href="#planos" class="btn pulse block caps">Quero começar agora <span class="ar">→</span></a>
       <div class="trust"><span><svg class="ic"><use href="#i-check"/></svg><b data-alunos></b> alunos</span><span><svg class="ic"><use href="#i-check"/></svg>Acesso no e-mail na hora</span><span><svg class="ic"><use href="#i-check"/></svg>7 dias de garantia</span></div>
       <p class="micro">Preço promocional só hoje.</p>
@@ -709,7 +706,7 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
 
 <!-- FAIXA MARQUEE -->
 <div class="ribbon" aria-hidden="true"><div class="mq"><div class="mq-track" id="ribbonTrack" style="--dur:30s">
-  <span>Limpeza e higienização</span><span>Instalação de split</span><span>Manutenção</span><span>Carga de gás</span><span>PMOC</span><span>Defeitos comuns</span><span>Primeiros clientes</span>
+  <span>Limpeza e higienização</span><span>Instalação de split</span><span>Manutenção</span><span>Carga de gás</span><span>Cálculo de BTUs</span><span>Defeitos comuns</span><span>Primeiros clientes</span>
 </div></div></div>
 
 <!-- DOR -->
@@ -768,11 +765,11 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
       <div class="bx rv" style="--p:#fff;--t:var(--ink)"><svg class="ic"><use href="#i-wrench"/></svg>Manutenção preventiva e PMOC<small>5 aulas · cliente que volta</small></div>
       <div class="bx rv" style="--p:var(--menta);--t:var(--menta-t)"><svg class="ic"><use href="#i-thermo"/></svg>Diagnóstico e conserto<small>7 aulas · do sintoma ao conserto</small></div>
       <div class="bx rv" style="--p:var(--solp);--t:var(--solp-t)"><svg class="ic"><use href="#i-coin"/></svg>Primeiros clientes<small>6 aulas · como cobrar e ser chamado</small></div>
-      <div class="bx last rv" style="--p:var(--ceu);--t:var(--ceu-t)"><svg class="ic"><use href="#i-gift"/></svg>+ certificado e 6 bônus no Premium<small>Tabela de gases, checklist, guia de preços, manual de defeitos e mais</small></div>
+      <div class="bx last rv" style="--p:var(--ceu);--t:var(--ceu-t)"><svg class="ic"><use href="#i-gift"/></svg>+ apostila completa e 10 bônus no Premium<small>Tabela de gases, checklist, guia de preços e mais</small></div>
     </div>
     <div class="duo rv">
-      <!-- SLOT vitrine-material.webp 1200x900 (4:3): as capas dos 6 bônus do Premium -->
-      <figure><div class="slot vit ar43"><span class="fb vit" style="display:block"><i style="--x:6;--r:-10deg;--a:#C2410C;--b:#5A1D16"></i><i style="--x:19;--r:-5deg;--y:-4%;--a:#FF8A4D;--b:#D2450F"></i><i style="--x:32;--r:0deg;--y:-8%;--a:#E0701A;--b:#9A3412"></i><i style="--x:45;--r:5deg;--y:-4%;--a:#D92D20;--b:#7A1010"></i><i style="--x:58;--r:10deg;--a:#C2185B;--b:#6A0F36"></i></span><img class="ov" src="assets/vitrine-material.webp" alt="Os 6 bônus em PDF do plano Premium" width="1200" height="900" loading="lazy" decoding="async" onerror="slotErr(this)"></div><figcaption>6 bônus em PDF<small>pra consultar no dia do serviço (Premium)</small></figcaption></figure>
+      <!-- SLOT vitrine-material.webp 1200x900 (4:3): as 5 apostilas e o material -->
+      <figure><div class="slot vit ar43"><span class="fb vit" style="display:block"><i style="--x:6;--r:-10deg;--a:#C2410C;--b:#5A1D16"></i><i style="--x:19;--r:-5deg;--y:-4%;--a:#FF8A4D;--b:#D2450F"></i><i style="--x:32;--r:0deg;--y:-8%;--a:#E0701A;--b:#9A3412"></i><i style="--x:45;--r:5deg;--y:-4%;--a:#D92D20;--b:#7A1010"></i><i style="--x:58;--r:10deg;--a:#C2185B;--b:#6A0F36"></i></span><img class="ov" src="assets/vitrine-material.webp" alt="A apostila completa em PDF e o material do curso" width="1200" height="900" loading="lazy" decoding="async" onerror="slotErr(this)"></div><figcaption>Apostila completa em PDF<small>pra consultar no dia do serviço</small></figcaption></figure>
       <!-- SLOT certificado.webp 1200x900 (4:3) -->
       <figure><div class="slot cert ar43"><span class="fb cert" style="display:grid"><div><svg class="ic"><use href="#i-award"/></svg><b>CERTIFICADO</b><s></s><s></s></div></span><img class="ov" src="assets/certificado.webp" alt="Certificado de conclusão" width="1200" height="900" loading="lazy" decoding="async" onerror="slotErr(this)"></div><figcaption>Certificado de conclusão<small>incluso no Premium</small></figcaption></figure>
     </div>
@@ -1004,23 +1001,27 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
   </div>
 </section>
 
-<!-- BÔNUS (carrossel compacto no celular, grade de 5 no desktop). SLOTS bonus-02.webp ... bonus-07.webp 900x1200 (3:4), capa dos 6 bônus -->
+<!-- BÔNUS (carrossel compacto no celular, grade de 5 no desktop). SLOTS bonus-01.webp ... bonus-10.webp 900x1200 (3:4), capa de cada apostila -->
 <section class="bonus cv" style="padding:44px 0">
   <div class="wrap center">
     <div class="rv">
       <span class="kicker">Só no Premium</span>
-      <h2 style="font-size:clamp(24px,6vw,36px)">6 bônus pra atender <span class="hl">como profissional</span></h2>
+      <h2 style="font-size:clamp(24px,6vw,36px)">10 bônus pra atender <span class="hl">como profissional</span></h2>
       <span class="hint">ARRASTE PRA VER →</span>
     </div>
     <div class="bgrid rv">
-      <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#D92D20;--b:#7A1010"></div><img class="ov" src="assets/bonus-02.webp" alt="Capa do bônus 01: Tabela de gases e pressões" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Tabela de gases</h3><p>Pressões na mão</p><span class="bv"><s>R$22</s> GRÁTIS</span></div>
-      <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#FF8A4D;--b:#D2450F"></div><img class="ov" src="assets/bonus-03.webp" alt="Capa do bônus 02: Checklist de instalação de split" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Checklist de split</h3><p>Sem esquecer etapa</p><span class="bv"><s>R$18</s> GRÁTIS</span></div>
-      <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#E0701A;--b:#9A3412"></div><img class="ov" src="assets/bonus-04.webp" alt="Capa do bônus 03: Guia de limpeza" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Guia de limpeza</h3><p>Passo a passo</p><span class="bv"><s>R$24</s> GRÁTIS</span></div>
-      <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#C2185B;--b:#6A0F36"></div><img class="ov" src="assets/bonus-05.webp" alt="Capa do bônus 04: Manual de ferramentas" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Manual de ferramentas</h3><p>O que comprar</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
-      <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#D97706;--b:#92400E"></div><img class="ov" src="assets/bonus-06.webp" alt="Capa do bônus 05: Guia de preços de serviços" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Guia de preços</h3><p>Monte sua tabela</p><span class="bv"><s>R$29</s> GRÁTIS</span></div>
-      <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#E85A06;--b:#8A2A00"></div><img class="ov" src="assets/bonus-07.webp" alt="Capa do bônus 06: Manual de defeitos e soluções" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Manual de defeitos</h3><p>Do sintoma ao conserto</p><span class="bv"><s>R$26</s> GRÁTIS</span></div>
+      <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#E8590C;--b:#7A1F12"></div><img class="ov" src="assets/bonus-01.webp" alt="Capa do bônus 01: Apostila completa" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Apostila completa</h3><p>Tudo reunido</p><span class="bv"><s>R$27</s> GRÁTIS</span></div>
+      <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#D92D20;--b:#7A1010"></div><img class="ov" src="assets/bonus-02.webp" alt="Capa do bônus 02: Tabela de gases e pressões" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Tabela de gases</h3><p>Pressões na mão</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
+      <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#FF8A4D;--b:#D2450F"></div><img class="ov" src="assets/bonus-03.webp" alt="Capa do bônus 03: Checklist de instalação de split" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Checklist de split</h3><p>Sem esquecer etapa</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
+      <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#E0701A;--b:#9A3412"></div><img class="ov" src="assets/bonus-04.webp" alt="Capa do bônus 04: Guia de limpeza" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Guia de limpeza</h3><p>Passo a passo</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
+      <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#C2185B;--b:#6A0F36"></div><img class="ov" src="assets/bonus-05.webp" alt="Capa do bônus 05: Manual de ferramentas" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Manual de ferramentas</h3><p>O que comprar</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
+      <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#D97706;--b:#92400E"></div><img class="ov" src="assets/bonus-06.webp" alt="Capa do bônus 06: Guia de preços de serviços" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Guia de preços</h3><p>Monte sua tabela</p><span class="bv"><s>R$27</s> GRÁTIS</span></div>
+      <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#E85A06;--b:#8A2A00"></div><img class="ov" src="assets/bonus-07.webp" alt="Capa do bônus 07: Manual de defeitos e soluções" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Manual de defeitos</h3><p>Do sintoma ao conserto</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
+      <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#E8590C;--b:#2B0F1C"></div><img class="ov" src="assets/bonus-08.webp" alt="Capa do bônus 08: Guia de manutenção preventiva" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Manutenção preventiva</h3><p>Fidelize clientes</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
+      <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#D92D20;--b:#9A3412"></div><img class="ov" src="assets/bonus-09.webp" alt="Capa do bônus 09: Cálculo de BTUs" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Cálculo de BTUs</h3><p>Aparelho certo</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
+      <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#D2450F;--b:#C2185B"></div><img class="ov" src="assets/bonus-10.webp" alt="Capa do bônus 10: Guia dos primeiros clientes" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Primeiros clientes</h3><p>Como ser chamado</p><span class="bv"><s>R$24</s> GRÁTIS</span></div>
     </div>
-    <div class="bonus-tot rv"><span>Os 6 bônus, separados, custariam <s>R$136</s></span><b class="gratis">Tudo isso sai DE GRAÇA adquirindo o Premium hoje</b><a href="#planos" class="btn" style="margin-top:10px">Quero o Premium com os 6 bônus <span class="ar">→</span></a></div>
+    <div class="bonus-tot rv"><span>Tudo isso, separado, custaria <s>R$197</s></span><b class="gratis">Tudo isso sai DE GRAÇA adquirindo o Premium hoje</b><a href="#planos" class="btn" style="margin-top:10px">Quero o Premium com os 10 bônus <span class="ar">→</span></a></div>
   </div>
 </section>
 
@@ -1035,23 +1036,23 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
       <div class="kit top rv">
         <div class="badge">★ MAIS VENDIDO</div>
         <div class="plano">Plano Premium</div>
-        <h3>Tudo do Básico + certificado + 6 bônus</h3>
+        <h3>Tudo do Básico + certificado + 10 bônus</h3>
         <!-- SLOT plano-premium.webp 1200x900 (4:3): foto do produto do plano Premium -->
-        <div class="slot pimg" style="aspect-ratio:1/1;max-width:340px;margin-left:auto;margin-right:auto"><img class="ov" src="assets/plano-premium.webp" alt="Produto do plano Premium: 50 videoaulas e os 6 bônus em PDF, no tablet e no celular" width="1254" height="1254" loading="lazy" decoding="async" onerror="slotErr(this)"></div>
+        <div class="slot pimg" style="aspect-ratio:1/1;max-width:340px;margin-left:auto;margin-right:auto"><img class="ov" src="assets/plano-premium.webp" alt="Produto do plano Premium: videoaulas, apostila completa, certificado e 10 bônus" width="1063" height="1063" loading="lazy" decoding="async" onerror="slotErr(this)"></div>
         <ul>
-          <li class="main"><svg class="ic"><use href="#i-check"/></svg>+50 videoaulas práticas, passo a passo<span class="pv"><s>R$67</s></span></li>
-          <li><svg class="ic"><use href="#i-check"/></svg>Acesso vitalício, com atualizações<span class="pv"><s>R$27</s></span></li>
-          <li class="main"><svg class="ic"><use href="#i-check"/></svg>Certificado de conclusão<span class="pv"><s>R$17</s></span></li>
-          <li class="bt">+ 6 bônus incluídos</li>
-          <li class="gift"><svg class="ic"><use href="#i-gift"/></svg>Tabela de gases e pressões<span class="pv"><s>R$22</s></span></li>
-          <li class="gift"><svg class="ic"><use href="#i-gift"/></svg>Checklist de instalação de split<span class="pv"><s>R$18</s></span></li>
-          <li class="gift"><svg class="ic"><use href="#i-gift"/></svg>Guia de limpeza<span class="pv"><s>R$24</s></span></li>
-          <li class="gift"><svg class="ic"><use href="#i-gift"/></svg>Manual de ferramentas<span class="pv"><s>R$17</s></span></li>
-          <li class="gift"><svg class="ic"><use href="#i-gift"/></svg>Guia de preços de serviços<span class="pv"><s>R$29</s></span></li>
-          <li class="gift"><svg class="ic"><use href="#i-gift"/></svg>Manual de defeitos e soluções<span class="pv"><s>R$26</s></span></li>
-          <li class="soma"><span>Soma de tudo</span><span class="pv"><s>R$247</s></span></li>
+          <li class="main"><svg class="ic"><use href="#i-check"/></svg>+50 videoaulas práticas, passo a passo</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Apostila completa em PDF pra consultar no serviço</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Acesso vitalício, com atualizações</li>
+          <li class="main"><svg class="ic"><use href="#i-check"/></svg>Certificado de conclusão</li>
+          <li class="bt">+ 10 bônus incluídos</li>
+          <li class="gift"><svg class="ic"><use href="#i-gift"/></svg>Tabela de gases e pressões</li>
+          <li class="gift"><svg class="ic"><use href="#i-gift"/></svg>Checklist de instalação de split</li>
+          <li class="gift"><svg class="ic"><use href="#i-gift"/></svg>Cálculo de BTUs</li>
+          <li class="gift"><svg class="ic"><use href="#i-gift"/></svg>Guia de preços de serviços</li>
+          <li class="gift"><svg class="ic"><use href="#i-gift"/></svg>Guia dos primeiros clientes</li>
+          <li class="gift"><svg class="ic"><use href="#i-gift"/></svg>+ 5 bônus de consulta</li>
         </ul>
-        <div class="price-box"><span class="de">De <s>R$247</s> por apenas</span><span class="val"><small>R$</small>37</span><span class="un">pagamento único</span></div>
+        <div class="price-box"><span class="de">De <s>R$197</s> por apenas</span><span class="val"><small>R$</small>37</span><span class="un">pagamento único</span></div>
         <a href="https://pay.cakto.com.br/349reev" class="btn block pulse" data-checkout="premium">Quero o Premium agora <span class="ar">→</span></a>
         <div class="pay"><span>Compra segura</span>·<span>Garantia de 7 dias</span></div>
       </div>
@@ -1061,17 +1062,17 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
         <!-- SLOT plano-basico.webp 1200x900 (4:3): foto do produto do plano Básico -->
         <div class="slot pimg" style="aspect-ratio:1/1;max-width:340px;margin-left:auto;margin-right:auto"><img class="ov" src="assets/plano-basico.webp" alt="Produto do plano Básico: videoaulas" width="1200" height="900" loading="lazy" decoding="async" onerror="slotErr(this)"></div>
         <ul>
-          <li class="main"><svg class="ic"><use href="#i-check"/></svg>+50 videoaulas práticas<span class="pv"><s>R$67</s></span></li>
-          <li><svg class="ic"><use href="#i-check"/></svg>Acesso vitalício<span class="pv"><s>R$20</s></span></li>
+          <li class="main"><svg class="ic"><use href="#i-check"/></svg>+50 videoaulas práticas</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Acesso vitalício</li>
           <li><svg class="ic"><use href="#i-check"/></svg>Entrega imediata por e-mail</li>
+          <li class="no"><svg class="ic" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>NÃO inclui a apostila completa</li>
           <li class="no"><svg class="ic" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>NÃO inclui o certificado de conclusão</li>
-          <li class="no"><svg class="ic" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>NÃO inclui os 6 bônus</li>
-          <li class="soma"><span>Soma de tudo</span><span class="pv"><s>R$87</s></span></li>
+          <li class="no"><svg class="ic" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>NÃO inclui os 10 bônus</li>
         </ul>
-        <div class="price-box"><span class="de">De <s>R$87</s> por</span><span class="val"><small>R$</small>10</span><span class="un">pagamento único</span></div>
+        <div class="price-box"><span class="de">De <s>R$67</s> por</span><span class="val"><small>R$</small>10</span><span class="un">pagamento único</span></div>
         <a href="https://pay.cakto.com.br/359euuh" class="btn block ghost" data-open-up>Quero o Básico</a>
       </div>
-      <p class="diff rv">Por só <b>+R$27</b> você leva o certificado e os 6 bônus, que separados valem R$153.</p>
+      <p class="diff rv">Por só <b>+R$27</b> você leva a apostila completa, o certificado e os 10 bônus.</p>
     </div>
   </div>
 </section>
@@ -1090,7 +1091,7 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
       </svg><img class="ov" src="assets/selo-garantia.webp" alt="Selo de garantia de 7 dias" width="400" height="400" loading="lazy" decoding="async" onerror="slotErr(this)"></div>
       <div>
         <h2>Risco zero: garantia de 7 dias</h2>
-        <p>Assista, aplique, teste. Se não fizer sentido, você pede e devolvemos cada centavo em até 7 dias. Sem pergunta, sem burocracia. O risco é todo nosso.</p>
+        <p>Assista, baixe a apostila, teste. Se não fizer sentido, você pede e devolvemos cada centavo em até 7 dias. Sem pergunta, sem burocracia. O risco é todo nosso.</p>
       </div>
     </div>
   </div>
@@ -1105,10 +1106,10 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
             <details><summary>Nunca mexi com ar-condicionado. Consigo?</summary><p>Consegue. As +50 videoaulas começam do zero: primeiro você entende como o aparelho gela, depois aprende limpeza, instalação, manutenção e conserto, sempre passo a passo. Pode rever quantas vezes quiser.</p></details>
       <details><summary>Preciso de ferramentas pra começar?</summary><p>Pra assistir, não. Pra atender cliente, algumas sim. O Manual de ferramentas (bônus do Premium) mostra o que comprar primeiro e o que pode esperar, aí você monta o kit aos poucos.</p></details>
       <details><summary>Quanto dá pra cobrar?</summary><p>Limpeza, instalação e manutenção são cobradas por serviço, e cada aparelho é um serviço novo. O Guia de preços de serviços (bônus do Premium) te dá a tabela pronta pra você montar o seu preço e cobrar sem errar pra baixo.</p></details>
-      <details><summary>Como eu acho clientes?</summary><p>O módulo Primeiros clientes (6 aulas, nos dois planos) mostra onde achar os primeiros clientes começando do zero e quanto cobrar no serviço. E no verão a procura explode, então quem já está pronto pega os clientes primeiro.</p></details>
+      <details><summary>Como eu acho clientes?</summary><p>O Guia dos primeiros clientes (bônus do Premium) mostra por onde começar: vizinhos, conhecidos, condomínio e indicação. E no verão a procura explode, então quem já está pronto pega os clientes primeiro.</p></details>
       <details><summary>Funciona sem curso presencial?</summary><p>Funciona. É 100% online, com videoaulas práticas que mostram o serviço sendo feito. Você assiste no celular, no seu ritmo, e o acesso é vitalício.</p></details>
       <details><summary>Tem mesmo gente que vive de ar-condicionado?</summary><p>Limpeza, instalação e manutenção são serviços que muita gente contrata, e tem profissional que faz disso a renda principal. A formação te dá o passo a passo pra você ser o próximo.</p></details>
-      <details><summary>Qual a diferença entre Premium e Básico? Como recebo?</summary><p>O Básico traz as +50 videoaulas, acesso vitalício e entrega imediata por e-mail. O Premium traz tudo do Básico e mais o certificado e os 6 bônus em PDF. Os dois chegam por e-mail logo depois da confirmação do pagamento (no Pix, na hora).</p></details>
+      <details><summary>Qual a diferença entre Premium e Básico? Como recebo?</summary><p>O Básico traz as +50 videoaulas, acesso vitalício e entrega imediata por e-mail. O Premium traz tudo do Básico e mais a apostila completa, o certificado e os 10 bônus. Os dois chegam por e-mail logo depois da confirmação do pagamento (no Pix, na hora).</p></details>
       <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia. Pediu, devolvemos 100% do valor, sem pergunta.</p></details>
     </div>
   </div>
@@ -1142,8 +1143,9 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
     <div class="upun">PAGAMENTO ÚNICO</div>
     <ul>
       <li>+50 videoaulas, acesso vitalício</li>
+      <li>Apostila completa em PDF</li>
       <li>Certificado de conclusão</li>
-      <li>6 bônus (tabela de gases, guia de preços, manual de defeitos...)</li>
+      <li>10 bônus (tabela de gases, guia de preços, primeiros clientes...)</li>
     </ul>
     <a href="https://pay.cakto.com.br/zf6h83w" class="btn pulse caps" data-checkout="promo">Quero o Premium por R$27 <span class="ar">→</span></a>
     <a href="https://pay.cakto.com.br/359euuh" class="upno" data-checkout="basico">Não, quero só as videoaulas por R$10</a>
