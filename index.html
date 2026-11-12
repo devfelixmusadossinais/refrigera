@@ -499,37 +499,71 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
   .upbox,.sticky{transition:none}
 }
 
-/* PRINTS WHATSAPP (MODELO) — estilos isolados do conteúdo existente */
+/* PRINTS WHATSAPP (MODELO) — estilos isolados (prefixo wa-). Tudo em em: 1em = 15px num print de 390px */
 .wa-proof{margin:36px 0 12px;min-width:0}
 .wa-proof h2{font-size:clamp(23px,5.8vw,32px)}
-.wa-rail{position:relative;max-width:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;cursor:grab;touch-action:pan-x pan-y;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;-webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
+.wa-rail{position:relative;max-width:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;cursor:grab;touch-action:pan-x pan-y;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
 .wa-rail::-webkit-scrollbar{display:none}
-.wa-rail:focus-visible{outline:2px solid var(--sol);outline-offset:3px}
 .wa-rail.wa-drag{cursor:grabbing}
-.wa-track{display:flex;gap:18px;align-items:flex-start;padding:22px 8px 30px}
-.wa-shot{flex:0 0 min(270px,74%);min-width:0;aspect-ratio:390/700;container-type:inline-size;background:#ECE5DD;border-radius:26px;overflow:hidden;box-shadow:0 14px 28px -10px rgba(0,0,0,.55);color:#111;text-align:left;font-family:-apple-system,"SF Pro",Roboto,Helvetica,Arial,sans-serif;user-select:none}
-.wa-shot>img{width:100%;height:auto;display:block;-webkit-user-drag:none}
-.wa-screen{display:flex;flex-direction:column;height:179.487cqw;font-size:3.9cqw;line-height:1.3;background:#ECE5DD}
-.wa-status{display:flex;justify-content:space-between;align-items:center;padding:4.6cqw 6cqw 2.4cqw;background:#f6f6f6;font-weight:700;font-size:3.6cqw}
-.wa-signal{display:flex;align-items:center;gap:1.5cqw;font-size:3cqw}
-.wa-bars{width:4cqw;height:3cqw;background:linear-gradient(to right,#111 0 18%,transparent 18% 27%,#111 27% 45%,transparent 45% 54%,#111 54% 72%,transparent 72% 81%,#111 81%);clip-path:polygon(0 65%,18% 65%,18% 45%,45% 45%,45% 25%,72% 25%,72% 0,100% 0,100% 100%,0 100%)}
-.wa-battery{position:relative;display:inline-flex;align-items:center;justify-content:center;min-width:8.5cqw;height:4.4cqw;border:1px solid #777;border-radius:1.2cqw;background:linear-gradient(90deg,var(--battery) var(--level),#ddd var(--level));font-size:2.8cqw;color:#111}
-.wa-battery:after{content:"";position:absolute;left:calc(100% + 1px);width:.6cqw;height:2cqw;border-radius:0 1px 1px 0;background:#777}
-.wa-header{display:flex;gap:2cqw;align-items:center;background:#f6f6f6;border-bottom:1px solid #d5d1cd;padding:2.8cqw 3cqw;color:#007aff}
-.wa-back{display:flex;align-items:center;gap:.4cqw;font-size:4cqw}.wa-back b{font-size:10cqw;line-height:.7;font-weight:400}
-.wa-av{display:block;width:10cqw;height:10cqw;border-radius:50%;overflow:hidden;flex:none}.wa-av svg,.wa-av img{width:100%;height:100%;object-fit:cover}
-.wa-name{flex:1;min-width:0;color:#111;font-size:4cqw;font-weight:600;white-space:nowrap}
-.wa-icon{width:6cqw;height:6cqw;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
-.wa-header .wa-icon{width:5.8cqw;margin-left:1cqw}
-.wa-chat{display:flex;flex:1;min-height:0;flex-direction:column;align-items:flex-start;gap:2.4cqw;padding:4cqw 3.6cqw;background-image:radial-gradient(#bcb1a52b .7px,transparent .9px),radial-gradient(#bcb1a520 .7px,transparent .9px);background-size:6cqw 8cqw;background-position:0 0,3cqw 4cqw}
-.wa-date{align-self:center;background:#f8f7f0e8;border-radius:2cqw;padding:1.2cqw 3cqw;font-size:3cqw;color:#5f6263;box-shadow:0 1px 1px #0001;margin-bottom:2cqw}
-.wa-msg{position:relative;max-width:86%;padding:2.2cqw 2.5cqw 1.2cqw;border-radius:2.2cqw;background:#fff;box-shadow:0 1px 1px #0002;font-size:4cqw;overflow-wrap:anywhere}
-.wa-msg:before{content:"";position:absolute;top:0;left:-1.5cqw;border-top:2.5cqw solid #fff;border-left:2cqw solid transparent}
-.wa-msg.wa-out{align-self:flex-end;background:#D9FDD3}.wa-out:before{left:auto;right:-1.5cqw;border-left:0;border-right:2cqw solid transparent;border-top-color:#D9FDD3}
-.wa-meta{display:flex;align-items:center;justify-content:flex-end;gap:1cqw;margin-top:1cqw;font-size:2.6cqw;line-height:1;color:#808782;white-space:nowrap}.wa-meta b{color:#38b5e5;font-size:3.4cqw;letter-spacing:-.9cqw;padding-right:.9cqw;font-weight:500}
-.wa-audio{display:flex;align-items:center;gap:3cqw;width:65cqw;padding:2cqw 0;color:#89928f}.wa-play{font-size:7cqw;color:#8b9698}.wa-wave{flex:1;height:7cqw;background:repeating-linear-gradient(90deg,#aab3b1 0 2px,transparent 2px 4px);clip-path:polygon(0 40%,10% 25%,20% 45%,30% 0,40% 30%,50% 10%,60% 40%,70% 20%,80% 35%,90% 15%,100% 40%,100% 60%,90% 85%,80% 65%,70% 80%,60% 60%,50% 90%,40% 70%,30% 100%,20% 55%,10% 75%,0 60%)}
-.wa-photo{display:grid;place-items:center;width:65cqw;height:42cqw;border-radius:1.5cqw;background:linear-gradient(140deg,#d4d8d5,#aeb6b3);color:#f8faf9;margin-bottom:2cqw}.wa-photo .wa-icon{width:13cqw;height:13cqw}
-.wa-input{display:flex;align-items:center;gap:3cqw;padding:2.8cqw 3.8cqw 6cqw;background:#f6f6f6;color:#007aff;position:relative}.wa-plus{font-size:8cqw;font-weight:300;line-height:1}.wa-field{display:flex;align-items:center;justify-content:flex-end;flex:1;height:8.5cqw;padding:1cqw 2cqw;background:#fff;border:1px solid #ddd;border-radius:5cqw;color:#8d969d}.wa-field .wa-icon{width:5cqw;height:5cqw}.wa-input:after{content:"";position:absolute;width:34%;height:1.2cqw;border-radius:2cqw;background:#111;bottom:1.8cqw;left:33%}
+.wa-track{display:flex;gap:20px;align-items:flex-start;width:max-content;padding:22px 14px 32px}
+.wa-shot{flex:0 0 min(280px,76vw);width:min(280px,76vw);aspect-ratio:390/830;container-type:inline-size;position:relative;background:#000;border-radius:34px;padding:0;overflow:hidden;box-shadow:0 0 0 3px #1b1b1d,0 0 0 4.5px #3b3b3f,0 22px 44px -14px rgba(0,0,0,.7);margin:0}
+.wa-shot>img{display:block;width:100%;height:auto;-webkit-user-drag:none}
+.wa-screen{position:relative;display:flex;flex-direction:column;height:100%;font-size:calc(100cqw/26);line-height:1.28;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#111;text-align:left;background:#efe7dd;-webkit-font-smoothing:antialiased;user-select:none;-webkit-user-select:none}
+.wa-island{position:absolute;top:.7em;left:50%;width:7.6em;height:2.15em;margin-left:-3.8em;background:#000;border-radius:2em;z-index:3}
+.wa-status{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:.95em 1.9em .35em 2.2em;background:#f6f6f6;font-weight:600;font-size:1.02em;letter-spacing:-.01em}
+.wa-status .wa-sr{display:flex;align-items:center;gap:.38em;font-size:.95em}
+.wa-sig{display:flex;align-items:flex-end;gap:.11em;height:.85em}.wa-sig i{display:block;width:.2em;background:#000;border-radius:.05em}.wa-sig i:nth-child(1){height:.3em}.wa-sig i:nth-child(2){height:.5em}.wa-sig i:nth-child(3){height:.68em}.wa-sig i:nth-child(4){height:.85em}.wa-sig i.off{background:rgba(0,0,0,.25)}
+.wa-net{font-size:.86em;font-weight:700;letter-spacing:-.02em}
+.wa-bat{position:relative;display:inline-block;width:2.05em;height:1em;border-radius:.3em;background:rgba(0,0,0,.2);overflow:hidden;margin-right:.15em}
+.wa-bat:after{content:"";position:absolute;right:-.2em;top:.3em;width:.12em;height:.4em;border-radius:0 .1em .1em 0;background:rgba(0,0,0,.35)}
+.wa-bat i{position:absolute;left:0;top:0;bottom:0;width:var(--lv);background:#000;border-radius:.3em}
+.wa-bat.low i{background:#ff3b30}.wa-bat.chg i{background:#30d158}
+.wa-bat b{position:relative;display:block;text-align:center;font-size:.72em;line-height:1.4em;font-weight:700;letter-spacing:-.03em;color:transparent;background:linear-gradient(90deg,#fff var(--lv),#000 var(--lv));-webkit-background-clip:text;background-clip:text}
+.wa-head{display:flex;align-items:center;gap:.55em;padding:.45em .9em .55em .55em;background:#f6f6f6;border-bottom:1px solid #d9d9d9;position:relative;z-index:2}
+.wa-back{display:flex;align-items:center;color:#007aff;font-size:1.05em;margin-right:-.1em}
+.wa-back svg{width:.75em;height:1.2em}.wa-back b{font-weight:400;margin-left:-.1em}
+.wa-av{flex:none;width:2.45em;height:2.45em;border-radius:50%;object-fit:cover;background:#c9c9c9;display:block}
+.wa-who{flex:1;min-width:0;line-height:1.15}.wa-who b{display:block;font-size:1.05em;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.wa-who span{display:block;font-size:.78em;color:#6d6d72;white-space:nowrap}
+.wa-hi{display:flex;gap:1.25em;color:#007aff}.wa-hi svg{width:1.55em;height:1.55em}
+.wa-chat{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:flex-end;gap:.22em;padding:.6em .6em .5em;overflow:hidden;background-color:#efe7dd;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220' fill='none' stroke='%23c9bdab' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' opacity='.55'><path d='M26 30c-6-7-16 1-9 9l9 8 9-8c7-8-3-16-9-9z'/><circle cx='96' cy='24' r='9'/><path d='M91 24h10M96 19v10'/><path d='M158 18l4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1z'/><rect x='188' y='64' width='20' height='34' rx='4'/><path d='M194 91h8'/><path d='M30 86h30a6 6 0 016 6v14a6 6 0 01-6 6H44l-8 8v-8h-6a6 6 0 01-6-6V92a6 6 0 016-6z'/><path d='M104 84l30-8-9 28-6-11z'/><path d='M119 93l-5 12'/><path d='M164 130c0-10 14-10 14 0 0 10-14 10-14 0z'/><path d='M171 120v-9M171 139v9M162 125l-8-5M180 125l8-5'/><rect x='22' y='148' width='34' height='24' rx='5'/><circle cx='39' cy='160' r='7'/><path d='M30 148l3-5h12l3 5'/><path d='M92 172l12-3v26M104 169l10 3'/><circle cx='88' cy='196' r='5'/><circle cx='100' cy='194' r='5'/><path d='M136 186c8-12 18-12 26 0'/><circle cx='149' cy='176' r='3'/><path d='M190 150l8 14-8 14-8-14z'/><circle cx='200' cy='198' r='7'/></svg>");background-size:15.5em}
+.wa-date{align-self:center;margin:.55em 0 .35em;padding:.28em .75em;border-radius:.6em;background:rgba(255,255,255,.92);color:#5f6b72;font-size:.74em;box-shadow:0 1px 1px rgba(0,0,0,.08);text-transform:none}
+.wa-b{position:relative;max-width:82%;width:fit-content;padding:.36em .6em .3em;border-radius:.65em;font-size:1.02em;line-height:1.28;box-shadow:0 1px .5px rgba(0,0,0,.13);word-wrap:break-word;overflow-wrap:anywhere}
+.wa-b.in{align-self:flex-start;background:#fff;border-top-left-radius:.15em}
+.wa-b.out{align-self:flex-end;background:#d9fdd3;border-top-right-radius:.15em}
+.wa-b.tail.in:before{content:"";position:absolute;left:-.42em;top:0;width:.55em;height:.7em;background:#fff;clip-path:polygon(100% 0,0 0,100% 100%)}
+.wa-b.tail.out:before{content:"";position:absolute;right:-.42em;top:0;width:.55em;height:.7em;background:#d9fdd3;clip-path:polygon(0 0,100% 0,0 100%)}
+.wa-t{float:right;margin:.55em 0 -.15em .7em;font-size:.68em;color:#667781;display:inline-flex;align-items:center;gap:.25em;line-height:1;position:relative;top:.35em}
+.wa-ck{width:1.25em;height:.8em}
+.wa-q{display:block;margin:-.05em 0 .3em;padding:.3em .5em;border-left:.28em solid #06cf9c;border-radius:.3em;background:rgba(0,0,0,.055);font-size:.92em;line-height:1.25}
+.wa-b.in .wa-q{border-left-color:#a35ee5}.wa-q b{display:block;font-size:.9em;color:#06a37e}.wa-b.in .wa-q b{color:#8a45cf}.wa-q span{display:block;color:#54656f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:12em}
+.wa-img{padding:.2em;width:15.2em}
+.wa-img img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:.5em}
+.wa-img.land img{aspect-ratio:16/11}
+.wa-img .wa-cap{display:block;padding:.35em .35em 0;line-height:1.28}
+.wa-img .wa-t{margin-right:.2em}
+.wa-img.nocap .wa-t{position:absolute;right:.7em;bottom:.5em;margin:0;top:auto;color:#fff;text-shadow:0 0 3px rgba(0,0,0,.65);background:linear-gradient(transparent,transparent)}
+.wa-img.nocap .wa-t svg path{stroke:#53bdeb}
+.wa-au{display:flex;align-items:center;gap:.6em;padding:.45em .55em .3em .45em;width:15.4em;max-width:84%}
+.wa-au .wa-mic{position:relative;flex:none;width:2.7em;height:2.7em}
+.wa-au .wa-mic img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
+.wa-au .wa-mic:after{content:"";position:absolute;right:-.15em;bottom:-.1em;width:1.1em;height:1.1em;border-radius:50%;background:#53bdeb url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'><path d='M12 15a3 3 0 003-3V6a3 3 0 10-6 0v6a3 3 0 003 3zm5-3a5 5 0 01-10 0H5a7 7 0 006 6.9V22h2v-3.1A7 7 0 0019 12z'/></svg>") center/62% no-repeat}
+.wa-au.me .wa-mic:after{display:none}
+.wa-play{flex:none;width:1.5em;height:1.5em;color:#667781}
+.wa-wave{flex:1;min-width:0;position:relative;display:flex;align-items:center;gap:.14em;height:1.7em}
+.wa-wave i{display:block;flex:1;min-width:.14em;background:#aab4ba;border-radius:.1em}
+.wa-wave i.p{background:#53bdeb}
+.wa-wave u{position:absolute;left:var(--pp,0%);top:50%;width:.85em;height:.85em;margin:-.42em 0 0 -.2em;border-radius:50%;background:#53bdeb;box-shadow:0 1px 2px rgba(0,0,0,.3)}
+.wa-wave u.new{background:#06cf9c}
+.wa-dur{display:block;font-size:.68em;color:#667781;margin-top:.1em}
+.wa-aurow{display:flex;justify-content:space-between;align-items:center}
+.wa-aurow .wa-t{float:none;top:0;margin:0}
+.wa-foot{display:flex;align-items:center;gap:.7em;padding:.5em .7em .35em .6em;background:#f6f6f6;border-top:1px solid #dcdcdc}
+.wa-plus{color:#007aff;font-size:1.9em;line-height:.7;font-weight:300;width:.7em;text-align:center}
+.wa-field{flex:1;display:flex;align-items:center;justify-content:flex-end;gap:.6em;height:2.15em;padding:0 .7em;border:1px solid #d1d1d6;border-radius:1.2em;background:#fff;color:#8a8a8e}
+.wa-field svg{width:1.35em;height:1.35em}
+.wa-foot>svg{width:1.45em;height:1.45em;color:#007aff;flex:none}
+.wa-home{height:1.5em;background:#f6f6f6;display:flex;justify-content:center;align-items:flex-start}
+.wa-home i{display:block;width:10em;height:.34em;border-radius:1em;background:#111;margin-top:.45em}
 </style>
   
 <script type="text/javascript">
@@ -793,74 +827,170 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
     </div>
     <figure class="prova-foto rv"><img src="assets/prova-alunos.webp" alt="Alunos mostrando o certificado de conclusão do curso" width="1400" height="717" loading="lazy" decoding="async"></figure>
     <!-- PRINTS WHATSAPP (MODELO)
-    Substituição: cada <figure class="wa-shot"> pode ser trocado por
-    <figure class="wa-shot"><img src="assets/print-real.webp" alt="Conversa autorizada de aluno" width="390" height="700" loading="lazy" decoding="async"></figure>.
-    Manter a classe wa-shot e substituir antes de subir anúncio.
+    8 conversas INVENTADAS (nomes, mensagens, hora, bateria, avatares e fotos de serviço são exemplos).
+    TROCAR por prints reais autorizados antes de subir anúncio:
+      - print real: substituir cada <figure class="wa-shot"> por
+        <figure class="wa-shot"><img src="assets/print-real.webp" alt="Conversa autorizada de aluno" width="390" height="830" loading="lazy" decoding="async"></figure>
+      - fotos dos contatos: assets/avatares/*.webp (recortes do assets/prova-alunos.webp)
+      - fotos de serviço enviadas no chat: assets/prints/foto-1..5.webp (quadros dos vídeos de fundo)
+    O carrossel anda sozinho (JS no fim do body) e dá pra arrastar; pausa ao tocar.
     -->
-    <!-- MODELO (EXEMPLO): trocar por print real de aluno antes de subir anúncio. Nome, mensagens, hora e bateria são inventados. -->
     <div class="wa-proof">
       <h2>Mensagens que chegam pra gente</h2>
       <p class="lead">Arrasta pro lado e vê</p>
-      <div class="wa-rail" tabindex="0" role="region" aria-label="Mensagens de WhatsApp" aria-roledescription="carrossel">
-        <div class="wa-track">
-      <!-- MODELO (EXEMPLO): trocar por print real de aluno antes de subir anúncio. Nome, mensagens, hora e bateria são inventados. -->
-      <figure class="wa-shot" aria-label="Conversa com Jorge Pedreiro"><div class="wa-screen">
-        <div class="wa-status"><span>06:42</span><span class="wa-signal"><i class="wa-bars" aria-hidden="true"></i>4G <span class="wa-battery" style="--battery:#e8504f;--level:12%">12%</span></span></div>
-        <div class="wa-header"><span class="wa-back"><b>‹</b>1</span><!-- Trocar o SVG por <img src="assets/avatares/jorge.jpg" alt=""> quando houver foto real. --><span class="wa-av"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="#b8c9c6"/><path d="M7 64q1-21 25-21t25 21" fill="#3f5d71"/><path d="M26 39h12v12H26" fill="#b57d55"/><ellipse cx="32" cy="29" rx="16" ry="19" fill="#b57d55"/><path d="M13 25a19 19 0 0 1 38 0v3H11v-4h9V10h6v14h12V10h6v14h9v4H11" fill="#e7b63b"/><path d="M26 36q6 4 12 0" fill="none" stroke="#704b3c" stroke-width="1.5"/><circle cx="26" cy="28" r="1"/><circle cx="38" cy="28" r="1"/></svg></span><span class="wa-name">Jorge Pedreiro</span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="13" height="12" rx="3"/><path d="m15 10 7-4v12l-7-4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3 2 6c0 8 8 16 16 16l3-3-5-4-3 2a17 17 0 0 1-6-6l2-3Z"/></svg></div>
-        <div class="wa-chat"><span class="wa-date">qui., 28 de nov.</span><div class="wa-msg">fiz minha primeira limpeza sozinho<span class="wa-meta">06:35</span></div><div class="wa-msg">valeu<span class="wa-meta">06:36</span></div><div class="wa-msg wa-out">show 👏<span class="wa-meta">06:42<b aria-label="Lida">✓✓</b></span></div></div>
-        <div class="wa-input" aria-hidden="true"><span class="wa-plus">+</span><span class="wa-field"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14V4H4v16h10Zm0 0h-6v6"/></svg></span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 2-3h4l2 3h5v15H3V5Z"/><circle cx="12" cy="12" r="4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></svg></div>
-      </div></figure>
-      <!-- MODELO (EXEMPLO): trocar por print real de aluno antes de subir anúncio. Nome, mensagens, hora e bateria são inventados. -->
-      <figure class="wa-shot" aria-label="Conversa com Dani Eletricista"><div class="wa-screen">
-        <div class="wa-status"><span>10:08</span><span class="wa-signal"><i class="wa-bars" aria-hidden="true"></i>4G <span class="wa-battery" style="--battery:#efc644;--level:34%">34%</span></span></div>
-        <div class="wa-header"><span class="wa-back"><b>‹</b>2</span><!-- Trocar o SVG por <img src="assets/avatares/dani.jpg" alt=""> quando houver foto real. --><span class="wa-av"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="#e9c9b7"/><path d="M7 64q1-21 25-21t25 21" fill="#595042"/><path d="M26 39h12v12H26" fill="#d49b72"/><ellipse cx="32" cy="29" rx="16" ry="19" fill="#d49b72"/><path d="M12 49V28Q12 7 32 8q20 0 20 20v24l-10-5V29H22v22Z" fill="#41312c"/><path d="M26 36q6 4 12 0" fill="none" stroke="#704b3c" stroke-width="1.5"/><circle cx="26" cy="28" r="1"/><circle cx="38" cy="28" r="1"/></svg></span><span class="wa-name">Dani Eletricista</span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="13" height="12" rx="3"/><path d="m15 10 7-4v12l-7-4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3 2 6c0 8 8 16 16 16l3-3-5-4-3 2a17 17 0 0 1-6-6l2-3Z"/></svg></div>
-        <div class="wa-chat"><span class="wa-date">seg., 25 de nov.</span><div class="wa-msg">o cliente da obra pediu e eu já sabia<span class="wa-meta">09:51</span></div><div class="wa-msg">kkk<span class="wa-meta">09:52</span></div><div class="wa-msg wa-out">show<span class="wa-meta">10:00<b aria-label="Lida">✓✓</b></span></div><div class="wa-msg">valeu 🙏<span class="wa-meta">10:08</span></div></div>
-        <div class="wa-input" aria-hidden="true"><span class="wa-plus">+</span><span class="wa-field"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14V4H4v16h10Zm0 0h-6v6"/></svg></span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 2-3h4l2 3h5v15H3V5Z"/><circle cx="12" cy="12" r="4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></svg></div>
-      </div></figure>
-      <!-- MODELO (EXEMPLO): trocar por print real de aluno antes de subir anúncio. Nome, mensagens, hora e bateria são inventados. -->
-      <figure class="wa-shot" aria-label="Conversa com Marcão"><div class="wa-screen">
-        <div class="wa-status"><span>13:27</span><span class="wa-signal"><i class="wa-bars" aria-hidden="true"></i>4G <span class="wa-battery" style="--battery:#5cc66a;--level:58%">58%</span></span></div>
-        <div class="wa-header"><span class="wa-back"><b>‹</b>3</span><!-- Trocar o SVG por <img src="assets/avatares/marcao.jpg" alt=""> quando houver foto real. --><span class="wa-av"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="#b9c8df"/><path d="M7 64q1-21 25-21t25 21" fill="#54685a"/><path d="M26 39h12v12H26" fill="#8c573c"/><ellipse cx="32" cy="29" rx="16" ry="19" fill="#8c573c"/><path d="M13 26Q15 5 35 10q15 1 16 17H13m25-2h20v5H38" fill="#302824"/><path d="M26 36q6 4 12 0" fill="none" stroke="#704b3c" stroke-width="1.5"/><circle cx="26" cy="28" r="1"/><circle cx="38" cy="28" r="1"/></svg></span><span class="wa-name">Marcão</span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="13" height="12" rx="3"/><path d="m15 10 7-4v12l-7-4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3 2 6c0 8 8 16 16 16l3-3-5-4-3 2a17 17 0 0 1-6-6l2-3Z"/></svg></div>
-        <div class="wa-chat"><span class="wa-date">ter., 26 de nov.</span><div class="wa-msg">a aula do manifold me salvou<span class="wa-meta">13:20</span></div><div class="wa-msg">mano<span class="wa-meta">13:21</span></div><div class="wa-msg">valeu<span class="wa-meta">13:22</span></div><div class="wa-msg wa-out">show 👏<span class="wa-meta">13:27<b aria-label="Lida">✓✓</b></span></div></div>
-        <div class="wa-input" aria-hidden="true"><span class="wa-plus">+</span><span class="wa-field"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14V4H4v16h10Zm0 0h-6v6"/></svg></span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 2-3h4l2 3h5v15H3V5Z"/><circle cx="12" cy="12" r="4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></svg></div>
-      </div></figure>
-      <!-- MODELO (EXEMPLO): trocar por print real de aluno antes de subir anúncio. Nome, mensagens, hora e bateria são inventados. -->
-      <figure class="wa-shot" aria-label="Conversa com Cleiton S."><div class="wa-screen">
-        <div class="wa-status"><span>19:55</span><span class="wa-signal"><i class="wa-bars" aria-hidden="true"></i>4G <span class="wa-battery" style="--battery:#5cc66a;--level:73%">73%</span></span></div>
-        <div class="wa-header"><span class="wa-back"><b>‹</b>4</span><!-- Trocar o SVG por <img src="assets/avatares/cleiton.jpg" alt=""> quando houver foto real. --><span class="wa-av"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="#cfceb1"/><path d="M7 64q1-21 25-21t25 21" fill="#87594e"/><path d="M26 39h12v12H26" fill="#9f6d4a"/><ellipse cx="32" cy="29" rx="16" ry="19" fill="#9f6d4a"/><path d="M16 26Q14 8 33 9q17 0 17 18L38 20l-22 6" fill="#242524"/><path d="M26 36q6 4 12 0" fill="none" stroke="#704b3c" stroke-width="1.5"/><circle cx="26" cy="28" r="1"/><circle cx="38" cy="28" r="1"/></svg></span><span class="wa-name">Cleiton S.</span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="13" height="12" rx="3"/><path d="m15 10 7-4v12l-7-4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3 2 6c0 8 8 16 16 16l3-3-5-4-3 2a17 17 0 0 1-6-6l2-3Z"/></svg></div>
-        <div class="wa-chat"><span class="wa-date">qua., 27 de nov.</span><div class="wa-msg">peguei 3 serviços no prédio do meu cliente<span class="wa-meta">19:40</span></div><div class="wa-msg">paguei o curso com o primeiro serviço<span class="wa-meta">19:42</span></div><div class="wa-msg wa-out">show<span class="wa-meta">19:55<b aria-label="Lida">✓✓</b></span></div></div>
-        <div class="wa-input" aria-hidden="true"><span class="wa-plus">+</span><span class="wa-field"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14V4H4v16h10Zm0 0h-6v6"/></svg></span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 2-3h4l2 3h5v15H3V5Z"/><circle cx="12" cy="12" r="4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></svg></div>
-      </div></figure>
-      <!-- MODELO (EXEMPLO): trocar por print real de aluno antes de subir anúncio. Nome, mensagens, hora e bateria são inventados. -->
-      <figure class="wa-shot" aria-label="Conversa com Beto Pintor"><div class="wa-screen">
-        <div class="wa-status"><span>22:14</span><span class="wa-signal"><i class="wa-bars" aria-hidden="true"></i>4G <span class="wa-battery" style="--battery:#5cc66a;--level:91%">91%</span></span></div>
-        <div class="wa-header"><span class="wa-back"><b>‹</b>5</span><!-- Trocar o SVG por <img src="assets/avatares/beto.jpg" alt=""> quando houver foto real. --><span class="wa-av"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="#d2bdd8"/><path d="M7 64q1-21 25-21t25 21" fill="#4d566d"/><path d="M26 39h12v12H26" fill="#e3b18a"/><ellipse cx="32" cy="29" rx="16" ry="19" fill="#e3b18a"/><path d="M13 26Q15 5 35 10q15 1 16 17H13m25-2h20v5H38" fill="#635044"/><path d="M26 36q6 4 12 0" fill="none" stroke="#704b3c" stroke-width="1.5"/><circle cx="26" cy="28" r="1"/><circle cx="38" cy="28" r="1"/></svg></span><span class="wa-name">Beto Pintor</span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="13" height="12" rx="3"/><path d="m15 10 7-4v12l-7-4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3 2 6c0 8 8 16 16 16l3-3-5-4-3 2a17 17 0 0 1-6-6l2-3Z"/></svg></div>
-        <div class="wa-chat"><span class="wa-date">ontem</span><div class="wa-msg">mostrei pro meu patrão<span class="wa-meta">22:01</span></div><div class="wa-msg"><div class="wa-audio" aria-label="Mensagem de áudio de 0:18"><span class="wa-play" aria-hidden="true">▶</span><span class="wa-wave" aria-hidden="true"></span><span>0:18</span></div><span class="wa-meta">22:03</span></div><div class="wa-msg wa-out">valeu<span class="wa-meta">22:14<b aria-label="Lida">✓✓</b></span></div></div>
-        <div class="wa-input" aria-hidden="true"><span class="wa-plus">+</span><span class="wa-field"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14V4H4v16h10Zm0 0h-6v6"/></svg></span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 2-3h4l2 3h5v15H3V5Z"/><circle cx="12" cy="12" r="4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></svg></div>
-      </div></figure>
-      <!-- MODELO (EXEMPLO): trocar por print real de aluno antes de subir anúncio. Nome, mensagens, hora e bateria são inventados. -->
-      <figure class="wa-shot" aria-label="Conversa com Rafa Eletrônica"><div class="wa-screen">
-        <div class="wa-status"><span>08:36</span><span class="wa-signal"><i class="wa-bars" aria-hidden="true"></i>4G <span class="wa-battery" style="--battery:#5cc66a;--level:100%">100%⚡</span></span></div>
-        <div class="wa-header"><span class="wa-back"><b>‹</b>6</span><!-- Trocar o SVG por <img src="assets/avatares/rafa.jpg" alt=""> quando houver foto real. --><span class="wa-av"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="#c1d4b7"/><path d="M7 64q1-21 25-21t25 21" fill="#476e74"/><path d="M26 39h12v12H26" fill="#b7825d"/><ellipse cx="32" cy="29" rx="16" ry="19" fill="#b7825d"/><path d="M16 26Q14 8 33 9q17 0 17 18L38 20l-22 6" fill="#3b2a23"/><path d="M26 36q6 4 12 0" fill="none" stroke="#704b3c" stroke-width="1.5"/><circle cx="26" cy="28" r="1"/><circle cx="38" cy="28" r="1"/></svg></span><span class="wa-name">Rafa Eletrônica</span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="13" height="12" rx="3"/><path d="m15 10 7-4v12l-7-4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3 2 6c0 8 8 16 16 16l3-3-5-4-3 2a17 17 0 0 1-6-6l2-3Z"/></svg></div>
-        <div class="wa-chat"><span class="wa-date">hoje</span><div class="wa-msg">minha esposa não acreditou<span class="wa-meta">08:25</span></div><div class="wa-msg"><div class="wa-audio" aria-label="Mensagem de áudio de 0:32"><span class="wa-play" aria-hidden="true">▶</span><span class="wa-wave" aria-hidden="true"></span><span>0:32</span></div><span class="wa-meta">08:28</span></div><div class="wa-msg">kkk<span class="wa-meta">08:30</span></div><div class="wa-msg wa-out">show<span class="wa-meta">08:36<b aria-label="Lida">✓✓</b></span></div></div>
-        <div class="wa-input" aria-hidden="true"><span class="wa-plus">+</span><span class="wa-field"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14V4H4v16h10Zm0 0h-6v6"/></svg></span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 2-3h4l2 3h5v15H3V5Z"/><circle cx="12" cy="12" r="4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></svg></div>
-      </div></figure>
-      <!-- MODELO (EXEMPLO): trocar por print real de aluno antes de subir anúncio. Nome, mensagens, hora e bateria são inventados. -->
-      <figure class="wa-shot" aria-label="Conversa com Nando Faz-tudo"><div class="wa-screen">
-        <div class="wa-status"><span>16:49</span><span class="wa-signal"><i class="wa-bars" aria-hidden="true"></i>4G <span class="wa-battery" style="--battery:#efc644;--level:23%">23%</span></span></div>
-        <div class="wa-header"><span class="wa-back"><b>‹</b>7</span><!-- Trocar o SVG por <img src="assets/avatares/nando.jpg" alt=""> quando houver foto real. --><span class="wa-av"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="#decbb0"/><path d="M7 64q1-21 25-21t25 21" fill="#6d6651"/><path d="M26 39h12v12H26" fill="#794c35"/><ellipse cx="32" cy="29" rx="16" ry="19" fill="#794c35"/><path d="M13 25a19 19 0 0 1 38 0v3H11v-4h9V10h6v14h12V10h6v14h9v4H11" fill="#e7b63b"/><path d="M26 36q6 4 12 0" fill="none" stroke="#704b3c" stroke-width="1.5"/><circle cx="26" cy="28" r="1"/><circle cx="38" cy="28" r="1"/></svg></span><span class="wa-name">Nando Faz-tudo</span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="13" height="12" rx="3"/><path d="m15 10 7-4v12l-7-4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3 2 6c0 8 8 16 16 16l3-3-5-4-3 2a17 17 0 0 1-6-6l2-3Z"/></svg></div>
-        <div class="wa-chat"><span class="wa-date">sex., 22 de nov.</span><div class="wa-msg"><div class="wa-photo" role="img" aria-label="Foto do serviço feito"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="18" rx="2"/><circle cx="8" cy="9" r="2"/><path d="m3 18 6-5 4 3 4-5 5 7"/></svg></div><span class="wa-meta">16:30</span></div><div class="wa-msg">fiz minha primeira limpeza sozinho<span class="wa-meta">16:31</span></div><div class="wa-msg wa-out">valeu 🙏<span class="wa-meta">16:49<b aria-label="Lida">✓✓</b></span></div></div>
-        <div class="wa-input" aria-hidden="true"><span class="wa-plus">+</span><span class="wa-field"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14V4H4v16h10Zm0 0h-6v6"/></svg></span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 2-3h4l2 3h5v15H3V5Z"/><circle cx="12" cy="12" r="4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></svg></div>
-      </div></figure>
-      <!-- MODELO (EXEMPLO): trocar por print real de aluno antes de subir anúncio. Nome, mensagens, hora e bateria são inventados. -->
-      <figure class="wa-shot" aria-label="Conversa com Tiago Ajudante"><div class="wa-screen">
-        <div class="wa-status"><span>11:17</span><span class="wa-signal"><i class="wa-bars" aria-hidden="true"></i>4G <span class="wa-battery" style="--battery:#5cc66a;--level:46%">46%</span></span></div>
-        <div class="wa-header"><span class="wa-back"><b>‹</b>8</span><!-- Trocar o SVG por <img src="assets/avatares/tiago.jpg" alt=""> quando houver foto real. --><span class="wa-av"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="#b9d5da"/><path d="M7 64q1-21 25-21t25 21" fill="#635578"/><path d="M26 39h12v12H26" fill="#c38b60"/><ellipse cx="32" cy="29" rx="16" ry="19" fill="#c38b60"/><path d="M15 28q-9-10 2-13 0-10 10-7 9-8 15 1 13-2 12 10 6 10-5 11l-5-10-22 2Z" fill="#4d3529"/><path d="M26 36q6 4 12 0" fill="none" stroke="#704b3c" stroke-width="1.5"/><circle cx="26" cy="28" r="1"/><circle cx="38" cy="28" r="1"/></svg></span><span class="wa-name">Tiago Ajudante</span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="13" height="12" rx="3"/><path d="m15 10 7-4v12l-7-4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3 2 6c0 8 8 16 16 16l3-3-5-4-3 2a17 17 0 0 1-6-6l2-3Z"/></svg></div>
-        <div class="wa-chat"><span class="wa-date">sáb., 23 de nov.</span><div class="wa-msg"><div class="wa-photo" role="img" aria-label="Foto do serviço feito"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="18" rx="2"/><circle cx="8" cy="9" r="2"/><path d="m3 18 6-5 4 3 4-5 5 7"/></svg></div><span class="wa-meta">11:02</span></div><div class="wa-msg">chegou o calor e o telefone não para<span class="wa-meta">11:05</span></div><div class="wa-msg wa-out">show<span class="wa-meta">11:17<b aria-label="Lida">✓✓</b></span></div></div>
-        <div class="wa-input" aria-hidden="true"><span class="wa-plus">+</span><span class="wa-field"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14V4H4v16h10Zm0 0h-6v6"/></svg></span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 2-3h4l2 3h5v15H3V5Z"/><circle cx="12" cy="12" r="4"/></svg><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></svg></div>
-      </div></figure>
+      <div class="wa-rail" data-wacar tabindex="0" aria-label="Carrossel de mensagens de alunos"><div class="wa-track">
+      <!-- MODELO (EXEMPLO): trocar por print real de aluno antes de subir anúncio. Nome, mensagens, hora, bateria e foto são inventados. -->
+      <figure class="wa-shot"><div class="wa-screen" role="img" aria-label="Conversa de WhatsApp com Jorge Pedreiro">
+        <span class="wa-island"></span>
+        <div class="wa-status"><span>10:42</span><span class="wa-sr"><span class='wa-sig' aria-hidden='true'><i></i><i></i><i></i><i></i></span><span class="wa-net">5G</span><span class='wa-bat' style='--lv:58%'><i></i><b>58</b></span></span></div>
+        <div class="wa-head"><span class="wa-back"><svg viewBox='0 0 12 20' fill='none' stroke='currentColor' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'><path d='M10 2L2 10l8 8'/></svg><b>2</b></span><img class="wa-av" src="assets/avatares/jorge.webp" alt="" width="96" height="96" loading="lazy" decoding="async"><span class="wa-who"><b>Jorge Pedreiro</b><span>online</span></span><span class="wa-hi"><svg viewBox='0 0 28 20' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linejoin='round' aria-hidden='true'><rect x='1.5' y='3' width='17' height='14' rx='3.5'/><path d='M19.5 8.5l6-3.4v9.8l-6-3.4z'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M6.6 3.5l2.5 4.1-1.7 1.7a12 12 0 006.8 6.8l1.7-1.7 4.1 2.5-.6 2.5c-.2.8-.9 1.3-1.7 1.3C10.4 20.4 3.6 13.6 3.6 5.8c0-.8.5-1.5 1.3-1.7z'/></svg></span></div>
+        <div class="wa-chat">
+          <span class="wa-date">hoje</span>
+          <div class="wa-b out tail">Bom dia, Jorge! Conseguiu assistir as aulas?<span class="wa-t">10:32<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
+          <div class="wa-b in tail">Opa, bom dia chefe<span class="wa-t">10:33</span></div>
+          <div class="wa-b in">Tudo certo por aqui 🙌<span class="wa-t">10:34</span></div>
+          <div class="wa-b in">Comprei o curso ontem à noite e já assisti 3 aulas kkk<span class="wa-t">10:36</span></div>
+          <div class="wa-b in">Hoje fui num cliente da obra e o ar da sala tava pingando<span class="wa-t">10:36</span></div>
+          <div class="wa-b wa-img in"><img src="assets/prints/foto-1.webp" alt="" loading="lazy" decoding="async"><span class="wa-cap">olha como tava por dentro 😅<span class="wa-t">10:36</span></span></div>
+          <div class="wa-b out tail">Show, Jorge! Fez do jeito que mostra na aula?<span class="wa-t">10:38<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
+          <div class="wa-b in tail">Fiz o passo a passo todinho. Ficou gelando que nem novo<span class="wa-t">10:39</span></div>
+          <div class="wa-b in">O cliente ficou de boca aberta kkk<span class="wa-t">10:40</span></div>
+          <div class="wa-b out tail">Isso aí 👏👏 Agora é pegar confiança<span class="wa-t">10:41<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
         </div>
-      </div>
+        <div class="wa-foot"><span class="wa-plus">+</span><span class="wa-field"><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M4 5h10l6 6v8H4z'/><path d='M14 5v6h6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M3 8h4l1.6-2.4h6.8L17 8h4v11H3z'/><circle cx='12' cy='13' r='3.6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' aria-hidden='true'><rect x='9' y='3' width='6' height='11' rx='3'/><path d='M5.5 11.5a6.5 6.5 0 0013 0M12 18v3'/></svg></span></div>
+        <div class="wa-home"><i></i></div>
+      </div></figure>
+      <!-- MODELO (EXEMPLO): trocar por print real de aluno antes de subir anúncio. Nome, mensagens, hora, bateria e foto são inventados. -->
+      <figure class="wa-shot"><div class="wa-screen" role="img" aria-label="Conversa de WhatsApp com Dani Eletricista">
+        <span class="wa-island"></span>
+        <div class="wa-status"><span>22:14</span><span class="wa-sr"><span class='wa-sig' aria-hidden='true'><i></i><i></i><i></i><i class=off></i></span><span class="wa-net">4G</span><span class='wa-bat low' style='--lv:12%'><i></i><b>12</b></span></span></div>
+        <div class="wa-head"><span class="wa-back"><svg viewBox='0 0 12 20' fill='none' stroke='currentColor' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'><path d='M10 2L2 10l8 8'/></svg><b>1</b></span><img class="wa-av" src="assets/avatares/dani.webp" alt="" width="96" height="96" loading="lazy" decoding="async"><span class="wa-who"><b>Dani Eletricista</b><span>gravando áudio…</span></span><span class="wa-hi"><svg viewBox='0 0 28 20' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linejoin='round' aria-hidden='true'><rect x='1.5' y='3' width='17' height='14' rx='3.5'/><path d='M19.5 8.5l6-3.4v9.8l-6-3.4z'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M6.6 3.5l2.5 4.1-1.7 1.7a12 12 0 006.8 6.8l1.7-1.7 4.1 2.5-.6 2.5c-.2.8-.9 1.3-1.7 1.3C10.4 20.4 3.6 13.6 3.6 5.8c0-.8.5-1.5 1.3-1.7z'/></svg></span></div>
+        <div class="wa-chat">
+          <span class="wa-date">ontem</span>
+          <div class="wa-b out tail">Oi Dani! Vi que você terminou o módulo 3 hoje 👏<span class="wa-t">22:02<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
+          <div class="wa-b in tail">Boa noite! Posso mandar áudio? Tô sem paciência de digitar kkk<span class="wa-t">22:04</span></div>
+          <div class="wa-b out tail">Pode sim, manda!<span class="wa-t">22:06<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
+          <div class="wa-b wa-au in tail"><span class="wa-mic"><img src="assets/avatares/dani.webp" alt=""></span><svg class='wa-play' viewBox='0 0 24 24' fill='currentColor' aria-hidden='true'><path d='M7 4.5v15l13-7.5z'/></svg><span style="flex:1;min-width:0"><span class="wa-wave"><i style='height:82%'></i><i style='height:23%'></i><i style='height:44%'></i><i style='height:21%'></i><i style='height:19%'></i><i style='height:73%'></i><i style='height:23%'></i><i style='height:29%'></i><i style='height:50%'></i><i style='height:20%'></i><i style='height:18%'></i><i style='height:42%'></i><i style='height:47%'></i><i style='height:18%'></i><i style='height:66%'></i><i style='height:89%'></i><i style='height:125%'></i><i style='height:93%'></i><i style='height:78%'></i><i style='height:40%'></i><i style='height:29%'></i><i style='height:29%'></i><i style='height:27%'></i><i style='height:60%'></i><i style='height:39%'></i><i style='height:21%'></i><i style='height:90%'></i><i style='height:33%'></i><i style='height:35%'></i><i style='height:39%'></i><u class="new"></u></span><span class="wa-aurow"><span class="wa-dur">0:47</span><span class="wa-t">22:06</span></span></span></div>
+          <div class="wa-b in">Resumindo: sou eletricista e o povo da obra sempre pedia ar-condicionado e eu dizia que não fazia<span class="wa-t">22:07</span></div>
+          <div class="wa-b in">Agora eu faço 😎<span class="wa-t">22:09</span></div>
+          <div class="wa-b out tail">Que orgulho! Qual aula te ajudou mais?<span class="wa-t">22:11<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
+          <div class="wa-b in tail">A do vácuo e a do manifold. Antes eu travava aí<span class="wa-t">22:12</span></div>
+        </div>
+        <div class="wa-foot"><span class="wa-plus">+</span><span class="wa-field"><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M4 5h10l6 6v8H4z'/><path d='M14 5v6h6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M3 8h4l1.6-2.4h6.8L17 8h4v11H3z'/><circle cx='12' cy='13' r='3.6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' aria-hidden='true'><rect x='9' y='3' width='6' height='11' rx='3'/><path d='M5.5 11.5a6.5 6.5 0 0013 0M12 18v3'/></svg></span></div>
+        <div class="wa-home"><i></i></div>
+      </div></figure>
+      <!-- MODELO (EXEMPLO): trocar por print real de aluno antes de subir anúncio. Nome, mensagens, hora, bateria e foto são inventados. -->
+      <figure class="wa-shot"><div class="wa-screen" role="img" aria-label="Conversa de WhatsApp com Marcão">
+        <span class="wa-island"></span>
+        <div class="wa-status"><span>06:42</span><span class="wa-sr"><span class='wa-sig' aria-hidden='true'><i></i><i></i><i></i><i></i></span><span class="wa-net">5G</span><span class='wa-bat' style='--lv:91%'><i></i><b>91</b></span></span></div>
+        <div class="wa-head"><span class="wa-back"><svg viewBox='0 0 12 20' fill='none' stroke='currentColor' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'><path d='M10 2L2 10l8 8'/></svg></span><img class="wa-av" src="assets/avatares/marcao.webp" alt="" width="96" height="96" loading="lazy" decoding="async"><span class="wa-who"><b>Marcão</b><span>visto por último hoje às 06:51</span></span><span class="wa-hi"><svg viewBox='0 0 28 20' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linejoin='round' aria-hidden='true'><rect x='1.5' y='3' width='17' height='14' rx='3.5'/><path d='M19.5 8.5l6-3.4v9.8l-6-3.4z'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M6.6 3.5l2.5 4.1-1.7 1.7a12 12 0 006.8 6.8l1.7-1.7 4.1 2.5-.6 2.5c-.2.8-.9 1.3-1.7 1.3C10.4 20.4 3.6 13.6 3.6 5.8c0-.8.5-1.5 1.3-1.7z'/></svg></span></div>
+        <div class="wa-chat">
+          <span class="wa-date">seg., 10 de nov.</span>
+          <div class="wa-b out tail">Bom dia Marcão! Como foi o primeiro cliente da semana?<span class="wa-t">06:22<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
+          <div class="wa-b in tail">Bom dia! Hoje é dia de limpeza de dois split<span class="wa-t">06:23</span></div>
+          <div class="wa-b in">Cheguei no cliente 6h da manhã pra limpar antes do calor kkk<span class="wa-t">06:24</span></div>
+          <div class="wa-b wa-img in"><img src="assets/prints/foto-2.webp" alt="" loading="lazy" decoding="async"><span class="wa-cap">com a lona igual da aula<span class="wa-t">06:25</span></span></div>
+          <div class="wa-b in">O povo aqui já tá me chamando de “o cara do ar”<span class="wa-t">06:26</span></div>
+          <div class="wa-b out tail">kkkk quem diria hein<span class="wa-t">06:27<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
+          <div class="wa-b in tail">Foi tu que me deu a ideia de somar isso nos meus serviços, valeu mesmo 🙏<span class="wa-t">06:27</span></div>
+        </div>
+        <div class="wa-foot"><span class="wa-plus">+</span><span class="wa-field"><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M4 5h10l6 6v8H4z'/><path d='M14 5v6h6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M3 8h4l1.6-2.4h6.8L17 8h4v11H3z'/><circle cx='12' cy='13' r='3.6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' aria-hidden='true'><rect x='9' y='3' width='6' height='11' rx='3'/><path d='M5.5 11.5a6.5 6.5 0 0013 0M12 18v3'/></svg></span></div>
+        <div class="wa-home"><i></i></div>
+      </div></figure>
+      <!-- MODELO (EXEMPLO): trocar por print real de aluno antes de subir anúncio. Nome, mensagens, hora, bateria e foto são inventados. -->
+      <figure class="wa-shot"><div class="wa-screen" role="img" aria-label="Conversa de WhatsApp com Ana Paula">
+        <span class="wa-island"></span>
+        <div class="wa-status"><span>13:27</span><span class="wa-sr"><span class='wa-sig' aria-hidden='true'><i></i><i></i><i></i><i></i></span><span class="wa-net">5G</span><span class='wa-bat' style='--lv:73%'><i></i><b>73</b></span></span></div>
+        <div class="wa-head"><span class="wa-back"><svg viewBox='0 0 12 20' fill='none' stroke='currentColor' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'><path d='M10 2L2 10l8 8'/></svg><b>3</b></span><img class="wa-av" src="assets/avatares/anapaula.webp" alt="" width="96" height="96" loading="lazy" decoding="async"><span class="wa-who"><b>Ana Paula</b><span>online</span></span><span class="wa-hi"><svg viewBox='0 0 28 20' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linejoin='round' aria-hidden='true'><rect x='1.5' y='3' width='17' height='14' rx='3.5'/><path d='M19.5 8.5l6-3.4v9.8l-6-3.4z'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M6.6 3.5l2.5 4.1-1.7 1.7a12 12 0 006.8 6.8l1.7-1.7 4.1 2.5-.6 2.5c-.2.8-.9 1.3-1.7 1.3C10.4 20.4 3.6 13.6 3.6 5.8c0-.8.5-1.5 1.3-1.7z'/></svg></span></div>
+        <div class="wa-chat">
+          <span class="wa-date">hoje</span>
+          <div class="wa-b in tail">Boa tarde!<span class="wa-t">13:11</span></div>
+          <div class="wa-b out tail">Boa tarde, Ana! Tudo bem? 😊<span class="wa-t">13:12<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
+          <div class="wa-b in tail">Oi! Fiz a limpeza no ar da minha mãe e queria confirmar uma coisa<span class="wa-t">13:13</span></div>
+          <div class="wa-b in">a água do dreno tem que sair pela mangueirinha mesmo, né?<span class="wa-t">13:14</span></div>
+          <div class="wa-b out tail">Isso! Se não sair, a mangueira tá entupida. Tem na aula da limpeza como desentupir<span class="wa-t">13:15<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
+          <div class="wa-b in tail"><span class="wa-q"><b>Você</b><span>Isso! Se não sair, a mangueira tá entupida…</span></span>Saiu normal! Ficou ótimo<span class="wa-t">13:16</span></div>
+          <div class="wa-b in">Minha mãe falou que nunca mais chama ninguém kkkk<span class="wa-t">13:16</span></div>
+          <div class="wa-b out tail">Aí já é fama na família 😂<span class="wa-t">13:17<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
+        </div>
+        <div class="wa-foot"><span class="wa-plus">+</span><span class="wa-field"><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M4 5h10l6 6v8H4z'/><path d='M14 5v6h6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M3 8h4l1.6-2.4h6.8L17 8h4v11H3z'/><circle cx='12' cy='13' r='3.6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' aria-hidden='true'><rect x='9' y='3' width='6' height='11' rx='3'/><path d='M5.5 11.5a6.5 6.5 0 0013 0M12 18v3'/></svg></span></div>
+        <div class="wa-home"><i></i></div>
+      </div></figure>
+      <!-- MODELO (EXEMPLO): trocar por print real de aluno antes de subir anúncio. Nome, mensagens, hora, bateria e foto são inventados. -->
+      <figure class="wa-shot"><div class="wa-screen" role="img" aria-label="Conversa de WhatsApp com Cleiton S.">
+        <span class="wa-island"></span>
+        <div class="wa-status"><span>19:55</span><span class="wa-sr"><span class='wa-sig' aria-hidden='true'><i></i><i></i><i></i><i class=off></i></span><span class="wa-net">4G</span><span class='wa-bat lo' style='--lv:34%'><i></i><b>34</b></span></span></div>
+        <div class="wa-head"><span class="wa-back"><svg viewBox='0 0 12 20' fill='none' stroke='currentColor' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'><path d='M10 2L2 10l8 8'/></svg></span><img class="wa-av" src="assets/avatares/cleiton.webp" alt="" width="96" height="96" loading="lazy" decoding="async"><span class="wa-who"><b>Cleiton S.</b><span>online</span></span><span class="wa-hi"><svg viewBox='0 0 28 20' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linejoin='round' aria-hidden='true'><rect x='1.5' y='3' width='17' height='14' rx='3.5'/><path d='M19.5 8.5l6-3.4v9.8l-6-3.4z'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M6.6 3.5l2.5 4.1-1.7 1.7a12 12 0 006.8 6.8l1.7-1.7 4.1 2.5-.6 2.5c-.2.8-.9 1.3-1.7 1.3C10.4 20.4 3.6 13.6 3.6 5.8c0-.8.5-1.5 1.3-1.7z'/></svg></span></div>
+        <div class="wa-chat">
+          <span class="wa-date">qui., 6 de nov.</span>
+          <div class="wa-b out tail">E aí Cleiton, como tá o movimento por aí?<span class="wa-t">19:40<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
+          <div class="wa-b in tail">Tá puxado, mas é bom demais kkk<span class="wa-t">19:42</span></div>
+          <div class="wa-b in">Mano, o calor chegou e meu telefone não para<span class="wa-t">19:42</span></div>
+          <div class="wa-b in">Tô com serviço marcado a semana toda<span class="wa-t">19:44</span></div>
+          <div class="wa-b out tail">Boa demais! Tá conseguindo conciliar com o resto?<span class="wa-t">19:45<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
+          <div class="wa-b in tail">Tô sim, faço o ar de manhã e o resto da tarde eu toco a obra<span class="wa-t">19:45</span></div>
+          <div class="wa-b wa-img in land"><img src="assets/prints/foto-3.webp" alt="" loading="lazy" decoding="async"><span class="wa-cap">serviço de hoje 👇<span class="wa-t">19:46</span></span></div>
+          <div class="wa-b in">Curso valeu cada minuto<span class="wa-t">19:46</span></div>
+        </div>
+        <div class="wa-foot"><span class="wa-plus">+</span><span class="wa-field"><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M4 5h10l6 6v8H4z'/><path d='M14 5v6h6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M3 8h4l1.6-2.4h6.8L17 8h4v11H3z'/><circle cx='12' cy='13' r='3.6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' aria-hidden='true'><rect x='9' y='3' width='6' height='11' rx='3'/><path d='M5.5 11.5a6.5 6.5 0 0013 0M12 18v3'/></svg></span></div>
+        <div class="wa-home"><i></i></div>
+      </div></figure>
+      <!-- MODELO (EXEMPLO): trocar por print real de aluno antes de subir anúncio. Nome, mensagens, hora, bateria e foto são inventados. -->
+      <figure class="wa-shot"><div class="wa-screen" role="img" aria-label="Conversa de WhatsApp com Rodrigo Eletrônica">
+        <span class="wa-island"></span>
+        <div class="wa-status"><span>08:15</span><span class="wa-sr"><span class='wa-sig' aria-hidden='true'><i></i><i></i><i></i><i></i></span><span class="wa-net">5G</span><span class='wa-bat chg' style='--lv:100%'><i></i><b>100</b></span></span></div>
+        <div class="wa-head"><span class="wa-back"><svg viewBox='0 0 12 20' fill='none' stroke='currentColor' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'><path d='M10 2L2 10l8 8'/></svg></span><img class="wa-av" src="assets/avatares/rodrigo.webp" alt="" width="96" height="96" loading="lazy" decoding="async"><span class="wa-who"><b>Rodrigo Eletrônica</b><span>online</span></span><span class="wa-hi"><svg viewBox='0 0 28 20' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linejoin='round' aria-hidden='true'><rect x='1.5' y='3' width='17' height='14' rx='3.5'/><path d='M19.5 8.5l6-3.4v9.8l-6-3.4z'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M6.6 3.5l2.5 4.1-1.7 1.7a12 12 0 006.8 6.8l1.7-1.7 4.1 2.5-.6 2.5c-.2.8-.9 1.3-1.7 1.3C10.4 20.4 3.6 13.6 3.6 5.8c0-.8.5-1.5 1.3-1.7z'/></svg></span></div>
+        <div class="wa-chat">
+          <span class="wa-date">hoje</span>
+          <div class="wa-b out tail">Fala Rodrigo! Bora que hoje tem aula nova?<span class="wa-t">08:05<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
+          <div class="wa-b in tail">Bora! Antes deixa eu te contar uma coisa<span class="wa-t">08:07</span></div>
+          <div class="wa-b in">Já mexia com eletrônica e faltava a parte de refrigeração<span class="wa-t">08:07</span></div>
+          <div class="wa-b wa-au in"><span class="wa-mic"><img src="assets/avatares/rodrigo.webp" alt=""></span><svg class='wa-play' viewBox='0 0 24 24' fill='currentColor' aria-hidden='true'><path d='M7 4.5v15l13-7.5z'/></svg><span style="flex:1;min-width:0"><span class="wa-wave"><i style='height:20%'></i><i style='height:29%'></i><i style='height:39%'></i><i style='height:58%'></i><i style='height:53%'></i><i style='height:88%'></i><i style='height:31%'></i><i style='height:87%'></i><i style='height:75%'></i><i style='height:50%'></i><i style='height:79%'></i><i style='height:43%'></i><i style='height:34%'></i><i style='height:57%'></i><i style='height:50%'></i><i style='height:28%'></i><i style='height:44%'></i><i style='height:38%'></i><i style='height:26%'></i><i style='height:30%'></i><i style='height:35%'></i><i style='height:68%'></i><i style='height:47%'></i><i style='height:68%'></i><i style='height:24%'></i><i style='height:83%'></i><i style='height:43%'></i><i style='height:36%'></i><i style='height:24%'></i><i style='height:23%'></i><u class="new"></u></span><span class="wa-aurow"><span class="wa-dur">0:23</span><span class="wa-t">08:07</span></span></span></div>
+          <div class="wa-b out tail">Show! E como foi a primeira instalação?<span class="wa-t">08:08<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
+          <div class="wa-b in tail">Tranquila, só fiquei nervoso na hora da vedação kkk<span class="wa-t">08:10</span></div>
+          <div class="wa-b wa-img in"><img src="assets/prints/foto-5.webp" alt="" loading="lazy" decoding="async"><span class="wa-cap">ficou assim<span class="wa-t">08:11</span></span></div>
+          <div class="wa-b out tail">Ficou limpo demais 👏<span class="wa-t">08:11<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
+        </div>
+        <div class="wa-foot"><span class="wa-plus">+</span><span class="wa-field"><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M4 5h10l6 6v8H4z'/><path d='M14 5v6h6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M3 8h4l1.6-2.4h6.8L17 8h4v11H3z'/><circle cx='12' cy='13' r='3.6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' aria-hidden='true'><rect x='9' y='3' width='6' height='11' rx='3'/><path d='M5.5 11.5a6.5 6.5 0 0013 0M12 18v3'/></svg></span></div>
+        <div class="wa-home"><i></i></div>
+      </div></figure>
+      <!-- MODELO (EXEMPLO): trocar por print real de aluno antes de subir anúncio. Nome, mensagens, hora, bateria e foto são inventados. -->
+      <figure class="wa-shot"><div class="wa-screen" role="img" aria-label="Conversa de WhatsApp com Luciana">
+        <span class="wa-island"></span>
+        <div class="wa-status"><span>15:03</span><span class="wa-sr"><span class='wa-sig' aria-hidden='true'><i></i><i></i><i></i><i class=off></i></span><span class="wa-net">4G</span><span class='wa-bat lo' style='--lv:22%'><i></i><b>22</b></span></span></div>
+        <div class="wa-head"><span class="wa-back"><svg viewBox='0 0 12 20' fill='none' stroke='currentColor' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'><path d='M10 2L2 10l8 8'/></svg><b>1</b></span><img class="wa-av" src="assets/avatares/lu.webp" alt="" width="96" height="96" loading="lazy" decoding="async"><span class="wa-who"><b>Luciana</b><span>visto por último hoje às 15:03</span></span><span class="wa-hi"><svg viewBox='0 0 28 20' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linejoin='round' aria-hidden='true'><rect x='1.5' y='3' width='17' height='14' rx='3.5'/><path d='M19.5 8.5l6-3.4v9.8l-6-3.4z'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M6.6 3.5l2.5 4.1-1.7 1.7a12 12 0 006.8 6.8l1.7-1.7 4.1 2.5-.6 2.5c-.2.8-.9 1.3-1.7 1.3C10.4 20.4 3.6 13.6 3.6 5.8c0-.8.5-1.5 1.3-1.7z'/></svg></span></div>
+        <div class="wa-chat">
+          <span class="wa-date">hoje</span>
+          <div class="wa-b in tail">Oi, tudo bem? Posso te contar uma novidade?<span class="wa-t">14:49</span></div>
+          <div class="wa-b out tail">Claro, Lu! Pode falar 😊<span class="wa-t">14:51<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
+          <div class="wa-b in tail">Queria te agradecer 🥹<span class="wa-t">14:53</span></div>
+          <div class="wa-b in">Sou autônoma e agora tô oferecendo limpeza de ar pros vizinhos do prédio<span class="wa-t">14:54</span></div>
+          <div class="wa-b in">Já fiz 4 ar essa semana<span class="wa-t">14:54</span></div>
+          <div class="wa-b out tail">Que máximo, Lu!! Tá de parabéns 👏<span class="wa-t">14:55<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
+          <div class="wa-b wa-img in tail"><img src="assets/prints/foto-4.webp" alt="" loading="lazy" decoding="async"><span class="wa-cap">hoje de manhã<span class="wa-t">14:56</span></span></div>
+        </div>
+        <div class="wa-foot"><span class="wa-plus">+</span><span class="wa-field"><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M4 5h10l6 6v8H4z'/><path d='M14 5v6h6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M3 8h4l1.6-2.4h6.8L17 8h4v11H3z'/><circle cx='12' cy='13' r='3.6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' aria-hidden='true'><rect x='9' y='3' width='6' height='11' rx='3'/><path d='M5.5 11.5a6.5 6.5 0 0013 0M12 18v3'/></svg></span></div>
+        <div class="wa-home"><i></i></div>
+      </div></figure>
+      <!-- MODELO (EXEMPLO): trocar por print real de aluno antes de subir anúncio. Nome, mensagens, hora, bateria e foto são inventados. -->
+      <figure class="wa-shot"><div class="wa-screen" role="img" aria-label="Conversa de WhatsApp com Edinho">
+        <span class="wa-island"></span>
+        <div class="wa-status"><span>12:31</span><span class="wa-sr"><span class='wa-sig' aria-hidden='true'><i></i><i></i><i></i><i></i></span><span class="wa-net">5G</span><span class='wa-bat' style='--lv:47%'><i></i><b>47</b></span></span></div>
+        <div class="wa-head"><span class="wa-back"><svg viewBox='0 0 12 20' fill='none' stroke='currentColor' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'><path d='M10 2L2 10l8 8'/></svg></span><img class="wa-av" src="assets/avatares/edinho.webp" alt="" width="96" height="96" loading="lazy" decoding="async"><span class="wa-who"><b>Edinho</b><span>online</span></span><span class="wa-hi"><svg viewBox='0 0 28 20' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linejoin='round' aria-hidden='true'><rect x='1.5' y='3' width='17' height='14' rx='3.5'/><path d='M19.5 8.5l6-3.4v9.8l-6-3.4z'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M6.6 3.5l2.5 4.1-1.7 1.7a12 12 0 006.8 6.8l1.7-1.7 4.1 2.5-.6 2.5c-.2.8-.9 1.3-1.7 1.3C10.4 20.4 3.6 13.6 3.6 5.8c0-.8.5-1.5 1.3-1.7z'/></svg></span></div>
+        <div class="wa-chat">
+          <span class="wa-date">sex., 7 de nov.</span>
+          <div class="wa-b out tail">Fala Edinho! Chegou o acesso certinho?<span class="wa-t">12:19<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
+          <div class="wa-b in tail">Chegou sim! Valeu 🙌<span class="wa-t">12:19</span></div>
+          <div class="wa-b wa-au in"><span class="wa-mic"><img src="assets/avatares/edinho.webp" alt=""></span><svg class='wa-play' viewBox='0 0 24 24' fill='currentColor' aria-hidden='true'><path d='M7 4.5v15l13-7.5z'/></svg><span style="flex:1;min-width:0"><span class="wa-wave"><i style='height:18%'></i><i style='height:59%'></i><i style='height:61%'></i><i style='height:18%'></i><i style='height:32%'></i><i style='height:21%'></i><i style='height:34%'></i><i style='height:18%'></i><i style='height:29%'></i><i style='height:18%'></i><i style='height:18%'></i><i style='height:38%'></i><i style='height:56%'></i><i style='height:33%'></i><i style='height:32%'></i><i style='height:65%'></i><i style='height:53%'></i><i style='height:62%'></i><i style='height:30%'></i><i style='height:28%'></i><i style='height:51%'></i><i style='height:100%'></i><i style='height:51%'></i><i style='height:49%'></i><i style='height:51%'></i><i style='height:39%'></i><i style='height:47%'></i><i style='height:66%'></i><i style='height:45%'></i><i style='height:84%'></i><u class="new"></u></span><span class="wa-aurow"><span class="wa-dur">0:31</span><span class="wa-t">12:21</span></span></span></div>
+          <div class="wa-b in">Mostrei o curso pro meu patrão e ele já quer que eu cuide dos ar-condicionados da empresa kkk<span class="wa-t">12:22</span></div>
+          <div class="wa-b out tail">Olha só!! Isso é abrir porta<span class="wa-t">12:24<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
+          <div class="wa-b in tail">Tô estudando de noite depois do trampo. Aula curtinha e direta, dá pra seguir<span class="wa-t">12:24</span></div>
+          <div class="wa-b out tail">É isso. Um passo de cada vez 💪<span class="wa-t">12:25<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
+        </div>
+        <div class="wa-foot"><span class="wa-plus">+</span><span class="wa-field"><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M4 5h10l6 6v8H4z'/><path d='M14 5v6h6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M3 8h4l1.6-2.4h6.8L17 8h4v11H3z'/><circle cx='12' cy='13' r='3.6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' aria-hidden='true'><rect x='9' y='3' width='6' height='11' rx='3'/><path d='M5.5 11.5a6.5 6.5 0 0013 0M12 18v3'/></svg></span></div>
+        <div class="wa-home"><i></i></div>
+      </div></figure>
+      </div></div>
     </div>
     <div class="deps"><div class="mq"><div class="mq-track" id="depTrack" style="--dur:80s">
       <!-- EXEMPLO: trocar por depoimentos reais antes de publicar (nome, cidade e situação reais, com autorização) -->
@@ -1090,45 +1220,29 @@ document.addEventListener("DOMContentLoaded",function(){
 </script>
 
 <script>
-/* PRINTS WHATSAPP (MODELO): loop, arraste e movimento reduzido independentes. */
+/* PRINTS WHATSAPP (MODELO): anda sozinho, arrasta com dedo/mouse, pausa ao tocar. */
 (function(){
-  var rail=document.querySelector('.wa-rail'),track=document.querySelector('.wa-track');
-  if(!rail||!track)return;
-  var originals=Array.prototype.slice.call(track.children);
-  originals.forEach(function(item){var copy=item.cloneNode(true);copy.setAttribute('aria-hidden','true');copy.setAttribute('inert','');track.appendChild(copy)});
-  var media=window.matchMedia('(prefers-reduced-motion: reduce)'),frame=0,last=0,pos=0,pause=0,down=false,mouse=false,startX=0,startScroll=0,visible=false;
-  function span(){return track.children[originals.length].offsetLeft-track.children[0].offsetLeft}
-  function wrap(){var w=span();if(!w)return;var x=rail.scrollLeft;if(x>=w)rail.scrollLeft=x%w;else if(x<=0)rail.scrollLeft=x+w;pos=rail.scrollLeft}
-  function hold(){pause=performance.now()+3500;pos=rail.scrollLeft}
-  function stop(){if(frame)cancelAnimationFrame(frame);frame=0;last=0}
-  function tick(now){
-    frame=0;
-    if(media.matches||document.hidden||!visible)return;
-    var dt=last?Math.min(now-last,64):0;last=now;
-    if(!down&&now>pause&&!rail.matches(':focus-visible')){
-      var w=span();if(w){pos+=45*dt/1000;if(pos>=w)pos%=w;rail.scrollLeft=pos}
-    }else pos=rail.scrollLeft;
-    frame=requestAnimationFrame(tick);
+  var r=document.querySelector('[data-wacar]');if(!r)return;
+  var tr=r.querySelector('.wa-track');
+  [].slice.call(tr.children).forEach(function(k){var c=k.cloneNode(true);c.setAttribute('aria-hidden','true');tr.appendChild(c)});
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var pos=0,last=0,hold=false,tmr=null,vis=true,SPEED=0.04;
+  function half(){return tr.scrollWidth/2}
+  function pause(ms){hold=true;clearTimeout(tmr);tmr=setTimeout(function(){pos=r.scrollLeft;hold=false},ms||1600)}
+  ['touchstart','touchmove','wheel','keydown'].forEach(function(e){r.addEventListener(e,function(){pause(2200)},{passive:true})});
+  var down=false,sx=0,sl=0;
+  r.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse')return;down=true;sx=e.clientX;sl=r.scrollLeft;r.classList.add('wa-drag');hold=true;try{r.setPointerCapture(e.pointerId)}catch(_){}});
+  r.addEventListener('pointermove',function(e){if(!down)return;r.scrollLeft=sl-(e.clientX-sx)});
+  function up(){if(!down)return;down=false;r.classList.remove('wa-drag');pause(1400)}
+  r.addEventListener('pointerup',up);r.addEventListener('pointercancel',up);
+  r.addEventListener('scroll',function(){var h=half();if(!h)return;if(r.scrollLeft>=h){r.scrollLeft-=h;pos=r.scrollLeft}else if(r.scrollLeft<=0&&hold){r.scrollLeft+=h;pos=r.scrollLeft}},{passive:true});
+  function step(ts){
+    var dt=last?Math.min(ts-last,50):16;last=ts;
+    if(!hold&&vis&&!reduce){pos+=SPEED*dt;var h=half();if(h&&pos>=h)pos-=h;r.scrollLeft=pos}
+    requestAnimationFrame(step)
   }
-  function run(){stop();if(!media.matches&&!document.hidden&&visible)frame=requestAnimationFrame(tick)}
-  rail.addEventListener('pointerdown',function(e){
-    if(e.pointerType==='mouse'&&e.button!==0)return;
-    down=true;mouse=e.pointerType==='mouse';startX=e.clientX;startScroll=rail.scrollLeft;hold();
-    if(mouse){rail.classList.add('wa-drag');rail.setPointerCapture(e.pointerId)}
-  });
-  rail.addEventListener('pointermove',function(e){if(down&&mouse){rail.scrollLeft=startScroll-(e.clientX-startX);pos=rail.scrollLeft}});
-  function release(){if(!down)return;down=false;mouse=false;rail.classList.remove('wa-drag');wrap();hold()}
-  rail.addEventListener('pointerup',release);rail.addEventListener('pointercancel',release);rail.addEventListener('lostpointercapture',release);
-  rail.addEventListener('wheel',hold,{passive:true});
-  rail.addEventListener('touchmove',hold,{passive:true});
-  rail.addEventListener('scroll',function(){if(!down){var w=span();if(w&&rail.scrollLeft>=w){rail.scrollLeft-=w;pos=rail.scrollLeft}}},{passive:true});
-  rail.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();rail.scrollLeft+=e.key==='ArrowRight'?240:-240;wrap();hold()}});
-  rail.addEventListener('focus',hold);rail.addEventListener('blur',hold);
-  document.addEventListener('visibilitychange',run);
-  if(media.addEventListener)media.addEventListener('change',run);else media.addListener(run);
-  if('ResizeObserver' in window)new ResizeObserver(function(){wrap();hold()}).observe(rail);
-  if('IntersectionObserver' in window)new IntersectionObserver(function(entries){visible=entries[0].isIntersecting;run()}).observe(rail);
-  else{visible=true;run()}
+  if('IntersectionObserver' in window)new IntersectionObserver(function(es){vis=es[0].isIntersecting},{threshold:0.05}).observe(r);
+  requestAnimationFrame(step)
 })();
 </script>
 </body>
