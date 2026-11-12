@@ -1,6 +1,6 @@
 /* Service worker simples: guarda o "esqueleto" do app para abrir rápido e funcionar com internet ruim.
    O catálogo (data/catalogo.json) é sempre buscado na rede primeiro. */
-var V = "aluno-v5";
+var V = "aluno-v6";
 var SHELL = ["./", "index.html", "styles.css", "app.js", "visualizador.html", "data/catalogo.js", "manifest.webmanifest", "assets/icon.svg"];
 
 self.addEventListener("install", function (e) {

@@ -543,7 +543,7 @@
         if (comp) item = comp.arquivos.filter(function (f) { return f.id === arquivoId && /\.pdf$/i.test(f.arquivo); })[0];
       }
     }
-    if (!item || !item.arquivo || !/^(?:conteudo\/(?:bonus|apostilas)\/|\.\.\/complementares\/(?:mapas|pacote-a|pacote-b|kit|combo)\/)[^/\\?#%]+\.pdf$/i.test(item.arquivo) || item.arquivo.slice(3).indexOf('..') !== -1) {
+    if (!item || !item.arquivo || !/^(?:conteudo\/(?:bonus|apostilas)\/|\.\.\/complementares\/(?:mapas|kit|combo)\/)[^/\\?#%]+\.pdf$/i.test(item.arquivo) || item.arquivo.slice(3).indexOf('..') !== -1) {
       location.replace(voltar); return;
     }
     var base = new URL("./", location.href);

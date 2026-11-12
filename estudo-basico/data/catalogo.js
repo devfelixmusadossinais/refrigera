@@ -7,7 +7,7 @@ window.CATALOGO = {
   "acessos": [],
   "upgrade": {
     "texto": "Libere a apostila, o certificado e os 10 bônus por apenas R$ 17",
-    "descricao": "Quem já é aluno Básico completa o acesso por R$ 17: certificado de conclusão e os 6 bônus em PDF.",
+    "descricao": "Quem já é aluno Básico completa o acesso por R$ 17: certificado de conclusão e os 10 bônus em PDF.",
     "botao": "Quero liberar por R$ 17",
     "url": "https://pay.cakto.com.br/r944trv"
   },
@@ -636,6 +636,13 @@ window.CATALOGO = {
       "apostilas": [],
       "bonus": [
         {
+          "n": 1,
+          "titulo": "Apostila completa",
+          "descricao": "Apostila completa em PDF pra consultar no dia do serviço",
+          "capa": "assets/bonus/bonus-01.webp",
+          "arquivo": ""
+        },
+        {
           "n": 2,
           "titulo": "Tabela de gases e pressões",
           "descricao": "Referência completa para carga de gás",
@@ -675,6 +682,27 @@ window.CATALOGO = {
           "titulo": "Guia de defeitos comuns",
           "descricao": "Diagnóstico prático para os 7 problemas mais frequentes",
           "capa": "assets/bonus/bonus-07.webp",
+          "arquivo": ""
+        },
+        {
+          "n": 8,
+          "titulo": "Guia de manutenção preventiva",
+          "descricao": "Guia de manutenção preventiva.",
+          "capa": "assets/bonus/bonus-08.webp",
+          "arquivo": ""
+        },
+        {
+          "n": 9,
+          "titulo": "Cálculo de BTUs",
+          "descricao": "Cálculo de BTUs pra indicar o aparelho certo em cada ambiente.",
+          "capa": "assets/bonus/bonus-09.webp",
+          "arquivo": ""
+        },
+        {
+          "n": 10,
+          "titulo": "Guia dos primeiros clientes",
+          "descricao": "Guia dos primeiros clientes.",
+          "capa": "assets/bonus/bonus-10.webp",
           "arquivo": ""
         }
       ],
@@ -716,46 +744,6 @@ window.CATALOGO = {
               "id": "10-erros-mais-comuns",
               "titulo": "Os 10 erros mais comuns de quem tá começando",
               "arquivo": "../complementares/mapas/10-erros-mais-comuns.pdf"
-            }
-          ]
-        },
-        {
-          "id": "pacote-a",
-          "titulo": "Apostila Completa + Guia de Manutenção Preventiva",
-          "preco": "R$ 19",
-          "url": "https://pay.cakto.com.br/jctn9ak",
-          "descricao": "A apostila completa em PDF pra consultar no dia do serviço, mais o guia de manutenção preventiva.",
-          "capa": "assets/complementares/pacote-a.webp",
-          "arquivos": [
-            {
-              "id": "apostila-completa",
-              "titulo": "Apostila completa",
-              "arquivo": "../complementares/pacote-a/apostila-completa.pdf"
-            },
-            {
-              "id": "08-manutencao-preventiva",
-              "titulo": "Guia de manutenção preventiva",
-              "arquivo": "../complementares/pacote-a/08-manutencao-preventiva.pdf"
-            }
-          ]
-        },
-        {
-          "id": "pacote-b",
-          "titulo": "Cálculo de BTUs + Guia dos Primeiros Clientes",
-          "preco": "R$ 14",
-          "url": "https://pay.cakto.com.br/32d9k4p",
-          "descricao": "Cálculo de BTUs pra indicar o aparelho certo em cada ambiente, mais o guia dos primeiros clientes.",
-          "capa": "assets/complementares/pacote-b.webp",
-          "arquivos": [
-            {
-              "id": "09-calculo-btus",
-              "titulo": "Cálculo de BTUs",
-              "arquivo": "../complementares/pacote-b/09-calculo-btus.pdf"
-            },
-            {
-              "id": "10-primeiros-clientes",
-              "titulo": "Guia dos primeiros clientes",
-              "arquivo": "../complementares/pacote-b/10-primeiros-clientes.pdf"
             }
           ]
         },
