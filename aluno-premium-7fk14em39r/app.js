@@ -12,6 +12,7 @@
     try {
       if (v === undefined) { var r = localStorage.getItem(k); return r ? JSON.parse(r) : null; }
       if (v === null) localStorage.removeItem(k); else localStorage.setItem(k, JSON.stringify(v));
+      return true;
     } catch (e) { return null; }
   }
   function esc(s) {
@@ -53,6 +54,110 @@
     try { history.replaceState(null, "", location.pathname + location.hash); } catch (e) {}
     return cod;
   }
+
+
+  /* Complementares: dados e liberação ficam exclusivamente neste aparelho. */
+  var K_COMP = "aluno_complementares", compSessao = null, compAviso = false, compra = null;
+  function estadoComp() { return compSessao || store(K_COMP) || { liberados: {} }; }
+  function compLiberado(id) { return !!(estadoComp().liberados || {})[id]; }
+  function complementar(p, id) { return (p.complementares || []).filter(function (c) { return c.id === id; })[0]; }
+  function painelMateriais(p, acesso) {
+    var html = '<section class="materiais"><h2>Materiais</h2>';
+    if (compAviso) html += '<p class="err" role="status">Armazenamento bloqueado. Seu acesso fica liberado só nesta sessão.</p>';
+    html += (p.complementares || []).map(function (c) {
+      var ok = compLiberado(c.id);
+      return '<article class="card extra">' + (ok ? '<div>' : '<button type="button" class="extra-open" data-comp="' + esc(c.id) + '">') +
+        '<img src="' + esc(c.capa) + '" alt="" loading="lazy"><div class="extra-bd"><h3>' + esc(c.titulo) + '</h3><p>' + esc(c.descricao) + '</p><b>' + esc(c.preco) + '</b>' + (ok ? '<span class="liberado" data-liberado="' + esc(c.id) + '">Liberado</span>' : '') + '</div>' + (ok ? '</div>' : '</button>') +
+        (ok ? '<ul class="extra-files">' + c.arquivos.map(function (f) {
+          return '<li><b>' + esc(f.titulo) + '</b><div class="extra-actions">' + (/\.pdf$/i.test(f.arquivo) ? '<a class="btn small" href="#/pdf/' + esc(p.id) + '/complementares/' + esc(c.id) + '/' + esc(f.id) + '">Abrir</a>' : '') + '<a class="btn small ghost" href="' + esc(f.arquivo) + '" download>Baixar</a></div></li>';
+        }).join('') + '</ul>' : '') + '</article>';
+    }).join('');
+    if (Object.keys(estadoComp().liberados || {}).length) html += '<button class="limpar-acesso" type="button" data-limpar-comp>Não é você? Limpar acesso neste aparelho</button>';
+    return html + '</section>';
+  }
+  function fecharCompra(foco) {
+    if (!compra) return;
+    var atual = compra; compra = null;
+    document.removeEventListener("keydown", atual.teclas);
+    atual.ov.remove(); app.inert = atual.inert;
+    document.body.style.overflow = atual.overflow;
+    if (foco !== false) {
+      var alvo = atual.origem && atual.origem.isConnected ? atual.origem : app.querySelector('[data-comp="' + atual.id + '"]');
+      if (alvo) alvo.focus();
+    }
+  }
+  function abrirCompra(p, c) {
+    fecharCompra(false);
+    var ov = document.createElement("div"); ov.className = "mp-ov";
+    ov.innerHTML = '<div class="mp" role="dialog" aria-modal="true" aria-labelledby="mpTitulo" tabindex="-1"><button class="mp-x" type="button" aria-label="Fechar">×</button><div class="mp-in"><img class="mp-fig" src="' + esc(c.capa) + '" alt=""><h2 id="mpTitulo">' + esc(c.titulo) + '</h2><p>' + esc(c.descricao) + '</p><ul>' + c.arquivos.map(function (f) { return '<li>' + esc(f.titulo) + '</li>'; }).join('') + '</ul><b class="mp-price">' + esc(c.preco) + '</b><div id="mpConteudo"><a class="btn block" href="' + esc(c.url) + '" target="_blank" rel="noopener">Quero comprar pelo checkout</a><button class="btn ghost block" type="button" data-validar>Já comprei: validar meu acesso</button></div></div></div>';
+    ativarModal(ov, c.id, app.querySelector('[data-comp="' + c.id + '"]') || document.activeElement);
+    ov.querySelector('[data-validar]').addEventListener('click', function () {
+      mostrarValidacao(p, c, ov);
+    });
+    ov.querySelector('#mpConteudo .btn').focus();
+  }
+  function ativarModal(ov, id, origem) {
+    var dlg = ov.querySelector('.mp');
+    compra = { ov: ov, id: id, origem: origem, overflow: document.body.style.overflow, inert: app.inert };
+    compra.teclas = function (e) {
+      if (e.key === 'Escape') { e.preventDefault(); fecharCompra(); return; }
+      if (e.key !== 'Tab') return;
+      var focus = Array.from(dlg.querySelectorAll('a[href],button,input')).filter(function (el) { return !el.disabled && el.getClientRects().length; });
+      var first = focus[0], last = focus[focus.length - 1];
+      if (e.shiftKey && (document.activeElement === first || !dlg.contains(document.activeElement))) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && (document.activeElement === last || !dlg.contains(document.activeElement))) { e.preventDefault(); first.focus(); }
+    };
+    document.body.appendChild(ov); app.inert = true; document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', compra.teclas);
+    ov.querySelector('.mp-x').addEventListener('click', function () { fecharCompra(); });
+    ov.addEventListener('click', function (e) { if (e.target === ov) fecharCompra(); });
+  }
+  function abrirUpgrade(origem) {
+    if (!CAT.upgrade) return;
+    fecharCompra(false);
+    var ov = document.createElement('div'); ov.className = 'mp-ov';
+    ov.innerHTML = '<div class="mp" role="dialog" aria-modal="true" aria-labelledby="mpTitulo" tabindex="-1"><button class="mp-x" type="button" aria-label="Fechar">×</button><div class="mp-in"><h2 id="mpTitulo">Atualizar para o Premium</h2><p>' + esc(CAT.upgrade.descricao) + '</p><b class="mp-price">' + esc(CAT.upgrade.preco || (CAT.upgrade.botao.match(/R\$\s*[\d.,]+/) || [''])[0]) + '</b><a class="btn block" href="' + esc(CAT.upgrade.url) + '" target="_blank" rel="noopener">' + esc(CAT.upgrade.botao) + '</a><button class="btn ghost block" type="button" data-agora-nao>Agora não</button></div></div>';
+    ativarModal(ov, 'upgrade', origem);
+    ov.querySelector('[data-agora-nao]').addEventListener('click', function () { fecharCompra(); });
+    ov.querySelector('a').focus();
+  }
+  function mostrarValidacao(p, c, ov) {
+      var box = ov.querySelector('#mpConteudo');
+      box.innerHTML = '<form novalidate><label>Nome<input class="field" name="nome" autocomplete="name" aria-describedby="mpErro" required></label><label>E-mail<input class="field" type="email" name="email" autocomplete="email" aria-describedby="mpErro" required></label><p>Seu acesso fica salvo neste aparelho. Seus dados não saem daqui.</p><p id="mpErro" class="err" aria-live="polite" aria-atomic="true" hidden></p><button class="btn block" type="submit">Liberar meu acesso</button></form>';
+      box.querySelector('input').focus();
+      box.querySelector('form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var nome = e.target.elements.nome, email = e.target.elements.email;
+        var erro = box.querySelector('#mpErro');
+        nome.removeAttribute('aria-invalid'); email.removeAttribute('aria-invalid');
+        erro.textContent = ''; erro.hidden = true;
+        var campo = null, mensagem = '';
+        if (!nome.value.trim()) { campo = nome; mensagem = 'Digite seu nome.'; }
+        else if (!email.validity.valid || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) { campo = email; mensagem = 'Digite um e-mail válido, como nome@email.com.'; }
+        if (campo) {
+          erro.hidden = false; erro.textContent = mensagem;
+          campo.setAttribute('aria-invalid', 'true'); campo.focus(); return;
+        }
+        var estado = estadoComp(); estado.nome = nome.value.trim(); estado.email = email.value.trim();
+        estado.liberados = estado.liberados || {}; estado.liberados[c.id] = true;
+        compSessao = estado; compAviso = !store(K_COMP, estado);
+        telaProduto(acessoAtual(), p.id, 'materiais');
+        fecharCompra(false);
+        var card = app.querySelector('[data-liberado="' + c.id + '"]'); if (card) { card.tabIndex = -1; card.focus(); }
+      });
+  }
+  app.addEventListener('click', function (e) {
+    var bonus = e.target.closest('[data-upgrade]');
+    if (bonus) { abrirUpgrade(bonus); return; }
+    var b = e.target.closest('[data-comp],[data-limpar-comp]'); if (!b) return;
+    var acesso = acessoAtual(), p = prod(acesso.produto);
+    if (b.hasAttribute('data-limpar-comp')) {
+      // Overwrite session state even if localStorage removal is unavailable.
+      compSessao = { liberados: {} }; store(K_COMP, null); compAviso = false;
+      telaProduto(acesso, p.id, 'materiais'); return;
+    }
+    var c = complementar(p, b.getAttribute('data-comp')); if (c) abrirCompra(p, c);
+  });
 
   /* ---------- telas ---------- */
   function telaAcesso(erro) {
@@ -112,24 +217,35 @@
         '<a class="btn" href="' + esc(CAT.upgrade.url) + '" target="_blank" rel="noopener">' + esc(CAT.upgrade.botao || "Quero o Premium") + "</a></div>";
     }
     html += "</div></main>" + (CAT.marca.suporte ? '<div class="foot">Suporte: ' + esc(CAT.marca.suporte) + "</div>" : "");
-    app.innerHTML = html;
+    app.innerHTML = html + navegacao(p, "inicio") + botaoPremium(acesso);
     ligarSair();
   }
 
-  var ABAS = [["aulas", "Aulas"], ["apostilas", "Apostilas"], ["bonus", "Bônus"], ["certificado", "Certificado"]];
+  var ABAS = [["inicio", "Início", "M3 10 12 3l9 7v11h-6v-7H9v7H3z"], ["aulas", "Aulas", "M8 5v14l11-7z"], ["materiais", "Materiais", "M12 6v15M12 6C9 3 5 3 2 4v15c4-1 7-1 10 2 3-3 6-3 10-2V4c-3-1-7-1-10 2z"], ["bonus", "Bônus", "M3 8h18v4H3z M5 12v9h14v-9 M12 8v13 M12 8H8a3 3 0 1 1 3-3l1 3 1-3a3 3 0 1 1 3 3z"], ["certificado", "Certificado", "M12 3 3 7v5c0 5 9 10 9 10s9-5 9-10V7z M8 12l3 3 5-6"]];
+  function botaoPremium(acesso) {
+    return acesso.nivel === 'basico' && CAT.upgrade ? '<a class="premium-pill" href="' + esc(CAT.upgrade.url) + '" target="_blank" rel="noopener">★ Premium</a>' : '';
+  }
+  function navegacao(p, aba) {
+    return '<nav class="nav" aria-label="Navegação principal">' + ABAS.map(function (t) {
+      return '<a href="' + (t[0] === "inicio" ? "#/" : "#/p/" + esc(p.id) + "/" + t[0]) + '"' + (t[0] === aba ? ' aria-current="page"' : '') + '><svg viewBox="0 0 24 24" aria-hidden="true"><path d="' + t[2] + '"/></svg><span>' + t[1] + '</span></a>';
+    }).join("") + '</nav>';
+  }
+  function atualizarNavPlayer() {
+    var nav = app.querySelector(".nav");
+    if (nav) nav.hidden = !!app.querySelector('.aulabody:not([hidden])');
+    var premium = app.querySelector('.premium-pill');
+    if (premium) premium.hidden = !!app.querySelector('.aulabody:not([hidden])');
+  }
 
   function telaProduto(acesso, id, aba, abrir) {
     var p = prod(id);
     if (!p || p.id !== acesso.produto) { location.hash = "#/"; return; }
     aba = aba || "aulas";
+    if (aba === "apostilas") { location.replace("#/p/" + id + "/materiais"); return; }
     var capa = (p.capa && (p.capa[acesso.nivel] || p.capa.basico)) || "";
-    var tabs = ABAS.map(function (t) {
-      return '<a class="tab ' + (t[0] === aba ? "on" : "") + '" href="#/p/' + esc(p.id) + "/" + t[0] + '">' + t[1] + "</a>";
-    }).join("");
     var html = '<div class="hero"><a class="back" href="#/">← Início</a><div class="cap">' + (capa ? '<img src="' + esc(capa) + '" alt="">' : "") + "</div></div>" +
       '<div class="wrap ptitle"><h1>' + esc(p.titulo) + "</h1><p>" + esc(p.subtitulo) + "</p></div>" +
-      '<nav class="tabs"><div class="wrap">' + tabs + "</div></nav>" +
-      '<main class="wrap pane">' + painel(p, acesso, aba) + "</main>";
+      '<main class="wrap pane">' + painel(p, acesso, aba) + "</main>" + navegacao(p, aba) + botaoPremium(acesso);
     app.innerHTML = html;
     window.scrollTo(0, 0);
     if (aba === "certificado") ligarCertificado(p, acesso);
@@ -138,8 +254,8 @@
 
   function painel(p, acesso, aba) {
     if (aba === "aulas") return painelAulas(p);
-    if (aba === "apostilas") return painelApostilas(p, acesso);
-    if (aba === "bonus") return painelBonus(p, acesso);
+    if (aba === "materiais") return painelMateriais(p, acesso);
+    if (aba === "bonus") return '<section class="materiais"><h2>Bônus do Premium</h2>' + painelBonus(p, acesso) + '</section>';
     return painelCertificado(p, acesso);
   }
 
@@ -180,6 +296,7 @@
       '<div class="abtns"><button type="button" class="btn small ' + (prog[aid] ? "ghost" : "") + '" data-feita="' + esc(aid) + '">' + (prog[aid] ? "✓ Concluída (desmarcar)" : "Marcar como concluída") + "</button>" +
       "</div>";
     body.hidden = false;
+    atualizarNavPlayer();
     btn.setAttribute("aria-expanded", "true");
     store(K_LAST, { produto: info.p.id, aula: aid });
     if (rolar) setTimeout(function () { wrap.scrollIntoView({ behavior: "smooth", block: "start" }); }, 60);
@@ -191,6 +308,7 @@
     var body = wrap.querySelector(".aulabody");
     paraPlayer(aid); body.hidden = true; body.innerHTML = ""; /* remove o iframe: para o vídeo e libera memória */
     wrap.querySelector(".aula").setAttribute("aria-expanded", "false");
+    atualizarNavPlayer();
   }
 
   function alternarConcluida(aid) {
@@ -322,32 +440,17 @@
     if (t.getAttribute("aria-expanded") === "true") fecharAulaInline(aid); else abrirAulaInline(aid, true);
   });
 
-  function painelApostilas(p, acesso) {
-    var libera = liberado(p, "apostilas", acesso.nivel);
-    var lista = (p.apostilas || []).map(function (a, i) {
-      var tem = !!a.arquivo && libera;
-      return '<div class="item">' + (a.capa ? '<img class="th" src="' + esc(a.capa) + '" alt="" loading="lazy">' : '<div class="ico">📄</div>') +
-        '<div class="tx"><b>' + esc(a.titulo) + "</b><small>" + esc(a.descricao || (tem ? "PDF para baixar" : "Em breve")) + "</small></div>" +
-        (tem ? '<a class="btn small" href="#/pdf/' + esc(p.id) + '/apostilas/' + i + '">Abrir</a>' : "") + "</div>";
-    }).join("");
-    if (libera) return lista;
-    return '<div class="card upsell"><h3>Apostila completa do curso</h3><p>A apostila faz parte do Premium. Libere agora com o upgrade.</p>' +
-      '<a class="btn" href="' + esc(CAT.upgrade.url) + '" target="_blank" rel="noopener">' + esc(CAT.upgrade.botao || "Quero o Premium") + "</a></div>" + lista;
-  }
-
   function painelBonus(p, acesso) {
     var ok = liberado(p, "bonus", acesso.nivel);
-    var grid = '<div class="bgrid">' + (p.bonus || []).map(function (b) {
-      var num = ("0" + b.n).slice(-2);
-      return '<div class="bk ' + (ok ? "" : "locked") + '"><div class="cv"><span class="nb">BÔNUS ' + num + "</span>" +
+    var grid = '<div class="bgrid">' + (p.bonus || []).map(function (b, i) {
+      var num = ("0" + (i + 1)).slice(-2);
+      return (ok ? '<div class="bk">' : '<button type="button" class="bk locked" data-upgrade>') + '<div class="cv"><span class="nb">BÔNUS ' + num + "</span>" +
         (b.capa ? '<img src="' + esc(b.capa) + '" alt="' + esc(b.titulo) + '" loading="lazy">' : '<div class="nc"><b>' + esc(b.titulo) + "</b></div>") + "</div>" +
         "<p><b>" + esc(b.titulo) + "</b><br>" + esc(b.descricao) + "</p>" +
-        (ok && b.arquivo ? '<a class="btn small block" href="#/pdf/' + esc(p.id) + '/bonus/' + esc(b.n) + '">Abrir</a>' : "") +
-        (ok && !b.arquivo ? '<small style="color:var(--ink2)">Em breve</small>' : "") + "</div>";
+        (ok && b.arquivo ? '<a class="btn small block" href="#/pdf/' + esc(p.id) + '/bonus/' + esc(b.n) + '">Abrir</a><a class="btn small ghost block" href="' + esc(b.arquivo) + '" download>Baixar PDF</a>' : "") +
+        (ok && !b.arquivo ? '<small style="color:var(--ink2)">Em breve</small>' : "") + (ok ? '</div>' : '</button>');
     }).join("") + "</div>";
-    if (ok) return grid;
-    return '<div class="card upsell"><h3>Bônus exclusivos do Premium</h3><p>Os 10 bônus fazem parte do Premium. Libere agora com o upgrade.</p>' +
-      '<a class="btn" href="' + esc(CAT.upgrade.url) + '" target="_blank" rel="noopener">' + esc(CAT.upgrade.botao || "Quero o Premium") + '</a></div><div class="lockbox">' + grid + "</div>";
+    return grid;
   }
 
   function painelCertificado(p, acesso) {
@@ -424,14 +527,23 @@
     });
   }
 
-  function telaPDF(acesso, id, aba, itemId) {
+  function telaPDF(acesso, id, aba, itemId, arquivoId) {
     var p = prod(id), item = null;
-    var voltar = "#/p/" + id + "/" + aba;
-    if (p && acesso && p.id === acesso.produto && (aba === "apostilas" || aba === "bonus") && liberado(p, aba, acesso.nivel)) {
-      if (aba === "apostilas" && /^(0|[1-9][0-9]*)$/.test(itemId || "")) item = (p.apostilas || [])[Number(itemId)];
-      if (aba === "bonus") item = (p.bonus || []).filter(function (b) { return String(b.n) === itemId; })[0];
+    var voltar = "#/p/" + id + (aba === 'bonus' ? '/bonus' : '/materiais');
+    if (p && acesso && p.id === acesso.produto) {
+      if (aba === "bonus" && liberado(p, "bonus", acesso.nivel)) item = (p.bonus || []).filter(function (b) { return String(b.n) === itemId; })[0];
+      if (aba === "complementares") {
+        var comp = complementar(p, itemId);
+        if (comp && !compLiberado(itemId)) {
+          history.replaceState(null, "", voltar);
+          telaProduto(acesso, id, "materiais");
+          abrirCompra(p, comp);
+          return;
+        }
+        if (comp) item = comp.arquivos.filter(function (f) { return f.id === arquivoId && /\.pdf$/i.test(f.arquivo); })[0];
+      }
     }
-    if (!item || !item.arquivo || !/^conteudo\//.test(item.arquivo) || /\.\.|[\\?#%]/.test(item.arquivo)) {
+    if (!item || !item.arquivo || !/^(?:conteudo\/(?:bonus|apostilas)\/|\.\.\/complementares\/(?:mapas|pacote-a|pacote-b|kit|combo)\/)[^/\\?#%]+\.pdf$/i.test(item.arquivo) || item.arquivo.slice(3).indexOf('..') !== -1) {
       location.replace(voltar); return;
     }
     var base = new URL("./", location.href);
@@ -448,9 +560,10 @@
 
   /* ---------- rota ---------- */
   function rota() {
+    fecharCompra(false);
     var acesso = acessoAtual();
     var h = (location.hash || "#/").replace(/^#\/?/, "").split("/");
-    if (h[0] === "pdf") { telaPDF(acesso, h[1], h[2], h[3]); return; }
+    if (h[0] === "pdf") { telaPDF(acesso, h[1], h[2], h[3], h[4]); return; }
     if (!acesso) { telaAcesso(); return; }
     if (h[0] === "p" && h[1]) telaProduto(acesso, h[1], h[2], h[3]);
     else if (h[0] === "aula" && h[1] && h[2]) location.replace("#/p/" + h[1] + "/aulas/" + h[2]);

@@ -19,9 +19,7 @@ window.CATALOGO = {
           "basico",
           "premium"
         ],
-        "apostilas": [
-          "premium"
-        ],
+        "apostilas": [],
         "bonus": [
           "premium"
         ],
@@ -629,22 +627,8 @@ window.CATALOGO = {
           ]
         }
       ],
-      "apostilas": [
-        {
-          "titulo": "Apostila completa do curso",
-          "descricao": "Refrigeração, conserto e manutenção de ar-condicionado, módulo a módulo",
-          "capa": "assets/apostila-completa.webp",
-          "arquivo": "conteudo/apostilas/apostila-completa.pdf"
-        }
-      ],
+      "apostilas": [],
       "bonus": [
-        {
-          "n": 1,
-          "titulo": "Glossário técnico",
-          "descricao": "Termos da refrigeração explicados de forma simples",
-          "capa": "",
-          "arquivo": "conteudo/bonus/01-glossario-tecnico.pdf"
-        },
         {
           "n": 2,
           "titulo": "Tabela de gases e pressões",
@@ -686,27 +670,138 @@ window.CATALOGO = {
           "descricao": "Diagnóstico prático para os 7 problemas mais frequentes",
           "capa": "assets/bonus/bonus-07.webp",
           "arquivo": "conteudo/bonus/07-guia-defeitos.pdf"
+        }
+      ],
+      "complementares": [
+        {
+          "id": "mapas",
+          "titulo": "Mapa Visual do Técnico: 3 Mapas + 3 Bônus",
+          "preco": "R$ 27",
+          "url": "https://pay.cakto.com.br/szxvvpt",
+          "descricao": "O curso te ensina o serviço. Os 3 Mapas ficam no celular na hora do atendimento: acha o sintoma, vê a causa provável, faz o teste certo e resolve. Mais 3 bônus: tabela de preços e orçamento, script de atendimento e os 10 erros mais comuns.",
+          "capa": "assets/complementares/mapas.webp",
+          "arquivos": [
+            {
+              "id": "mapa-visual-do-tecnico",
+              "titulo": "Mapa Visual do Técnico",
+              "arquivo": "../complementares/mapas/mapa-visual-do-tecnico.pdf"
+            },
+            {
+              "id": "mapa-diagnostico-split",
+              "titulo": "Mapa de Diagnóstico do Ar Condicionado Split",
+              "arquivo": "../complementares/mapas/mapa-diagnostico-split.pdf"
+            },
+            {
+              "id": "mapa-eletrico-refrigerista",
+              "titulo": "Mapa Elétrico do Refrigerista",
+              "arquivo": "../complementares/mapas/mapa-eletrico-refrigerista.pdf"
+            },
+            {
+              "id": "tabela-precos-orcamento",
+              "titulo": "Tabela de preços e orçamento",
+              "arquivo": "../complementares/mapas/tabela-precos-orcamento.pdf"
+            },
+            {
+              "id": "script-atendimento",
+              "titulo": "Script de atendimento (WhatsApp e telefone)",
+              "arquivo": "../complementares/mapas/script-atendimento.pdf"
+            },
+            {
+              "id": "10-erros-mais-comuns",
+              "titulo": "Os 10 erros mais comuns de quem tá começando",
+              "arquivo": "../complementares/mapas/10-erros-mais-comuns.pdf"
+            }
+          ]
         },
         {
-          "n": 8,
-          "titulo": "Plano de manutenção preventiva",
-          "descricao": "Como criar renda recorrente com contratos",
-          "capa": "assets/bonus/bonus-08.webp",
-          "arquivo": "conteudo/bonus/08-manutencao-preventiva.pdf"
+          "id": "pacote-a",
+          "titulo": "Apostila Completa + Guia de Manutenção Preventiva",
+          "preco": "R$ 19",
+          "url": "https://pay.cakto.com.br/jctn9ak",
+          "descricao": "A apostila completa em PDF pra consultar no dia do serviço, mais o guia de manutenção preventiva.",
+          "capa": "assets/complementares/pacote-a.webp",
+          "arquivos": [
+            {
+              "id": "apostila-completa",
+              "titulo": "Apostila completa",
+              "arquivo": "../complementares/pacote-a/apostila-completa.pdf"
+            },
+            {
+              "id": "08-manutencao-preventiva",
+              "titulo": "Guia de manutenção preventiva",
+              "arquivo": "../complementares/pacote-a/08-manutencao-preventiva.pdf"
+            }
+          ]
         },
         {
-          "n": 9,
-          "titulo": "Cálculo de BTUs",
-          "descricao": "Dimensionamento correto do ar-condicionado",
-          "capa": "assets/bonus/bonus-09.webp",
-          "arquivo": "conteudo/bonus/09-calculo-btus.pdf"
+          "id": "pacote-b",
+          "titulo": "Cálculo de BTUs + Guia dos Primeiros Clientes",
+          "preco": "R$ 14",
+          "url": "https://pay.cakto.com.br/32d9k4p",
+          "descricao": "Cálculo de BTUs pra indicar o aparelho certo em cada ambiente, mais o guia dos primeiros clientes.",
+          "capa": "assets/complementares/pacote-b.webp",
+          "arquivos": [
+            {
+              "id": "09-calculo-btus",
+              "titulo": "Cálculo de BTUs",
+              "arquivo": "../complementares/pacote-b/09-calculo-btus.pdf"
+            },
+            {
+              "id": "10-primeiros-clientes",
+              "titulo": "Guia dos primeiros clientes",
+              "arquivo": "../complementares/pacote-b/10-primeiros-clientes.pdf"
+            }
+          ]
         },
         {
-          "n": 10,
-          "titulo": "Primeiros clientes",
-          "descricao": "Plano de 30 dias para fechar a primeira agenda",
-          "capa": "assets/bonus/bonus-10.webp",
-          "arquivo": "conteudo/bonus/10-primeiros-clientes.pdf"
+          "id": "kit",
+          "titulo": "Kit Orçamento e Contrato para Técnico de Ar-Condicionado",
+          "preco": "R$ 9,90",
+          "url": "https://pay.cakto.com.br/9u4wmnc",
+          "descricao": "Kit de orçamento, contrato técnico, mensagens de fechamento pro WhatsApp e a planilha de orçamento e clientes.",
+          "capa": "assets/complementares/kit.webp",
+          "arquivos": [
+            {
+              "id": "Kit-de-Orcamento",
+              "titulo": "Kit de orçamento",
+              "arquivo": "../complementares/kit/Kit-de-Orcamento.pdf"
+            },
+            {
+              "id": "Contrato-Tecnico",
+              "titulo": "Contrato técnico",
+              "arquivo": "../complementares/kit/Contrato-Tecnico.pdf"
+            },
+            {
+              "id": "Fecha-Orcamento-Mensagens-WhatsApp",
+              "titulo": "Fecha Orçamento: Mensagens WhatsApp",
+              "arquivo": "../complementares/kit/Fecha-Orcamento-Mensagens-WhatsApp.pdf"
+            },
+            {
+              "id": "Planilha-do-Tecnico-Orcamento-e-Clientes",
+              "titulo": "Planilha do Técnico: Orçamento e Clientes",
+              "arquivo": "../complementares/kit/Planilha-do-Tecnico-Orcamento-e-Clientes.xlsx"
+            }
+          ]
+        },
+        {
+          "id": "combo",
+          "titulo": "Combo Fecha Orçamento + Códigos de Erro de Split",
+          "preco": "R$ 14,90",
+          "url": "https://pay.cakto.com.br/3fuqszo",
+          "descricao": "Mensagens de fechamento pra converter orçamento em serviço e a tabela de códigos de erro de split.",
+          "capa": "assets/complementares/combo.webp",
+          "arquivos": [
+            {
+              "id": "Codigos-de-Erro-Split",
+              "titulo": "Códigos de Erro de Split",
+              "arquivo": "../complementares/combo/Codigos-de-Erro-Split.pdf"
+            },
+            {
+              "id": "Fecha-Orcamento-Mensagens-WhatsApp",
+              "titulo": "Fecha Orçamento: Mensagens WhatsApp",
+              "arquivo": "../complementares/combo/Fecha-Orcamento-Mensagens-WhatsApp.pdf"
+            }
+          ]
         }
       ]
     }

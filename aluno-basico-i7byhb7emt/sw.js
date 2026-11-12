@@ -1,6 +1,6 @@
 /* Service worker simples: guarda o "esqueleto" do app para abrir rápido e funcionar com internet ruim.
    O catálogo (data/catalogo.json) é sempre buscado na rede primeiro. */
-var V = "aluno-v3";
+var V = "aluno-v5";
 var SHELL = ["./", "index.html", "styles.css", "app.js", "visualizador.html", "data/catalogo.js", "manifest.webmanifest", "assets/icon.svg"];
 
 self.addEventListener("install", function (e) {
@@ -13,7 +13,7 @@ self.addEventListener("activate", function (e) {
 });
 self.addEventListener("fetch", function (e) {
   var req = e.request, url = new URL(req.url);
-  if (req.method !== "GET" || url.origin !== location.origin) return;
+  if (req.method !== "GET" || url.origin !== location.origin || /\.pdf$/i.test(url.pathname)) return;
   var rede = /data\/catalogo\.json$/.test(url.pathname) || /\.(js|css|html)$/.test(url.pathname) || url.pathname.slice(-1) === "/";
   if (rede) {
     e.respondWith(fetch(req).then(function (r) {

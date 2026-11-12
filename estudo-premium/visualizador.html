@@ -22,7 +22,7 @@ canvas{display:block;width:100%;height:100%}#native{width:100%;height:100%;borde
 (function () {
   "use strict";
   var file = new URLSearchParams(location.search).get("f") || "";
-  if (!/^conteudo\//.test(file) || /\.\.|[\\?#%]/.test(file)) return;
+  if (!/^(?:conteudo\/(?:bonus|apostilas)\/|\.\.\/complementares\/(?:mapas|pacote-a|pacote-b|kit|combo)\/)[^/\\?#%]+\.pdf$/i.test(file) || file.slice(3).indexOf("..") !== -1) return;
   var url = new URL(file, new URL("./", location.href)).href;
   var CDN = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/";
   var pages = document.getElementById("pages"), toolbar = document.getElementById("zoom");
