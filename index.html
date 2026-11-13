@@ -499,11 +499,13 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
 /* PRINTS WHATSAPP (MODELO) — estilos isolados (prefixo wa-). Tudo em em: 1em = 15px num print de 390px */
 .wa-proof{margin:36px 0 12px;min-width:0}
 .wa-proof h2{font-size:clamp(23px,5.8vw,32px)}
-.wa-rail{position:relative;max-width:100%;overflow:hidden;padding:0}
-.wa-track{display:flex;align-items:flex-start;width:max-content;padding:22px 0 48px;animation:wa-run var(--wadur,60s) linear infinite;will-change:transform;transform:translate3d(0,0,0);backface-visibility:hidden}
+.wa-rail{position:relative;max-width:100%;overflow:hidden;padding:0;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 9%,#000 91%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 9%,#000 91%,transparent 100%)}
+.wa-rail.wa-drag{cursor:grabbing}
+.wa-rail img{-webkit-user-drag:none;pointer-events:none}
+.wa-track{display:flex;align-items:flex-start;width:max-content;padding:22px 0 48px;;will-change:transform;transform:translate3d(0,0,0);backface-visibility:hidden}
 .wa-track>.wa-shot{margin-right:20px}
 /* COLAGEM DE PRINTS: sem moldura de celular; prints sobrepostos, inclinados e recortados */
-.wa-track{align-items:center;padding:34px 24px 54px}
+.wa-track{align-items:center;padding:34px 0 54px}
 .wa-track>.wa-shot{margin-right:-30px;background:#efeae2;border-radius:10px;box-shadow:0 1px 0 rgba(0,0,0,.06),0 14px 30px -10px rgba(0,0,0,.65);transform:rotate(var(--rt,0deg)) translateY(var(--ty,0)) translateZ(0)}
 .wa-shot .wa-island,.wa-shot .wa-home,.wa-shot .wa-status{display:none}
 .wa-shot .wa-head{padding-top:.6em}
@@ -515,8 +517,6 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
 .wa-track>.wa-shot:nth-child(5n+4){--rt:2.6deg;--ty:-6px;z-index:5;aspect-ratio:390/620}
 .wa-track>.wa-shot:nth-child(5n+4) .wa-foot{display:none}
 .wa-track>.wa-shot:nth-child(5n+5){--rt:-2deg;--ty:14px;z-index:2}
-@keyframes wa-run{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
-.wa-rail:hover .wa-track,.wa-rail:active .wa-track{animation-play-state:paused}
 .wa-shot{flex:0 0 min(232px,62vw);width:min(232px,62vw);aspect-ratio:390/760;container-type:inline-size;position:relative;background:#000;border-radius:34px;padding:0;overflow:hidden;box-shadow:0 0 0 3px #1b1b1d,0 0 0 4.5px #3b3b3f,0 22px 44px -14px rgba(0,0,0,.7);margin:0}
 .wa-shot>img{display:block;width:100%;height:auto;-webkit-user-drag:none}
 .wa-screen{position:relative;display:flex;flex-direction:column;height:100%;font-size:calc(100cqw/26);line-height:1.28;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#111;text-align:left;background:#efe7dd;-webkit-font-smoothing:antialiased;user-select:none;-webkit-user-select:none}
@@ -1152,13 +1152,26 @@ document.addEventListener("DOMContentLoaded",function(){
 </script>
 
 <script>
-/* PRINTS WHATSAPP (MODELO): faixa animada por CSS (transform); aqui so duplica pra fechar o laco */
+/* PRINTS WHATSAPP (MODELO): faixa que anda sozinha (transform via rAF, sem scroll) e arrasta com mouse/dedo; nao pausa no hover */
 (function(){
   var r=document.querySelector('[data-wacar]');if(!r)return;
   var tr=r.querySelector('.wa-track');if(!tr)return;
   [].slice.call(tr.children).forEach(function(k){var c=k.cloneNode(true);c.setAttribute('aria-hidden','true');tr.appendChild(c)});
-  var n=tr.children.length/2;tr.style.setProperty('--wadur',(n*12)+'s');
-  if('IntersectionObserver' in window)new IntersectionObserver(function(es){tr.style.animationPlayState=es[0].isIntersecting?'':'paused'},{threshold:0.02}).observe(r);
+  var x=0,last=0,drag=false,sx=0,x0=0,vis=true,SPEED=0.05;
+  function wrap(){var h=tr.offsetWidth/2;if(h>0)x=((x%h)+h)%h}
+  r.addEventListener('pointerdown',function(e){if(e.pointerType==='mouse'&&e.button!==0)return;drag=true;sx=e.clientX;x0=x;r.classList.add('wa-drag');try{r.setPointerCapture(e.pointerId)}catch(_){}});
+  r.addEventListener('pointermove',function(e){if(!drag)return;x=x0-(e.clientX-sx);wrap()});
+  function up(){if(!drag)return;drag=false;r.classList.remove('wa-drag')}
+  r.addEventListener('pointerup',up);r.addEventListener('pointercancel',up);r.addEventListener('lostpointercapture',up);
+  r.addEventListener('dragstart',function(e){e.preventDefault()});
+  if('IntersectionObserver' in window)new IntersectionObserver(function(es){vis=es[0].isIntersecting},{threshold:0.02}).observe(r);
+  function step(ts){
+    var dt=last?Math.min(ts-last,50):16;last=ts;
+    if(!drag&&vis){x+=SPEED*dt;wrap();tr.style.transform='translate3d('+(-x).toFixed(2)+'px,0,0)'}
+    else if(drag){tr.style.transform='translate3d('+(-x).toFixed(2)+'px,0,0)'}
+    requestAnimationFrame(step)
+  }
+  requestAnimationFrame(step)
 })();
 </script>
 </body>
