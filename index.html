@@ -435,24 +435,23 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
 .bgrid .slot.ar34{aspect-ratio:2/3}
 .bgrid .bk h3{display:none}
 .bgrid .bk .slot::after{content:"BÔNUS";position:absolute;left:10px;top:9px;z-index:3;background:var(--cta);color:#fff;font:800 10px var(--head);letter-spacing:.08em;padding:3px 8px;border-radius:999px;box-shadow:0 4px 10px -4px rgba(0,0,0,.5)}
-.bgrid .brow:nth-child(1) .bk:nth-child(1) .slot::after{content:"BÔNUS 01"}
-.bgrid .brow:nth-child(1) .bk:nth-child(2) .slot::after{content:"BÔNUS 02"}
-.bgrid .brow:nth-child(1) .bk:nth-child(3) .slot::after{content:"BÔNUS 03"}
-.bgrid .brow:nth-child(1) .bk:nth-child(4) .slot::after{content:"BÔNUS 04"}
-.bgrid .brow:nth-child(2) .bk:nth-child(1) .slot::after{content:"BÔNUS 05"}
-.bgrid .brow:nth-child(2) .bk:nth-child(2) .slot::after{content:"BÔNUS 06"}
-.bgrid .brow:nth-child(2) .bk:nth-child(3) .slot::after{content:"BÔNUS 07"}
-.bgrid .brow:nth-child(2) .bk:nth-child(4) .slot::after{content:"BÔNUS 08"}
-.bgrid .brow:nth-child(3) .bk:nth-child(1) .slot::after{content:"BÔNUS 09"}
-.bgrid .brow:nth-child(3) .bk:nth-child(2) .slot::after{content:"BÔNUS 10"}
 .bgrid{display:block;margin:20px 0 0;padding:0}
 .bonus .hint{display:block;margin-top:8px;font:800 11.5px var(--head);letter-spacing:.1em;color:var(--cta)}
-.brow{display:flex;gap:12px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-snap-type:x proximity;scroll-padding-left:16px;margin:0 calc(50% - 50vw);padding:6px 16px 12px;justify-content:safe center;touch-action:pan-x pan-y;cursor:grab}
-.brow::-webkit-scrollbar{display:none}
-.brow.drag{cursor:grabbing;scroll-snap-type:none}
-.brow .bk{flex:0 0 auto;width:clamp(118px,34vw,158px);max-width:none;margin:0;scroll-snap-align:start}
-.brow img{-webkit-user-drag:none}
-@media(min-width:620px){.brow{margin:0;padding-left:0;padding-right:0}.brow .bk{width:158px}}
+.bk[data-n="01"] .slot::after{content:"BÔNUS 01"}
+.bk[data-n="02"] .slot::after{content:"BÔNUS 02"}
+.bk[data-n="03"] .slot::after{content:"BÔNUS 03"}
+.bk[data-n="04"] .slot::after{content:"BÔNUS 04"}
+.bk[data-n="05"] .slot::after{content:"BÔNUS 05"}
+.bk[data-n="06"] .slot::after{content:"BÔNUS 06"}
+.bk[data-n="07"] .slot::after{content:"BÔNUS 07"}
+.bk[data-n="08"] .slot::after{content:"BÔNUS 08"}
+.bk[data-n="09"] .slot::after{content:"BÔNUS 09"}
+.bk[data-n="10"] .slot::after{content:"BÔNUS 10"}
+.brow{position:relative;overflow:hidden;margin:0 calc(50% - 50vw);padding:6px 0 12px;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%)}
+.brow.drag{cursor:grabbing}
+.btrack{display:flex;width:max-content;will-change:transform;transform:translate3d(0,0,0)}
+.btrack>.bk{flex:0 0 auto;width:clamp(88px,25vw,122px);max-width:none;margin:0 12px 0 0}
+.brow img{-webkit-user-drag:none;pointer-events:none}
 .hint{display:none}
 .bk{text-align:left}
 .bk .slot{border-radius:8px 16px 16px 8px;box-shadow:0 20px 30px -18px rgba(58,24,12,.6),0 0 0 1px rgba(58,24,12,.08)}
@@ -1001,21 +1000,21 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
       <span class="hint">ARRASTE PRA VER →</span>
     </div>
     <div class="bgrid rv">
-      <div class="brow" data-brow>
-      <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#E8590C;--b:#7A1F12"></div><img class="ov" src="assets/bonus-01.webp" alt="Capa do bônus 01: Apostila completa" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Apostila completa</h3><p>Tudo reunido</p><span class="bv"><s>R$27</s> GRÁTIS</span></div>
-      <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#D92D20;--b:#7A1010"></div><img class="ov" src="assets/bonus-02.webp" alt="Capa do bônus 02: Tabela de gases e pressões" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Tabela de gases</h3><p>Pressões na mão</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
-      <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#FF8A4D;--b:#D2450F"></div><img class="ov" src="assets/bonus-03.webp" alt="Capa do bônus 03: Checklist de instalação de split" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Checklist de split</h3><p>Sem esquecer etapa</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
-      <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#E0701A;--b:#9A3412"></div><img class="ov" src="assets/bonus-04.webp" alt="Capa do bônus 04: Guia de limpeza" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Guia de limpeza</h3><p>Passo a passo</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
+      <div class="brow" data-brow data-dir="1">
+        <div class="bk" data-n="01"><div class="slot ar34"><div class="fb cover" style="--a:#E8590C;--b:#7A1F12"></div><img class="ov" src="assets/bonus-01.webp" alt="Capa do bônus 01: Apostila completa" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Apostila completa</h3><p>Tudo reunido</p><span class="bv"><s>R$27</s> GRÁTIS</span></div>
+        <div class="bk" data-n="02"><div class="slot ar34"><div class="fb cover" style="--a:#D92D20;--b:#7A1010"></div><img class="ov" src="assets/bonus-02.webp" alt="Capa do bônus 02: Tabela de gases e pressões" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Tabela de gases</h3><p>Pressões na mão</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
+        <div class="bk" data-n="03"><div class="slot ar34"><div class="fb cover" style="--a:#FF8A4D;--b:#D2450F"></div><img class="ov" src="assets/bonus-03.webp" alt="Capa do bônus 03: Checklist de instalação de split" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Checklist de split</h3><p>Sem esquecer etapa</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
+        <div class="bk" data-n="04"><div class="slot ar34"><div class="fb cover" style="--a:#E0701A;--b:#9A3412"></div><img class="ov" src="assets/bonus-04.webp" alt="Capa do bônus 04: Guia de limpeza" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Guia de limpeza</h3><p>Passo a passo</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
       </div>
-      <div class="brow" data-brow>
-      <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#C2185B;--b:#6A0F36"></div><img class="ov" src="assets/bonus-05.webp" alt="Capa do bônus 05: Manual de ferramentas" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Manual de ferramentas</h3><p>O que comprar</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
-      <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#D97706;--b:#92400E"></div><img class="ov" src="assets/bonus-06.webp" alt="Capa do bônus 06: Guia de preços de serviços" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Guia de preços</h3><p>Monte sua tabela</p><span class="bv"><s>R$27</s> GRÁTIS</span></div>
-      <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#E85A06;--b:#8A2A00"></div><img class="ov" src="assets/bonus-07.webp" alt="Capa do bônus 07: Manual de defeitos e soluções" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Manual de defeitos</h3><p>Do sintoma ao conserto</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
-      <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#E8590C;--b:#2B0F1C"></div><img class="ov" src="assets/bonus-08.webp" alt="Capa do bônus 08: Guia de manutenção preventiva" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Manutenção preventiva</h3><p>Fidelize clientes</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
+      <div class="brow" data-brow data-dir="-1">
+        <div class="bk" data-n="05"><div class="slot ar34"><div class="fb cover" style="--a:#C2185B;--b:#6A0F36"></div><img class="ov" src="assets/bonus-05.webp" alt="Capa do bônus 05: Manual de ferramentas" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Manual de ferramentas</h3><p>O que comprar</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
+        <div class="bk" data-n="06"><div class="slot ar34"><div class="fb cover" style="--a:#D97706;--b:#92400E"></div><img class="ov" src="assets/bonus-06.webp" alt="Capa do bônus 06: Guia de preços de serviços" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Guia de preços</h3><p>Monte sua tabela</p><span class="bv"><s>R$27</s> GRÁTIS</span></div>
+        <div class="bk" data-n="07"><div class="slot ar34"><div class="fb cover" style="--a:#E85A06;--b:#8A2A00"></div><img class="ov" src="assets/bonus-07.webp" alt="Capa do bônus 07: Manual de defeitos e soluções" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Manual de defeitos</h3><p>Do sintoma ao conserto</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
       </div>
-      <div class="brow" data-brow>
-      <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#D92D20;--b:#9A3412"></div><img class="ov" src="assets/bonus-09.webp" alt="Capa do bônus 09: Cálculo de BTUs" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Cálculo de BTUs</h3><p>Aparelho certo</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
-      <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#D2450F;--b:#C2185B"></div><img class="ov" src="assets/bonus-10.webp" alt="Capa do bônus 10: Guia dos primeiros clientes" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Primeiros clientes</h3><p>Como ser chamado</p><span class="bv"><s>R$24</s> GRÁTIS</span></div>
+      <div class="brow" data-brow data-dir="1">
+        <div class="bk" data-n="08"><div class="slot ar34"><div class="fb cover" style="--a:#E8590C;--b:#2B0F1C"></div><img class="ov" src="assets/bonus-08.webp" alt="Capa do bônus 08: Guia de manutenção preventiva" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Manutenção preventiva</h3><p>Fidelize clientes</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
+        <div class="bk" data-n="09"><div class="slot ar34"><div class="fb cover" style="--a:#D92D20;--b:#9A3412"></div><img class="ov" src="assets/bonus-09.webp" alt="Capa do bônus 09: Cálculo de BTUs" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Cálculo de BTUs</h3><p>Aparelho certo</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
+        <div class="bk" data-n="10"><div class="slot ar34"><div class="fb cover" style="--a:#D2450F;--b:#C2185B"></div><img class="ov" src="assets/bonus-10.webp" alt="Capa do bônus 10: Guia dos primeiros clientes" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Primeiros clientes</h3><p>Como ser chamado</p><span class="bv"><s>R$24</s> GRÁTIS</span></div>
       </div>
     </div>
     <div class="bonus-tot rv"><span>Tudo isso, separado, custaria <s>R$197</s></span><b class="gratis">Tudo isso sai DE GRAÇA adquirindo o Premium hoje</b><a href="#planos" class="btn" style="margin-top:10px">Quero o Premium com os 10 bônus <span class="ar">→</span></a></div>
@@ -1242,12 +1241,34 @@ document.addEventListener("DOMContentLoaded",function(){
 })();
 </script>
 <script>
-(function(){document.querySelectorAll('[data-brow]').forEach(function(r){var d=false,sx=0,sl=0,mv=false;
-r.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse'||e.button!==0)return;d=true;mv=false;sx=e.clientX;sl=r.scrollLeft;r.classList.add('drag')});
-r.addEventListener('pointermove',function(e){if(!d)return;mv=true;r.scrollLeft=sl-(e.clientX-sx)});
-function up(){d=false;r.classList.remove('drag')}
-['pointerup','pointercancel','pointerleave'].forEach(function(ev){r.addEventListener(ev,up)});
-r.addEventListener('dragstart',function(e){e.preventDefault()})})})();
+/* BONUS: tres faixas que andam sozinhas (transform via rAF), arrastam com mouse/dedo e param fora da tela */
+(function(){
+  var rows=[].slice.call(document.querySelectorAll('[data-brow]'));if(!rows.length)return;
+  rows.forEach(function(r,idx){
+    var tr=document.createElement('div');tr.className='btrack';
+    var set=[].slice.call(r.children);set.forEach(function(k){tr.appendChild(k)});r.appendChild(tr);
+    var dir=r.getAttribute('data-dir')==='-1'?-1:1,x=0,last=0,drag=false,sx=0,x0=0,vis=false,raf=0,P=0,SPEED=0.035;
+    function build(){
+      while(tr.children.length>set.length)tr.removeChild(tr.lastChild);
+      P=tr.offsetWidth;if(!P)return;
+      var n=Math.ceil(r.offsetWidth/P);
+      for(var i=0;i<n;i++)set.forEach(function(k){var c=k.cloneNode(true);c.setAttribute('aria-hidden','true');tr.appendChild(c)});
+      x=dir>0?0:P;
+    }
+    function wrap(){if(P>0)x=((x%P)+P)%P}
+    function draw(){tr.style.transform='translate3d('+(-x).toFixed(2)+'px,0,0)'}
+    r.addEventListener('pointerdown',function(e){if(e.pointerType==='mouse'&&e.button!==0)return;drag=true;sx=e.clientX;x0=x;r.classList.add('drag');try{r.setPointerCapture(e.pointerId)}catch(_){}});
+    r.addEventListener('pointermove',function(e){if(!drag)return;x=x0-(e.clientX-sx);wrap();draw()});
+    function up(){if(!drag)return;drag=false;r.classList.remove('drag')}
+    ['pointerup','pointercancel','lostpointercapture'].forEach(function(ev){r.addEventListener(ev,up)});
+    r.addEventListener('dragstart',function(e){e.preventDefault()});
+    function step(ts){var dt=last?Math.min(ts-last,50):16;last=ts;if(!drag){x+=dir*SPEED*dt;wrap()}draw();raf=(vis||drag)?requestAnimationFrame(step):0}
+    function go(){if(!raf){last=0;raf=requestAnimationFrame(step)}}
+    function init(){build();draw()}
+    init();addEventListener('load',init);addEventListener('resize',init);
+    if('IntersectionObserver' in window)new IntersectionObserver(function(es){vis=es[0].isIntersecting;if(vis)go()},{threshold:0.02}).observe(r);else{vis=true;go()}
+  });
+})();
 </script>
 </body>
 </html>
