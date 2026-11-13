@@ -676,7 +676,7 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
 </svg>
 
 <!-- FAIXA DE URGÊNCIA (timer da escala: 15 min a partir do acesso) -->
-<div class="topbar">Preço promocional só hoje<span class="sep">·</span><b class="hojeData"></b><span class="sep">·</span>sua oferta expira em <span class="tm" data-tm>--:--</span></div>
+<div class="topbar">Acesso por R$10<span class="sep">·</span>oferta válida somente hoje<span class="sep">·</span><b class="hojeData"></b><span class="sep">·</span>até as <span class="tm" data-ate>--:--</span></div>
 
 <!-- HERO -->
 <header class="hero">
@@ -862,10 +862,7 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
     </div>
     <div class="nao rv"><span>Você não precisa de:</span><span><s>curso presencial</s></span><span><s>experiência</s></span><span><s>diploma</s></span></div>
   </div>
-</section>
-
-<!-- CARDS DE AULA (marquee). 20 cards, sem imagem (degradê + ícone) -->
-<section class="aulas">
+  <div class="aulas" style="background:none;padding:30px 0 6px">
   <div class="mq" style="margin-top:0"><div class="mq-track" id="aulaTrack" style="--dur:50s">
     <div class="aula"><div class="thumb" style="--a:#C2410C;--b:#5A1D16"><span class="tg">VIDEOAULA</span><svg class="ic gh"><use href="#i-snow"/></svg><span class="pl"><svg><use href="#i-tri"/></svg></span><span class="bar" style="--w:10%"></span></div><div class="t"><h3>Como o seu ar condicionado funciona</h3><p>Fundamentos da refrigeração</p><span class="rs"><svg class="ic"><use href="#i-check"/></svg>Você entende o que acontece dentro do aparelho</span></div></div>
     <div class="aula"><div class="thumb" style="--a:#FF8A4D;--b:#D2450F"><span class="tg">VIDEOAULA</span><svg class="ic gh"><use href="#i-home"/></svg><span class="pl"><svg><use href="#i-tri"/></svg></span><span class="bar" style="--w:15%"></span></div><div class="t"><h3>Quais os tipos de ar condicionado, qual escolher</h3><p>Fundamentos da refrigeração</p><span class="rs"><svg class="ic"><use href="#i-check"/></svg>Você sabe indicar o aparelho certo</span></div></div>
@@ -888,7 +885,7 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
     <div class="aula"><div class="thumb" style="--a:#C2185B;--b:#6A0F36"><span class="tg">VIDEOAULA</span><svg class="ic gh"><use href="#i-coin"/></svg><span class="pl"><svg><use href="#i-tri"/></svg></span><span class="bar" style="--w:92%"></span></div><div class="t"><h3>Quanto cobrar no serviço de ar condicionado</h3><p>Primeiros clientes</p><span class="rs"><svg class="ic"><use href="#i-check"/></svg>Você sai sabendo quanto cobrar</span></div></div>
     <div class="aula"><div class="thumb" style="--a:#D97706;--b:#92400E"><span class="tg">VIDEOAULA</span><svg class="ic gh"><use href="#i-users"/></svg><span class="pl"><svg><use href="#i-tri"/></svg></span><span class="bar" style="--w:96%"></span></div><div class="t"><h3>Como conseguir clientes começando do zero</h3><p>Primeiros clientes</p><span class="rs"><svg class="ic"><use href="#i-check"/></svg>Você sabe onde achar os primeiros clientes</span></div></div>
   </div></div>
-  <div class="cta-row rv"><a href="#planos" class="btn caps">Quero começar agora <span class="ar">→</span></a></div>
+  </div>
 </section>
 
 <!-- PROVA SOCIAL -->
@@ -896,6 +893,8 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
   <div class="wrap center">
     <div class="rv">
       <h2>Eles já <span class="hl" style="color:var(--sol)">começaram.</span></h2>
+      <p class="lead"><b>Mais de 3.000 alunos</b> com curso completo. Formação prática para quem quer trabalhar com ar-condicionado.</p>
+      <p class="lead">Alguns deles estavam desempregados, alguns já tinham clientes, mas o que eles têm em comum é que todos começaram a faturar mais fazendo serviços de ar-condicionado.</p>
     </div>
     <figure class="prova-foto rv"><img src="assets/prova-alunos.webp" alt="Alunos mostrando o certificado de conclusão do curso" width="1400" height="717" loading="lazy" decoding="async"></figure>
     <div class="cta-row rv"><a href="#planos" class="btn pulse caps">Quero começar agora <span class="ar">→</span></a></div>
@@ -1121,7 +1120,7 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
       <svg class="ic flk" style="width:90px;height:90px;left:-20px;bottom:-20px"><use href="#i-sun"/></svg>
       <h2>R$10 hoje ou <span class="hl">mais um verão indicando o serviço pra outro</span></h2>
       <p>Uma única limpeza paga esse curso 25 vezes.</p>
-      <div class="tick"><svg class="ic" style="width:18px;height:18px"><use href="#i-clock"/></svg>Seu preço promocional expira em <span class="tm" data-tm>--:--</span></div>
+      <div class="tick"><svg class="ic" style="width:18px;height:18px"><use href="#i-clock"/></svg>Acesso por R$10, oferta válida somente hoje, até as <span class="tm" data-ate>--:--</span></div>
       <a href="#planos" class="btn pulse caps">Quero começar agora <span class="ar">→</span></a>
     </div>
   </div>
@@ -1151,7 +1150,7 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
 </div>
 
 <!-- barra fixa de vidro -->
-<div class="sticky" id="sticky"><div class="sticky-in"><p>Acesso por <b>R$10</b><br>expira em <span class="tm" data-tm>--:--</span></p><a href="#planos" class="btn caps">Começar <span class="ar">→</span></a></div></div>
+<div class="sticky" id="sticky"><div class="sticky-in"><p>Acesso por <b>R$10</b><br>oferta válida somente hoje, até as <span class="tm" data-ate>--:--</span></p><a href="#planos" class="btn caps">Começar <span class="ar">→</span></a></div></div>
 
 <!--
 PIXELS: no <head>, colados exatamente como o Lucas mandou (Clarity e pixel Utmify).
@@ -1181,12 +1180,13 @@ document.addEventListener("DOMContentLoaded",function(){
   /* nº de alunos (constante ALUNOS no <head>) */
   [].forEach.call(document.querySelectorAll("[data-alunos]"),function(n){n.textContent=ALUNOS});
   (function(){var tr=document.getElementById("depTrack");if(!tr)return;[].slice.call(tr.children).forEach(function(c){var k=c.cloneNode(true);k.setAttribute("aria-hidden","true");tr.appendChild(k)})})();
-  /* timer da escala: 15 min a partir do acesso, guardado em sessionStorage, reinicia ao zerar */
-  var tms=[].slice.call(document.querySelectorAll("[data-tm]")),K="ac_timer_end",DUR=15*60*1000,MIN=3*60*1000;
-  function getEnd(){var e=0;try{e=+sessionStorage.getItem(K)||0}catch(x){}var n=Date.now();if(!e||e-n<=MIN){e=n+DUR;try{sessionStorage.setItem(K,e)}catch(x){}}return e}
-  var end=getEnd();
-  function tick(){var s=Math.floor((end-Date.now())/1000);if(s<=MIN/1000){try{sessionStorage.removeItem(K)}catch(x){}end=getEnd();s=Math.floor(DUR/1000)}var m=Math.floor(s/60),x=s%60,t=(m<10?"0":"")+m+":"+(x<10?"0":"")+x;tms.forEach(function(el){el.textContent=t})}
-  tick();setInterval(tick,1000);
+  /* oferta "só hoje": mostra 'até as HH:MM' = agora + 2h (máx. 23:59), fixo na sessão; renova quando passa */
+  var ates=[].slice.call(document.querySelectorAll("[data-ate]")),KA="ac_ate_end";
+  function ateEnd(){var n=new Date(),e=0;try{e=+sessionStorage.getItem(KA)||0}catch(x){}
+    if(!e||e<=n.getTime()||new Date(e).getDate()!==n.getDate()){var d=new Date(n.getTime()+2*3600*1000);if(d.getDate()!==n.getDate()){d=new Date(n);d.setHours(23,59,0,0)}e=d.getTime();try{sessionStorage.setItem(KA,e)}catch(x){}}
+    return new Date(e)}
+  var ae=ateEnd(),at=(ae.getHours()<10?"0":"")+ae.getHours()+":"+(ae.getMinutes()<10?"0":"")+ae.getMinutes();
+  ates.forEach(function(el){el.textContent=at});
   /* marquees: duplica o conteúdo pra rodar sem buraco (-50%) */
   [["ribbonTrack",2],["aulaTrack",1]].forEach(function(p){var t=document.getElementById(p[0]);if(!t)return;var o=t.innerHTML,s="";for(var i=0;i<p[1];i++)s+=o;t.innerHTML=s+s});
   /* videoaulas: rola sozinho, mas dá pra arrastar/deslizar pro lado (pausa enquanto a pessoa mexe) */
