@@ -434,17 +434,25 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
 
 .bgrid .slot.ar34{aspect-ratio:2/3}
 .bgrid .bk h3{display:none}
-.bgrid .bk:nth-child(1) .slot::after{content:"BÔNUS 01"}
-.bgrid .bk:nth-child(2) .slot::after{content:"BÔNUS 02"}
-.bgrid .bk:nth-child(3) .slot::after{content:"BÔNUS 03"}
-.bgrid .bk:nth-child(4) .slot::after{content:"BÔNUS 04"}
-.bgrid .bk:nth-child(5) .slot::after{content:"BÔNUS 05"}
-.bgrid .bk:nth-child(6) .slot::after{content:"BÔNUS 06"}
-.bgrid .bk:nth-child(7) .slot::after{content:"BÔNUS 07"}
-.bgrid .bk:nth-child(8) .slot::after{content:"BÔNUS 08"}
-.bgrid .bk:nth-child(9) .slot::after{content:"BÔNUS 09"}
-.bgrid .bk:nth-child(10) .slot::after{content:"BÔNUS 10"}
 .bgrid .bk .slot::after{content:"BÔNUS";position:absolute;left:10px;top:9px;z-index:3;background:var(--cta);color:#fff;font:800 10px var(--head);letter-spacing:.08em;padding:3px 8px;border-radius:999px;box-shadow:0 4px 10px -4px rgba(0,0,0,.5)}
+.bgrid .brow:nth-child(1) .bk:nth-child(1) .slot::after{content:"BÔNUS 01"}
+.bgrid .brow:nth-child(1) .bk:nth-child(2) .slot::after{content:"BÔNUS 02"}
+.bgrid .brow:nth-child(1) .bk:nth-child(3) .slot::after{content:"BÔNUS 03"}
+.bgrid .brow:nth-child(1) .bk:nth-child(4) .slot::after{content:"BÔNUS 04"}
+.bgrid .brow:nth-child(2) .bk:nth-child(1) .slot::after{content:"BÔNUS 05"}
+.bgrid .brow:nth-child(2) .bk:nth-child(2) .slot::after{content:"BÔNUS 06"}
+.bgrid .brow:nth-child(2) .bk:nth-child(3) .slot::after{content:"BÔNUS 07"}
+.bgrid .brow:nth-child(2) .bk:nth-child(4) .slot::after{content:"BÔNUS 08"}
+.bgrid .brow:nth-child(3) .bk:nth-child(1) .slot::after{content:"BÔNUS 09"}
+.bgrid .brow:nth-child(3) .bk:nth-child(2) .slot::after{content:"BÔNUS 10"}
+.bgrid{display:block;margin:20px 0 0;padding:0}
+.bonus .hint{display:block;margin-top:8px;font:800 11.5px var(--head);letter-spacing:.1em;color:var(--cta)}
+.brow{display:flex;gap:12px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-snap-type:x proximity;scroll-padding-left:16px;margin:0 calc(50% - 50vw);padding:6px 16px 12px;justify-content:safe center;touch-action:pan-x pan-y;cursor:grab}
+.brow::-webkit-scrollbar{display:none}
+.brow.drag{cursor:grabbing;scroll-snap-type:none}
+.brow .bk{flex:0 0 auto;width:clamp(118px,34vw,158px);max-width:none;margin:0;scroll-snap-align:start}
+.brow img{-webkit-user-drag:none}
+@media(min-width:620px){.brow{margin:0;padding-left:0;padding-right:0}.brow .bk{width:158px}}
 .hint{display:none}
 .bk{text-align:left}
 .bk .slot{border-radius:8px 16px 16px 8px;box-shadow:0 20px 30px -18px rgba(58,24,12,.6),0 0 0 1px rgba(58,24,12,.08)}
@@ -863,18 +871,6 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
     <div class="aula"><div class="thumb" style="--a:#C2185B;--b:#6A0F36"><span class="tg">VIDEOAULA</span><svg class="ic gh"><use href="#i-coin"/></svg><span class="pl"><svg><use href="#i-tri"/></svg></span><span class="bar" style="--w:92%"></span></div><div class="t"><h3>Quanto cobrar no serviço de ar condicionado</h3><p>Primeiros clientes</p><span class="rs"><svg class="ic"><use href="#i-check"/></svg>Você sai sabendo quanto cobrar</span></div></div>
     <div class="aula"><div class="thumb" style="--a:#D97706;--b:#92400E"><span class="tg">VIDEOAULA</span><svg class="ic gh"><use href="#i-users"/></svg><span class="pl"><svg><use href="#i-tri"/></svg></span><span class="bar" style="--w:96%"></span></div><div class="t"><h3>Como conseguir clientes começando do zero</h3><p>Primeiros clientes</p><span class="rs"><svg class="ic"><use href="#i-check"/></svg>Você sabe onde achar os primeiros clientes</span></div></div>
   </div></div>
-  <div class="wrap mods rv">
-    <h3>O que tem em cada módulo</h3>
-    <p class="mods-sub">8 módulos, 50 videoaulas. Toque no módulo pra ver as aulas.</p>
-      <details open><summary><span class="mn">1</span><span>Fundamentos da Refrigeração<small>6 aulas</small></span></summary><ol><li>Ciclo básico de refrigeração — Parte 1</li><li>Curso de Ciclo de Refrigeração (animação)</li><li>Aula 1: Ciclo Básico de Refrigeração Comercial</li><li>Como o seu ar condicionado funciona</li><li>Quais os tipos de ar condicionado, qual escolher</li><li>NR 10 — Segurança em instalações elétricas</li></ol></details>
-      <details><summary><span class="mn">2</span><span>Ferramentas e Equipamentos<small>6 aulas</small></span></summary><ol><li>Ferramentas para iniciar na Refrigeração</li><li>Como utilizar o manifold de forma correta</li><li>Como fazer vácuo no AC Split — vídeo aula</li><li>Como fazer flange em tubo de cobre</li><li>Como identificar vazamento de gás com detector</li><li>Alicate amperímetro/multímetro na refrigeração</li></ol></details>
-      <details><summary><span class="mn">3</span><span>Instalação de Ar-Condicionado Split<small>8 aulas</small></span></summary><ol><li>Passo a passo Instalação Split Convencional</li><li>Como instalar ar-condicionado split</li><li>Instalação Split LG Dual Inverter</li><li>Como Instalar Split em 2025 — atualizado</li><li>Instalação real Split Inverter Britânia</li><li>Como instalar e desinstalar Split R32</li><li>Instalação elétrica de Split — diagrama</li><li>Projeto de instalação Split Inverter</li></ol></details>
-      <details><summary><span class="mn">4</span><span>Vácuo e Carga de Gás Refrigerante<small>6 aulas</small></span></summary><ol><li>Como fazer carga de gás R-410A em split inverter</li><li>Carga de gás split inverter 410A</li><li>Como fazer carga de gás R-410A passo a passo</li><li>Carga adicional de gás R-410A ou R-22</li><li>Gás R-32 em ar-condicionado</li><li>Como fazer vácuo e liberar o gás</li></ol></details>
-      <details><summary><span class="mn">5</span><span>Limpeza e Higienização Profissional<small>6 aulas</small></span></summary><ol><li>Limpeza passo a passo sem tirar da parede</li><li>Curso de limpeza e higienização split</li><li>Como fazer a limpeza completa do split</li><li>Aprenda a limpar split no local</li><li>Faça você mesmo a limpeza</li><li>Como limpar split sem retirar da parede</li></ol></details>
-      <details><summary><span class="mn">6</span><span>Manutenção Preventiva e PMOC<small>5 aulas</small></span></summary><ol><li>PMOC Ar Condicionado: como fazer</li><li>Passo a passo da manutenção preventiva de Split</li><li>Como precificar contrato de Manutenção</li><li>Como limpar a serpentina do condensador</li><li>Quando e por que fazer manutenção do AC</li></ol></details>
-      <details><summary><span class="mn">7</span><span>Diagnóstico e Conserto de Defeitos<small>7 aulas</small></span></summary><ol><li>Teste e troca de capacitor placa eletrônica</li><li>Substituir capacitor do motor ventilador</li><li>Troca do capacitor na placa SPLIT</li><li>Testar capacitor placa Electrolux</li><li>Testar capacitor do ventilador na placa</li><li>Troca de capacitor da placa da evaporadora</li><li>Códigos de erro Springer Midea — soluções</li></ol></details>
-      <details><summary><span class="mn">8</span><span>Atuação Profissional e Primeiros Clientes<small>6 aulas</small></span></summary><ol><li>Quanto cobrar no serviço de ar condicionado</li><li>Como conseguir clientes começando do zero</li><li>O que postar no Instagram de Refrigeração</li><li>Como apresentar proposta de serviços</li><li>Atendimento ao cliente — organização e postura</li><li>Curso técnico em Refrigeração e Climatização</li></ol></details>
-  </div>
   <div class="cta-row rv"><a href="#planos" class="btn caps">Quero começar agora <span class="ar">→</span></a></div>
 </section>
 
@@ -888,6 +884,7 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
     </div>
     <figure class="prova-foto rv"><img src="assets/prova-alunos.webp" alt="Alunos mostrando o certificado de conclusão do curso" width="1400" height="717" loading="lazy" decoding="async"></figure>
 <!-- PRINTS WHATSAPP (MODELO): conversas de exemplo; trocar por prints reais autorizados antes de escalar. Fotos de servico: assets/prints/foto-1..5.webp -->
+    <!-- ZONA DE PRINTS DO WHATSAPP EM STANDBY (pedido do Lucas, 2026-11-13). Para reativar: apagar este comentario externo (abre aqui e fecha no fim do bloco) e tirar o bloco .deps abaixo se nao quiser os dois.
     <div class="wa-proof">
       <h2>Mensagens que chegam pra gente</h2>
       <p class="lead">Conversas de quem já está aprendendo</p>
@@ -980,6 +977,18 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
       </div></figure>
       </div></div>
     </div>
+-->
+    <div class="deps"><div class="mq"><div class="mq-track" id="depTrack" style="--dur:80s">
+      <!-- EXEMPLO: trocar por depoimentos reais antes de publicar (nome, cidade e situação reais, com autorização) -->
+      <div class="dep"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p>“Nunca tinha mexido em ar-condicionado. Fui assistindo as aulas de limpeza e já fiz o aparelho da minha irmã. Agora os vizinhos estão pedindo.”</p><div class="who"><span class="av" aria-hidden="true">M</span><span>Marcos A., Montes Claros (MG)<small>Ajudante de eletricista</small></span></div></div>
+      <div class="dep"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p>“Eu queria uma renda extra e não sabia por onde começar. As aulas são diretas e o guia dos primeiros clientes me deu o caminho.”</p><div class="who"><span class="av" aria-hidden="true">J</span><span>Juliana S., Goiânia (GO)<small>Buscava renda extra</small></span></div></div>
+      <div class="dep"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p>“Pagava toda vez pra limpar o ar de casa. Aprendi, faço eu mesmo e ainda ajudei dois conhecidos. Valeu muito a pena.”</p><div class="who"><span class="av" aria-hidden="true">C</span><span>Carlos E., Fortaleza (CE)<small>Autônomo</small></span></div></div>
+      <div class="dep"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p>“Comecei pelo guia de limpeza e já fechei os primeiros serviços com o pessoal do meu condomínio.”</p><div class="who"><span class="av" aria-hidden="true">P</span><span>Patrícia L., Campinas (SP)<small>Estava desempregada</small></span></div></div>
+      <div class="dep"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p>“As aulas mostram o serviço de verdade, sem enrolação. Limpei o ar do meu pai e ele nem acreditou que fui eu.”</p><div class="who"><span class="av" aria-hidden="true">R</span><span>Rafael M., Belo Horizonte (MG)<small>Estudante</small></span></div></div>
+      <div class="dep"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p>“Já mexia com eletrônica e faltava a parte de refrigeração. A tabela de gases e o manifold nas aulas ajudaram demais.”</p><div class="who"><span class="av" aria-hidden="true">E</span><span>Eduardo T., Recife (PE)<small>Técnico em eletrônica</small></span></div></div>
+      <div class="dep"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p>“Fiz pensando em economizar e acabei pegando gosto. Hoje cuido do ar lá de casa e de alguns vizinhos.”</p><div class="who"><span class="av" aria-hidden="true">A</span><span>Aline R., Curitiba (PR)<small>Dona de casa</small></span></div></div>
+      <div class="dep"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p>“Estava sem renda extra e vi o calor chegando. Assisti as aulas e já comecei a divulgar limpeza no meu bairro.”</p><div class="who"><span class="av" aria-hidden="true">J</span><span>Jonas P., Salvador (BA)<small>Entregador de app</small></span></div></div>
+    </div></div></div>
   </div>
 </section>
 
@@ -992,16 +1001,22 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
       <span class="hint">ARRASTE PRA VER →</span>
     </div>
     <div class="bgrid rv">
+      <div class="brow" data-brow>
       <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#E8590C;--b:#7A1F12"></div><img class="ov" src="assets/bonus-01.webp" alt="Capa do bônus 01: Apostila completa" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Apostila completa</h3><p>Tudo reunido</p><span class="bv"><s>R$27</s> GRÁTIS</span></div>
       <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#D92D20;--b:#7A1010"></div><img class="ov" src="assets/bonus-02.webp" alt="Capa do bônus 02: Tabela de gases e pressões" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Tabela de gases</h3><p>Pressões na mão</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
       <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#FF8A4D;--b:#D2450F"></div><img class="ov" src="assets/bonus-03.webp" alt="Capa do bônus 03: Checklist de instalação de split" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Checklist de split</h3><p>Sem esquecer etapa</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
       <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#E0701A;--b:#9A3412"></div><img class="ov" src="assets/bonus-04.webp" alt="Capa do bônus 04: Guia de limpeza" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Guia de limpeza</h3><p>Passo a passo</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
+      </div>
+      <div class="brow" data-brow>
       <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#C2185B;--b:#6A0F36"></div><img class="ov" src="assets/bonus-05.webp" alt="Capa do bônus 05: Manual de ferramentas" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Manual de ferramentas</h3><p>O que comprar</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
       <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#D97706;--b:#92400E"></div><img class="ov" src="assets/bonus-06.webp" alt="Capa do bônus 06: Guia de preços de serviços" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Guia de preços</h3><p>Monte sua tabela</p><span class="bv"><s>R$27</s> GRÁTIS</span></div>
       <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#E85A06;--b:#8A2A00"></div><img class="ov" src="assets/bonus-07.webp" alt="Capa do bônus 07: Manual de defeitos e soluções" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Manual de defeitos</h3><p>Do sintoma ao conserto</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
       <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#E8590C;--b:#2B0F1C"></div><img class="ov" src="assets/bonus-08.webp" alt="Capa do bônus 08: Guia de manutenção preventiva" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Manutenção preventiva</h3><p>Fidelize clientes</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
+      </div>
+      <div class="brow" data-brow>
       <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#D92D20;--b:#9A3412"></div><img class="ov" src="assets/bonus-09.webp" alt="Capa do bônus 09: Cálculo de BTUs" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Cálculo de BTUs</h3><p>Aparelho certo</p><span class="bv"><s>R$17</s> GRÁTIS</span></div>
       <div class="bk"><div class="slot ar34"><div class="fb cover" style="--a:#D2450F;--b:#C2185B"></div><img class="ov" src="assets/bonus-10.webp" alt="Capa do bônus 10: Guia dos primeiros clientes" width="900" height="1200" loading="lazy" decoding="async" onerror="slotErr(this)"></div><h3>Primeiros clientes</h3><p>Como ser chamado</p><span class="bv"><s>R$24</s> GRÁTIS</span></div>
+      </div>
     </div>
     <div class="bonus-tot rv"><span>Tudo isso, separado, custaria <s>R$197</s></span><b class="gratis">Tudo isso sai DE GRAÇA adquirindo o Premium hoje</b><a href="#planos" class="btn" style="margin-top:10px">Quero o Premium com os 10 bônus <span class="ar">→</span></a></div>
   </div>
@@ -1225,6 +1240,14 @@ document.addEventListener("DOMContentLoaded",function(){
     if(vis||drag)raf=requestAnimationFrame(step);else raf=0
   }
 })();
+</script>
+<script>
+(function(){document.querySelectorAll('[data-brow]').forEach(function(r){var d=false,sx=0,sl=0,mv=false;
+r.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse'||e.button!==0)return;d=true;mv=false;sx=e.clientX;sl=r.scrollLeft;r.classList.add('drag')});
+r.addEventListener('pointermove',function(e){if(!d)return;mv=true;r.scrollLeft=sl-(e.clientX-sx)});
+function up(){d=false;r.classList.remove('drag')}
+['pointerup','pointercancel','pointerleave'].forEach(function(ev){r.addEventListener(ev,up)});
+r.addEventListener('dragstart',function(e){e.preventDefault()})})})();
 </script>
 </body>
 </html>
