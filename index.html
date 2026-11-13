@@ -47,11 +47,15 @@ SLOTS DE IMAGEM (o <img> por cima some sozinho se o arquivo não existir e apare
 - selo-garantia.webp 400x400 (1:1, opcional, cobre o selo SVG)
 Prompts em pagina/prompts-imagens.md
 -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@700&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@700&display=swap"></noscript>
+<link rel="preload" href="assets/fonts/Sora-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/PlusJakartaSans-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+@font-face{font-family:'Sora';font-style:normal;font-weight:100 800;font-display:swap;src:url(assets/fonts/Sora-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:200 800;font-display:swap;src:url(assets/fonts/PlusJakartaSans-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Caveat';font-style:normal;font-weight:700;font-display:swap;src:url(assets/fonts/Caveat-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+/* reserva com a mesma medida das fontes, pra o texto não pular quando elas chegam */
+@font-face{font-family:'Sora Reserva';src:local('Arial'),local('Helvetica'),local('Liberation Sans');size-adjust:115%;ascent-override:84%;descent-override:25%;line-gap-override:0%}
+@font-face{font-family:'Jakarta Reserva';src:local('Arial'),local('Helvetica'),local('Liberation Sans');size-adjust:105%;ascent-override:99%;descent-override:21%;line-gap-override:0%}
 :root{
   --bg:#FFF6E8; --alt:#FFEBD2; --ink:#10193A; --ink2:#665A52; --white:#fff;
   --noite:#2B0F1C; --noite2:#5A1D16;
@@ -59,7 +63,7 @@ Prompts em pagina/prompts-imagens.md
   --ice:#FF9A2E; --ice-d:#C2410C; --ice-l:#FFD36B; --sol:#FFC531;
   --ceu:#FFE3C7; --ceu-t:#B84A0B; --menta:#E4F0C8; --menta-t:#4F6F1A; --solp:#FFF0B8; --solp-t:#8A5A00; --coral:#FFD6D3; --coral-t:#B3261E; --lil:#F6DDEE; --lil-t:#8E2F78;
   --flake:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='4.6'/%3E%3Cpath d='M12 1.5v3.4M12 19.1v3.4M1.5 12h3.4M19.1 12h3.4M4.6 4.6 7 7M17 17l2.4 2.4M4.6 19.4 7 17M17 7l2.4-2.4' stroke='%23000' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E"); --line:rgba(58,24,12,.1); --shadow:0 10px 28px -12px rgba(58,24,12,.22); --r:22px;
-  --head:'Sora','Segoe UI',system-ui,sans-serif; --body:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif; --hand:'Caveat',cursive;
+  --head:'Sora','Sora Reserva','Segoe UI',system-ui,sans-serif; --body:'Plus Jakarta Sans','Jakarta Reserva','Segoe UI',system-ui,sans-serif; --hand:'Caveat',cursive;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -676,7 +680,7 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
 </svg>
 
 <!-- FAIXA DE URGÊNCIA (timer da escala: 15 min a partir do acesso) -->
-<div class="topbar">Acesso por R$10<span class="sep">·</span>oferta válida somente hoje<span class="sep">·</span><b class="hojeData"></b><span class="sep">·</span>até as <span class="tm" data-ate>--:--</span></div>
+<div class="topbar">Acesso por R$10<span class="sep">·</span>oferta válida somente hoje<span class="sep">·</span><b class="hojeData">00/00/0000</b><span class="sep">·</span>até as <span class="tm" data-ate>00:00</span></div>
 
 <!-- HERO -->
 <header class="hero">
@@ -759,7 +763,7 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
         <g transform="translate(362 372) rotate(-32)"><rect x="-6" y="0" width="12" height="62" rx="6" fill="#fff"/><rect x="-9" y="-10" width="18" height="14" rx="3" fill="#DDC3AA"/><path d="M-9-10 9-10 12-30-12-30z" fill="#FFC83D"/><path d="M-6-30v14M0-30v14M6-30v14" stroke="#E0A71A" stroke-width="1.500"/></g>
       </svg>
       <!-- SLOT hero.webp 880x806 (opcional): cobre a ilustração -->
-      <img class="ov" src="assets/hero.webp" alt="Técnico com o curso de ar-condicionado: apostila, videoaulas e acesso pelo celular" width="1000" height="1000" fetchpriority="high" onerror="slotErr(this)">
+      <img class="ov" src="assets/hero.webp" alt="Técnico com o curso de ar-condicionado: apostila, videoaulas e acesso pelo celular" width="700" height="700" fetchpriority="high" onerror="slotErr(this)">
     <div class="sticker s1" aria-hidden="true" style="right:auto;top:auto;left:-3%;bottom:-4%;width:19cqw;height:19cqw;transform:rotate(-8deg)"><b>Passo</b>a passo</div>
     </figure>
 
@@ -1122,7 +1126,7 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
       <svg class="ic flk" style="width:90px;height:90px;left:-20px;bottom:-20px"><use href="#i-sun"/></svg>
       <h2>R$10 hoje ou <span class="hl">mais um verão indicando o serviço pra outro</span></h2>
       <p>Uma única limpeza paga esse curso 25 vezes.</p>
-      <div class="tick"><svg class="ic" style="width:18px;height:18px"><use href="#i-clock"/></svg>Acesso por R$10, oferta válida somente hoje, até as <span class="tm" data-ate>--:--</span></div>
+      <div class="tick"><svg class="ic" style="width:18px;height:18px"><use href="#i-clock"/></svg>Acesso por R$10, oferta válida somente hoje, até as <span class="tm" data-ate>00:00</span></div>
       <a href="#planos" class="btn pulse caps">Quero começar agora <span class="ar">→</span></a>
     </div>
   </div>
@@ -1152,7 +1156,7 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
 </div>
 
 <!-- barra fixa de vidro -->
-<div class="sticky" id="sticky"><div class="sticky-in"><p>Acesso por <b>R$10</b><br>oferta válida somente hoje, até as <span class="tm" data-ate>--:--</span></p><a href="#planos" class="btn caps">Começar <span class="ar">→</span></a></div></div>
+<div class="sticky" id="sticky"><div class="sticky-in"><p>Acesso por <b>R$10</b><br>oferta válida somente hoje, até as <span class="tm" data-ate>00:00</span></p><a href="#planos" class="btn caps">Começar <span class="ar">→</span></a></div></div>
 
 <!--
 PIXELS: no <head>, colados exatamente como o Lucas mandou (Clarity e pixel Utmify).
