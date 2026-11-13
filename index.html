@@ -500,14 +500,23 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
 .wa-proof{margin:36px 0 12px;min-width:0}
 .wa-proof h2{font-size:clamp(23px,5.8vw,32px)}
 .wa-rail{position:relative;max-width:100%;overflow:hidden;padding:0}
-.wa-rail:before,.wa-rail:after{content:"";position:absolute;top:0;bottom:0;width:9%;z-index:2;pointer-events:none}
-.wa-rail:before{left:0;background:linear-gradient(90deg,var(--noite2,#0b1b33),transparent)}
-.wa-rail:after{right:0;background:linear-gradient(270deg,var(--noite2,#0b1b33),transparent)}
 .wa-track{display:flex;align-items:flex-start;width:max-content;padding:22px 0 48px;animation:wa-run var(--wadur,60s) linear infinite;will-change:transform;transform:translate3d(0,0,0);backface-visibility:hidden}
 .wa-track>.wa-shot{margin-right:20px}
+/* COLAGEM DE PRINTS: sem moldura de celular; prints sobrepostos, inclinados e recortados */
+.wa-track{align-items:center;padding:34px 24px 54px}
+.wa-track>.wa-shot{margin-right:-30px;background:#efeae2;border-radius:10px;box-shadow:0 1px 0 rgba(0,0,0,.06),0 14px 30px -10px rgba(0,0,0,.65);transform:rotate(var(--rt,0deg)) translateY(var(--ty,0)) translateZ(0)}
+.wa-shot .wa-island,.wa-shot .wa-home,.wa-shot .wa-status{display:none}
+.wa-shot .wa-head{padding-top:.6em}
+.wa-track>.wa-shot:nth-child(5n+1){--rt:-2.4deg;--ty:6px;z-index:2}
+.wa-track>.wa-shot:nth-child(5n+2){--rt:1.8deg;--ty:-14px;z-index:4;aspect-ratio:390/560}
+.wa-track>.wa-shot:nth-child(5n+2) .wa-foot{display:none}
+.wa-track>.wa-shot:nth-child(5n+3){--rt:-1.2deg;--ty:12px;z-index:3}
+.wa-track>.wa-shot:nth-child(5n+3) .wa-head{display:none}
+.wa-track>.wa-shot:nth-child(5n+4){--rt:2.6deg;--ty:-6px;z-index:5;aspect-ratio:390/620}
+.wa-track>.wa-shot:nth-child(5n+4) .wa-foot{display:none}
+.wa-track>.wa-shot:nth-child(5n+5){--rt:-2deg;--ty:14px;z-index:2}
 @keyframes wa-run{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
 .wa-rail:hover .wa-track,.wa-rail:active .wa-track{animation-play-state:paused}
-@media (prefers-reduced-motion:reduce){.wa-rail{overflow-x:auto}.wa-track{animation:none}.wa-rail:before,.wa-rail:after{display:none}}
 .wa-shot{flex:0 0 min(232px,62vw);width:min(232px,62vw);aspect-ratio:390/760;container-type:inline-size;position:relative;background:#000;border-radius:34px;padding:0;overflow:hidden;box-shadow:0 0 0 3px #1b1b1d,0 0 0 4.5px #3b3b3f,0 22px 44px -14px rgba(0,0,0,.7);margin:0}
 .wa-shot>img{display:block;width:100%;height:auto;-webkit-user-drag:none}
 .wa-screen{position:relative;display:flex;flex-direction:column;height:100%;font-size:calc(100cqw/26);line-height:1.28;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#111;text-align:left;background:#efe7dd;-webkit-font-smoothing:antialiased;user-select:none;-webkit-user-select:none}
@@ -850,24 +859,6 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
         <div class="wa-foot"><span class="wa-plus">+</span><span class="wa-field"><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M4 5h10l6 6v8H4z'/><path d='M14 5v6h6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M3 8h4l1.6-2.4h6.8L17 8h4v11H3z'/><circle cx='12' cy='13' r='3.6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' aria-hidden='true'><rect x='9' y='3' width='6' height='11' rx='3'/><path d='M5.5 11.5a6.5 6.5 0 0013 0M12 18v3'/></svg></span></div>
         <div class="wa-home"><i></i></div>
       </div></figure>
-      <figure class="wa-shot"><div class="wa-screen" role="img" aria-label="Conversa de WhatsApp com Dani Eletricista">
-        <span class="wa-island"></span>
-        <div class="wa-status"><span>22:14</span><span class="wa-sr"><span class='wa-sig' aria-hidden='true'><i></i><i></i><i></i><i class=off></i></span><span class="wa-net">4G</span><span class='wa-bat low' style='--lv:12%'><i></i><b>12</b></span></span></div>
-        <div class="wa-head"><span class="wa-back"><svg viewBox='0 0 12 20' fill='none' stroke='currentColor' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'><path d='M10 2L2 10l8 8'/></svg><b>1</b></span><img class="wa-av" src="assets/avatares/dani.webp" alt="" width="96" height="96" decoding="async"><span class="wa-who"><b>Dani Eletricista</b><span>gravando áudio…</span></span><span class="wa-hi"><svg viewBox='0 0 28 20' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linejoin='round' aria-hidden='true'><rect x='1.5' y='3' width='17' height='14' rx='3.5'/><path d='M19.5 8.5l6-3.4v9.8l-6-3.4z'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M6.6 3.5l2.5 4.1-1.7 1.7a12 12 0 006.8 6.8l1.7-1.7 4.1 2.5-.6 2.5c-.2.8-.9 1.3-1.7 1.3C10.4 20.4 3.6 13.6 3.6 5.8c0-.8.5-1.5 1.3-1.7z'/></svg></span></div>
-        <div class="wa-chat">
-          <span class="wa-date">ontem</span>
-          <div class="wa-b out tail">Oi Dani! Vi que você terminou o módulo 3 hoje 👏<span class="wa-t">22:02<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
-          <div class="wa-b in tail">Boa noite! Posso mandar áudio? Tô sem paciência de digitar kkk<span class="wa-t">22:04</span></div>
-          <div class="wa-b out tail">Pode sim, manda!<span class="wa-t">22:06<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
-          <div class="wa-b wa-au in tail"><span class="wa-mic"><img src="assets/avatares/dani.webp" alt=""></span><svg class='wa-play' viewBox='0 0 24 24' fill='currentColor' aria-hidden='true'><path d='M7 4.5v15l13-7.5z'/></svg><span style="flex:1;min-width:0"><span class="wa-wave"><i style='height:82%'></i><i style='height:23%'></i><i style='height:44%'></i><i style='height:21%'></i><i style='height:19%'></i><i style='height:73%'></i><i style='height:23%'></i><i style='height:29%'></i><i style='height:50%'></i><i style='height:20%'></i><i style='height:18%'></i><i style='height:42%'></i><i style='height:47%'></i><i style='height:18%'></i><i style='height:66%'></i><i style='height:89%'></i><i style='height:125%'></i><i style='height:93%'></i><i style='height:78%'></i><i style='height:40%'></i><i style='height:29%'></i><i style='height:29%'></i><i style='height:27%'></i><i style='height:60%'></i><i style='height:39%'></i><i style='height:21%'></i><i style='height:90%'></i><i style='height:33%'></i><i style='height:35%'></i><i style='height:39%'></i><u class="new"></u></span><span class="wa-aurow"><span class="wa-dur">0:47</span><span class="wa-t">22:06</span></span></span></div>
-          <div class="wa-b in">Resumindo: sou eletricista e o povo da obra sempre pedia ar-condicionado e eu dizia que não fazia<span class="wa-t">22:07</span></div>
-          <div class="wa-b in">Agora eu faço 😎<span class="wa-t">22:09</span></div>
-          <div class="wa-b out tail">Que orgulho! Qual aula te ajudou mais?<span class="wa-t">22:11<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
-          <div class="wa-b in tail">A do vácuo e a do manifold. Antes eu travava aí<span class="wa-t">22:12</span></div>
-        </div>
-        <div class="wa-foot"><span class="wa-plus">+</span><span class="wa-field"><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M4 5h10l6 6v8H4z'/><path d='M14 5v6h6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M3 8h4l1.6-2.4h6.8L17 8h4v11H3z'/><circle cx='12' cy='13' r='3.6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' aria-hidden='true'><rect x='9' y='3' width='6' height='11' rx='3'/><path d='M5.5 11.5a6.5 6.5 0 0013 0M12 18v3'/></svg></span></div>
-        <div class="wa-home"><i></i></div>
-      </div></figure>
       <figure class="wa-shot"><div class="wa-screen" role="img" aria-label="Conversa de WhatsApp com Marcão">
         <span class="wa-island"></span>
         <div class="wa-status"><span>06:42</span><span class="wa-sr"><span class='wa-sig' aria-hidden='true'><i></i><i></i><i></i><i></i></span><span class="wa-net">5G</span><span class='wa-bat' style='--lv:91%'><i></i><b>91</b></span></span></div>
@@ -881,24 +872,6 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
           <div class="wa-b in">O povo aqui já tá me chamando de “o cara do ar”<span class="wa-t">06:26</span></div>
           <div class="wa-b out tail">kkkk quem diria hein<span class="wa-t">06:27<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
           <div class="wa-b in tail">Foi tu que me deu a ideia de somar isso nos meus serviços, valeu mesmo 🙏<span class="wa-t">06:27</span></div>
-        </div>
-        <div class="wa-foot"><span class="wa-plus">+</span><span class="wa-field"><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M4 5h10l6 6v8H4z'/><path d='M14 5v6h6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M3 8h4l1.6-2.4h6.8L17 8h4v11H3z'/><circle cx='12' cy='13' r='3.6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' aria-hidden='true'><rect x='9' y='3' width='6' height='11' rx='3'/><path d='M5.5 11.5a6.5 6.5 0 0013 0M12 18v3'/></svg></span></div>
-        <div class="wa-home"><i></i></div>
-      </div></figure>
-      <figure class="wa-shot"><div class="wa-screen" role="img" aria-label="Conversa de WhatsApp com Ana Paula">
-        <span class="wa-island"></span>
-        <div class="wa-status"><span>13:27</span><span class="wa-sr"><span class='wa-sig' aria-hidden='true'><i></i><i></i><i></i><i></i></span><span class="wa-net">5G</span><span class='wa-bat' style='--lv:73%'><i></i><b>73</b></span></span></div>
-        <div class="wa-head"><span class="wa-back"><svg viewBox='0 0 12 20' fill='none' stroke='currentColor' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'><path d='M10 2L2 10l8 8'/></svg><b>3</b></span><img class="wa-av" src="assets/avatares/anapaula.webp" alt="" width="96" height="96" decoding="async"><span class="wa-who"><b>Ana Paula</b><span>online</span></span><span class="wa-hi"><svg viewBox='0 0 28 20' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linejoin='round' aria-hidden='true'><rect x='1.5' y='3' width='17' height='14' rx='3.5'/><path d='M19.5 8.5l6-3.4v9.8l-6-3.4z'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M6.6 3.5l2.5 4.1-1.7 1.7a12 12 0 006.8 6.8l1.7-1.7 4.1 2.5-.6 2.5c-.2.8-.9 1.3-1.7 1.3C10.4 20.4 3.6 13.6 3.6 5.8c0-.8.5-1.5 1.3-1.7z'/></svg></span></div>
-        <div class="wa-chat">
-          <span class="wa-date">hoje</span>
-          <div class="wa-b in tail">Boa tarde!<span class="wa-t">13:11</span></div>
-          <div class="wa-b out tail">Boa tarde, Ana! Tudo bem? 😊<span class="wa-t">13:12<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
-          <div class="wa-b in tail">Oi! Fiz a limpeza no ar da minha mãe e queria confirmar uma coisa<span class="wa-t">13:13</span></div>
-          <div class="wa-b in">a água do dreno tem que sair pela mangueirinha mesmo, né?<span class="wa-t">13:14</span></div>
-          <div class="wa-b out tail">Isso! Se não sair, a mangueira tá entupida. Tem na aula da limpeza como desentupir<span class="wa-t">13:15<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
-          <div class="wa-b in tail"><span class="wa-q"><b>Você</b><span>Isso! Se não sair, a mangueira tá entupida…</span></span>Saiu normal! Ficou ótimo<span class="wa-t">13:16</span></div>
-          <div class="wa-b in">Minha mãe falou que nunca mais chama ninguém kkkk<span class="wa-t">13:16</span></div>
-          <div class="wa-b out tail">Aí já é fama na família 😂<span class="wa-t">13:17<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
         </div>
         <div class="wa-foot"><span class="wa-plus">+</span><span class="wa-field"><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M4 5h10l6 6v8H4z'/><path d='M14 5v6h6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M3 8h4l1.6-2.4h6.8L17 8h4v11H3z'/><circle cx='12' cy='13' r='3.6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' aria-hidden='true'><rect x='9' y='3' width='6' height='11' rx='3'/><path d='M5.5 11.5a6.5 6.5 0 0013 0M12 18v3'/></svg></span></div>
         <div class="wa-home"><i></i></div>
@@ -934,23 +907,6 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
           <div class="wa-b in tail">Tranquila, só fiquei nervoso na hora da vedação kkk<span class="wa-t">08:08</span></div>
           <div class="wa-b wa-img in"><img src="assets/prints/foto-5.webp" alt="" decoding="async"><span class="wa-cap">ficou assim<span class="wa-t">08:10</span></span></div>
           <div class="wa-b out tail">Ficou limpo demais 👏<span class="wa-t">08:11<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
-        </div>
-        <div class="wa-foot"><span class="wa-plus">+</span><span class="wa-field"><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M4 5h10l6 6v8H4z'/><path d='M14 5v6h6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M3 8h4l1.6-2.4h6.8L17 8h4v11H3z'/><circle cx='12' cy='13' r='3.6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' aria-hidden='true'><rect x='9' y='3' width='6' height='11' rx='3'/><path d='M5.5 11.5a6.5 6.5 0 0013 0M12 18v3'/></svg></span></div>
-        <div class="wa-home"><i></i></div>
-      </div></figure>
-      <figure class="wa-shot"><div class="wa-screen" role="img" aria-label="Conversa de WhatsApp com Luciana">
-        <span class="wa-island"></span>
-        <div class="wa-status"><span>15:03</span><span class="wa-sr"><span class='wa-sig' aria-hidden='true'><i></i><i></i><i></i><i class=off></i></span><span class="wa-net">4G</span><span class='wa-bat lo' style='--lv:22%'><i></i><b>22</b></span></span></div>
-        <div class="wa-head"><span class="wa-back"><svg viewBox='0 0 12 20' fill='none' stroke='currentColor' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'><path d='M10 2L2 10l8 8'/></svg><b>1</b></span><img class="wa-av" src="assets/avatares/lu.webp" alt="" width="96" height="96" decoding="async"><span class="wa-who"><b>Luciana</b><span>visto por último hoje às 15:03</span></span><span class="wa-hi"><svg viewBox='0 0 28 20' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linejoin='round' aria-hidden='true'><rect x='1.5' y='3' width='17' height='14' rx='3.5'/><path d='M19.5 8.5l6-3.4v9.8l-6-3.4z'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M6.6 3.5l2.5 4.1-1.7 1.7a12 12 0 006.8 6.8l1.7-1.7 4.1 2.5-.6 2.5c-.2.8-.9 1.3-1.7 1.3C10.4 20.4 3.6 13.6 3.6 5.8c0-.8.5-1.5 1.3-1.7z'/></svg></span></div>
-        <div class="wa-chat">
-          <span class="wa-date">hoje</span>
-          <div class="wa-b in tail">Oi, tudo bem? Posso te contar uma novidade?<span class="wa-t">14:49</span></div>
-          <div class="wa-b out tail">Claro, Lu! Pode falar 😊<span class="wa-t">14:51<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
-          <div class="wa-b in tail">Queria te agradecer 🥹<span class="wa-t">14:53</span></div>
-          <div class="wa-b in">Sou autônoma e agora tô oferecendo limpeza de ar pros vizinhos do prédio<span class="wa-t">14:54</span></div>
-          <div class="wa-b in">Já fiz 4 ar essa semana<span class="wa-t">14:54</span></div>
-          <div class="wa-b out tail">Que máximo, Lu!! Tá de parabéns 👏<span class="wa-t">14:55<svg class='wa-ck' viewBox='0 0 18 11' fill='none' stroke='#53bdeb' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M1 6l3.4 3.4L11.2 1.6'/><path d='M7 8.2l1.2 1.2L16 1.6'/></svg></span></div>
-          <div class="wa-b wa-img in tail"><img src="assets/prints/foto-4.webp" alt="" decoding="async"><span class="wa-cap">hoje de manhã<span class="wa-t">14:56</span></span></div>
         </div>
         <div class="wa-foot"><span class="wa-plus">+</span><span class="wa-field"><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M4 5h10l6 6v8H4z'/><path d='M14 5v6h6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round' aria-hidden='true'><path d='M3 8h4l1.6-2.4h6.8L17 8h4v11H3z'/><circle cx='12' cy='13' r='3.6'/></svg><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' aria-hidden='true'><rect x='9' y='3' width='6' height='11' rx='3'/><path d='M5.5 11.5a6.5 6.5 0 0013 0M12 18v3'/></svg></span></div>
         <div class="wa-home"><i></i></div>
@@ -1201,7 +1157,7 @@ document.addEventListener("DOMContentLoaded",function(){
   var r=document.querySelector('[data-wacar]');if(!r)return;
   var tr=r.querySelector('.wa-track');if(!tr)return;
   [].slice.call(tr.children).forEach(function(k){var c=k.cloneNode(true);c.setAttribute('aria-hidden','true');tr.appendChild(c)});
-  var n=tr.children.length/2;tr.style.setProperty('--wadur',(n*9)+'s');
+  var n=tr.children.length/2;tr.style.setProperty('--wadur',(n*12)+'s');
   if('IntersectionObserver' in window)new IntersectionObserver(function(es){tr.style.animationPlayState=es[0].isIntersecting?'':'paused'},{threshold:0.02}).observe(r);
 })();
 </script>
