@@ -379,6 +379,28 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
 .aula .rs{display:inline-flex;align-items:center;gap:5px;margin-top:6px;font-size:12px;font-weight:800;color:var(--menta-t);background:var(--menta);border-radius:999px;padding:3px 9px}
 .aula .rs svg{width:12px;height:12px;stroke-width:3}
 /* material (vitrine + certificado) */
+.apost-row{display:grid;grid-template-columns:1.5fr 1fr;gap:14px;align-items:center;margin-top:30px}
+.apost-fan{margin:0;text-align:center}
+.fan{position:relative;height:0;padding-bottom:62%}
+.fan img{position:absolute;bottom:4%;width:27%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:4px 8px 8px 4px;box-shadow:0 10px 16px -8px rgba(58,24,12,.6);left:calc(var(--i) * 18.2%);transform:rotate(calc((var(--i) - 2) * 5deg)) translateY(calc(var(--i) % 2 * -3%));z-index:var(--i)}
+.apost-fan figcaption{margin-top:10px;font-weight:800;font-size:14px;line-height:1.25}
+.apost-fan figcaption small{display:block;font-weight:500;color:var(--ink2);font-size:12.5px}
+.cert-solo{margin:30px auto 0;max-width:560px}
+@media(min-width:760px){.apost-row{max-width:720px;margin-left:auto;margin-right:auto}}
+.mods{max-width:760px;margin:38px auto 8px;text-align:left}
+.mods h3{text-align:center;font-family:var(--head);font-size:clamp(22px,5.4vw,30px);letter-spacing:-.02em;margin:0 0 6px}
+.mods .mods-sub{text-align:center;color:var(--ink2);margin:0 0 18px;font-size:15.5px}
+.mods details{background:#fff;border:1.5px solid var(--line);border-radius:16px;margin-bottom:10px}
+.mods details[open]{box-shadow:var(--shadow);border-color:rgba(194,65,12,.35)}
+.mods summary{list-style:none;cursor:pointer;padding:15px 48px 15px 16px;position:relative;display:flex;align-items:center;gap:12px;font-weight:800;font-size:16px;line-height:1.25}
+.mods summary::-webkit-details-marker{display:none}
+.mods summary:after{content:"";position:absolute;right:20px;top:50%;width:9px;height:9px;border-right:2.5px solid var(--cta);border-bottom:2.5px solid var(--cta);transform:translateY(-70%) rotate(45deg);transition:transform .25s}
+.mods details[open] summary:after{transform:translateY(-30%) rotate(-135deg)}
+.mods .mn{flex:none;width:34px;height:34px;border-radius:10px;background:var(--cta);color:#fff;display:grid;place-items:center;font-size:15px}
+.mods summary small{display:block;font-weight:500;color:var(--ink2);font-size:12.5px;margin-top:2px}
+.mods ol{margin:0;padding:0 16px 14px 62px;list-style:decimal;color:var(--ink);font-size:15px;line-height:1.4}
+.mods li{padding:5px 0;border-top:1px solid rgba(58,24,12,.08)}
+.mods li:first-child{border-top:0}
 .cert-row{display:grid;grid-template-columns:1.75fr 1fr;gap:14px;align-items:center;margin-top:30px}
 .cert-big{margin:0;text-align:center}
 .cert-big img{display:block;width:100%;height:auto;border-radius:6px;border:1.5px solid var(--line);box-shadow:0 22px 40px -18px rgba(58,24,12,.5);transform:rotate(-1.2deg)}
@@ -788,10 +810,11 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
       <div class="bx rv" style="--p:var(--menta);--t:var(--menta-t)"><svg class="ic"><use href="#i-thermo"/></svg>Diagnóstico e conserto<small>7 aulas · do sintoma ao conserto</small></div>
       <div class="bx rv" style="--p:var(--solp);--t:var(--solp-t)"><svg class="ic"><use href="#i-coin"/></svg>Primeiros clientes<small>6 aulas · como cobrar e ser chamado</small></div>
     </div>
-    <div class="cert-row rv">
-      <figure class="cert-big"><img src="assets/certificado-conclusao.webp" alt="Certificado de conclusão do curso" width="1200" height="800" loading="lazy" decoding="async"><figcaption>Certificado de conclusão<small>incluso no Premium</small></figcaption></figure>
+    <div class="apost-row rv">
+      <figure class="apost-fan"><div class="fan"><img src="assets/bonus-01.webp" alt="" width="900" height="1200" loading="lazy" decoding="async" style="--i:0"><img src="assets/bonus-08.webp" alt="" width="900" height="1200" loading="lazy" decoding="async" style="--i:1"><img src="assets/bonus-09.webp" alt="" width="900" height="1200" loading="lazy" decoding="async" style="--i:2"><img src="assets/bonus-10.webp" alt="" width="900" height="1200" loading="lazy" decoding="async" style="--i:3"><img src="assets/bonus-07.webp" alt="" width="900" height="1200" loading="lazy" decoding="async" style="--i:4"></div><figcaption>Apostila completa em PDF<small>pra consultar no dia do serviço</small></figcaption></figure>
       <div class="bx cert-bonus" style="--p:var(--ceu);--t:var(--ceu-t)"><svg class="ic"><use href="#i-gift"/></svg>+ apostila completa e 10 bônus<small>no Premium</small></div>
     </div>
+    <figure class="cert-big cert-solo rv"><img src="assets/certificado-conclusao.webp" alt="Certificado de conclusão do curso" width="1200" height="800" loading="lazy" decoding="async"><figcaption>Certificado de conclusão<small>incluso no Premium</small></figcaption></figure>
     <div class="mini rv">
       <div><svg class="ic"><use href="#i-file"/></svg>8 módulos · 50 aulas</div>
       <div><svg class="ic"><use href="#i-award"/></svg>Certificado (Premium)</div>
@@ -830,6 +853,18 @@ footer{text-align:center;font-size:13px;color:var(--ink2);padding:0 20px 110px}
     <div class="aula"><div class="thumb" style="--a:#C2185B;--b:#6A0F36"><span class="tg">VIDEOAULA</span><svg class="ic gh"><use href="#i-coin"/></svg><span class="pl"><svg><use href="#i-tri"/></svg></span><span class="bar" style="--w:92%"></span></div><div class="t"><h3>Quanto cobrar no serviço de ar condicionado</h3><p>Primeiros clientes</p><span class="rs"><svg class="ic"><use href="#i-check"/></svg>Você sai sabendo quanto cobrar</span></div></div>
     <div class="aula"><div class="thumb" style="--a:#D97706;--b:#92400E"><span class="tg">VIDEOAULA</span><svg class="ic gh"><use href="#i-users"/></svg><span class="pl"><svg><use href="#i-tri"/></svg></span><span class="bar" style="--w:96%"></span></div><div class="t"><h3>Como conseguir clientes começando do zero</h3><p>Primeiros clientes</p><span class="rs"><svg class="ic"><use href="#i-check"/></svg>Você sabe onde achar os primeiros clientes</span></div></div>
   </div></div>
+  <div class="wrap mods rv">
+    <h3>O que tem em cada módulo</h3>
+    <p class="mods-sub">8 módulos, 50 videoaulas. Toque no módulo pra ver as aulas.</p>
+      <details open><summary><span class="mn">1</span><span>Fundamentos da Refrigeração<small>6 aulas</small></span></summary><ol><li>Ciclo básico de refrigeração — Parte 1</li><li>Curso de Ciclo de Refrigeração (animação)</li><li>Aula 1: Ciclo Básico de Refrigeração Comercial</li><li>Como o seu ar condicionado funciona</li><li>Quais os tipos de ar condicionado, qual escolher</li><li>NR 10 — Segurança em instalações elétricas</li></ol></details>
+      <details><summary><span class="mn">2</span><span>Ferramentas e Equipamentos<small>6 aulas</small></span></summary><ol><li>Ferramentas para iniciar na Refrigeração</li><li>Como utilizar o manifold de forma correta</li><li>Como fazer vácuo no AC Split — vídeo aula</li><li>Como fazer flange em tubo de cobre</li><li>Como identificar vazamento de gás com detector</li><li>Alicate amperímetro/multímetro na refrigeração</li></ol></details>
+      <details><summary><span class="mn">3</span><span>Instalação de Ar-Condicionado Split<small>8 aulas</small></span></summary><ol><li>Passo a passo Instalação Split Convencional</li><li>Como instalar ar-condicionado split</li><li>Instalação Split LG Dual Inverter</li><li>Como Instalar Split em 2025 — atualizado</li><li>Instalação real Split Inverter Britânia</li><li>Como instalar e desinstalar Split R32</li><li>Instalação elétrica de Split — diagrama</li><li>Projeto de instalação Split Inverter</li></ol></details>
+      <details><summary><span class="mn">4</span><span>Vácuo e Carga de Gás Refrigerante<small>6 aulas</small></span></summary><ol><li>Como fazer carga de gás R-410A em split inverter</li><li>Carga de gás split inverter 410A</li><li>Como fazer carga de gás R-410A passo a passo</li><li>Carga adicional de gás R-410A ou R-22</li><li>Gás R-32 em ar-condicionado</li><li>Como fazer vácuo e liberar o gás</li></ol></details>
+      <details><summary><span class="mn">5</span><span>Limpeza e Higienização Profissional<small>6 aulas</small></span></summary><ol><li>Limpeza passo a passo sem tirar da parede</li><li>Curso de limpeza e higienização split</li><li>Como fazer a limpeza completa do split</li><li>Aprenda a limpar split no local</li><li>Faça você mesmo a limpeza</li><li>Como limpar split sem retirar da parede</li></ol></details>
+      <details><summary><span class="mn">6</span><span>Manutenção Preventiva e PMOC<small>5 aulas</small></span></summary><ol><li>PMOC Ar Condicionado: como fazer</li><li>Passo a passo da manutenção preventiva de Split</li><li>Como precificar contrato de Manutenção</li><li>Como limpar a serpentina do condensador</li><li>Quando e por que fazer manutenção do AC</li></ol></details>
+      <details><summary><span class="mn">7</span><span>Diagnóstico e Conserto de Defeitos<small>7 aulas</small></span></summary><ol><li>Teste e troca de capacitor placa eletrônica</li><li>Substituir capacitor do motor ventilador</li><li>Troca do capacitor na placa SPLIT</li><li>Testar capacitor placa Electrolux</li><li>Testar capacitor do ventilador na placa</li><li>Troca de capacitor da placa da evaporadora</li><li>Códigos de erro Springer Midea — soluções</li></ol></details>
+      <details><summary><span class="mn">8</span><span>Atuação Profissional e Primeiros Clientes<small>6 aulas</small></span></summary><ol><li>Quanto cobrar no serviço de ar condicionado</li><li>Como conseguir clientes começando do zero</li><li>O que postar no Instagram de Refrigeração</li><li>Como apresentar proposta de serviços</li><li>Atendimento ao cliente — organização e postura</li><li>Curso técnico em Refrigeração e Climatização</li></ol></details>
+  </div>
   <div class="cta-row rv"><a href="#planos" class="btn caps">Quero começar agora <span class="ar">→</span></a></div>
 </section>
 
